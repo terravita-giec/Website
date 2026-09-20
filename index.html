@@ -1,231 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarravita — Environmental &amp; Geospatial Consultancy</title>
-<meta name="description" content="Tarravita is an environmental and geospatial consultancy providing impact assessment, GIS &amp; remote sensing, land mapping, and sustainability advisory.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TerraVita — GIS, Remote Sensing &amp; GeoAI Consultancy | Satellite Data. GIS. AI.</title>
+<meta name="description" content="TerraVita Environmental &amp; Geospatial Consultancy transforms Earth observation and geospatial data into actionable environmental, urban and geological insights. Discuss your project with us." />
+<meta property="og:title" content="TerraVita — GIS, Remote Sensing &amp; GeoAI Consultancy" />
+<meta property="og:description" content="Satellite data, GIS and AI turned into environmental, urban and geological intelligence for planning, assessment, monitoring and decision-making." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --glacier:#2dd4bf; --glacier-soft:#5eead4;
+    --abyss:#0e2a3a; --shelf:#16425a; --surface:#0b1f2c; --ink:#0b1117;
+    --fg:#e8f1f5; --muted:#93aab6; --border:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; color:var(--fg); font-family:Inter,system-ui,sans-serif; line-height:1.6;
+    background:radial-gradient(1200px 800px at 20% -10%, var(--shelf), var(--surface) 55%, #07141d 100%) fixed;
+  }
+  h1,h2,h3,.display{font-family:"Space Grotesk",Inter,sans-serif; letter-spacing:-.02em; margin:0}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .glass{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid var(--border); backdrop-filter:blur(14px); border-radius:18px}
+  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--glacier)}
+  .muted{color:var(--muted)}
+  .btn{display:inline-block;border-radius:999px;padding:13px 26px;font-weight:600;font-size:14px}
+  .btn-primary{background:var(--glacier);color:var(--ink)}
+  .btn-primary:hover{background:var(--glacier-soft)}
+  .btn-ghost{border:1px solid var(--border);background:rgba(255,255,255,.04)}
+  header.site{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px);
+    background:rgba(11,31,44,.72);border-bottom:1px solid var(--border)}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+  nav a{font-size:14px;color:var(--muted);margin-left:26px}
+  nav a:hover{color:var(--fg)}
+  section{border-top:1px solid var(--border);padding:80px 0}
+  section.hero{border-top:0;padding:48px 0 80px}
+  .hero-grid{display:grid;gap:48px;align-items:center}
+  h1{font-size:clamp(34px,5vw,58px);line-height:1.05;font-weight:700}
+  h1 .accent{color:var(--glacier)}
+  .lead{font-size:18px;max-width:600px;color:var(--muted);margin-top:24px}
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:44px;padding-top:32px;border-top:1px solid var(--border)}
+  .facts dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .facts dd{margin:6px 0 0;font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:18px}
+  .plate{aspect-ratio:6/7;border-radius:18px;border:1px solid var(--border);
+    background:linear-gradient(140deg,#123d4f,#0b2130 60%,#071a24),
+      repeating-linear-gradient(0deg,rgba(45,212,191,.08) 0 1px,transparent 1px 48px),
+      repeating-linear-gradient(90deg,rgba(45,212,191,.08) 0 1px,transparent 1px 48px);
+    position:relative;overflow:hidden}
+  .tag{position:absolute;left:16px;top:16px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--glacier);background:rgba(7,20,29,.6);border:1px solid var(--border);border-radius:8px;padding:6px 10px}
+  h2{font-size:clamp(26px,3.2vw,36px);font-weight:600;margin-top:14px}
+  .sec-body{max-width:680px;margin-top:16px;color:var(--muted)}
+  .grid-2{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);
+    border-radius:18px;overflow:hidden;margin-top:44px}
+  .cell{background:rgba(11,31,44,.75);padding:24px;display:flex;gap:18px}
+  .num{font-family:"Space Grotesk",sans-serif;font-weight:600;color:var(--glacier);font-size:14px}
+  .cell h3{font-size:18px;font-weight:600}
+  .cell p{margin:6px 0 0;font-size:14px;color:var(--muted)}
+  ol.pipeline{list-style:none;padding:0;display:grid;gap:36px;margin-top:52px}
+  .step{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;
+    font-family:"Space Grotesk",sans-serif;font-weight:600;color:var(--glacier);
+    background:rgba(255,255,255,.05);border:1px solid var(--border)}
+  .pipeline h3{margin-top:18px;font-size:18px;font-weight:600}
+  .pipeline p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+  .out{margin-top:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--glacier)}
+  .cards{display:grid;gap:22px;margin-top:44px}
+  .card-img{aspect-ratio:16/10;background:linear-gradient(140deg,#14485c,#0b2534 70%);position:relative}
+  .card-body{padding:22px}
+  .card-body h3{font-size:18px;font-weight:600}
+  .card-body p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--glacier);
+    border:1px solid rgba(45,212,191,.3);background:rgba(45,212,191,.1);border-radius:999px;padding:5px 11px}
+  ul.aud{list-style:none;padding:0;margin:28px 0 0;border-top:1px solid var(--border)}
+  ul.aud li{padding:16px 0;border-bottom:1px solid var(--border)}
+  ul.aud p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+  form{display:grid;gap:14px}
+  .field{width:100%;padding:12px 14px;border-radius:12px;color:var(--fg);font:inherit;font-size:14px;
+    background:rgba(255,255,255,.05);border:1px solid var(--border)}
+  .field:focus{outline:none;border-color:rgba(45,212,191,.6)}
+  .row{display:grid;gap:14px}
+  footer.site{border-top:1px solid var(--border);padding:48px 0;color:var(--muted);font-size:14px}
+  @media(min-width:860px){
+    .hero-grid{grid-template-columns:1.05fr .95fr}
+    .facts{grid-template-columns:repeat(4,1fr)}
+    .grid-2{grid-template-columns:1fr 1fr}
+    ol.pipeline{grid-template-columns:repeat(4,1fr)}
+    .cards{grid-template-columns:repeat(3,1fr)}
+    .row{grid-template-columns:1fr 1fr}
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+  }
+</style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="wordmark">Tarravita</a>
-    <nav class="main-nav" aria-label="Primary">
+<header class="site">
+  <div class="wrap">
+    <a href="#" class="display" style="font-weight:700;font-size:18px">TerraVita</a>
+    <nav>
       <a href="#services">Services</a>
       <a href="#approach">Approach</a>
       <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary" style="padding:9px 18px;margin-left:26px">Discuss Your Project</a>
     </nav>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero" id="top">
-  <div class="contour-field" aria-hidden="true">
-    <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
-      <path class="contour c1" d="M-50,120 C 200,60 400,180 650,110 S 1100,40 1450,130" />
-      <path class="contour c2" d="M-50,220 C 180,170 420,290 680,210 S 1080,150 1450,240" />
-      <path class="contour c3" d="M-50,330 C 220,270 460,400 700,320 S 1050,260 1450,350" />
-      <path class="contour c4" d="M-50,760 C 240,700 480,830 720,750 S 1120,690 1450,780" />
-      <path class="contour c5" d="M-50,830 C 260,790 500,900 740,830 S 1150,780 1450,850" />
-      <path class="contour c6" d="M-50,600 C 300,560 520,660 780,600 S 1200,540 1450,610" />
-    </svg>
-  </div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow mono">45.4215° N, 75.6972° W — EST. 2026</p>
-    <h1>Reading the land,<br>mapping what's&nbsp;next.</h1>
-    <p class="hero-lede">Tarravita is an environmental and geospatial consultancy. We turn field data, satellite imagery, and terrain into assessments and maps that clients can act on — and regulators can trust.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Start a project</a>
-      <a href="#approach" class="btn btn-ghost">See our approach</a>
+<!-- 1 HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="glass" style="display:inline-block;padding:7px 16px;border-radius:999px;font-size:12px;color:var(--muted)">Environmental &amp; Geospatial Consultancy</span>
+      <h1 style="margin-top:24px">Satellite Data. GIS. AI. <span class="accent">Intelligence for Better Decisions.</span></h1>
+      <p class="lead">TerraVita Environmental &amp; Geospatial Consultancy transforms Earth observation and geospatial data into actionable environmental, urban and geological insights — for teams planning, assessing, monitoring and committing capital.</p>
+      <p style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="#contact">Discuss Your Project</a>
+        <a class="btn btn-ghost" href="#services">Explore Our Services</a>
+      </p>
+      <dl class="facts">
+        <div><dt>Optical imagery</dt><dd>to 0.3 m</dd></div>
+        <div><dt>Radar (SAR)</dt><dd>all-weather</dd></div>
+        <div><dt>Thermal / LST</dt><dd>30 m+</dd></div>
+        <div><dt>Coverage</dt><dd>India + global</dd></div>
+      </dl>
     </div>
-  </div>
-  <div class="scroll-hint mono" aria-hidden="true">SCROLL</div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section class="services" id="services">
-  <div class="wrap">
-    <p class="eyebrow mono">§ SERVICES</p>
-    <h2>What we do</h2>
-    <div class="service-grid">
-
-      <article class="service-card">
-        <span class="pin" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-        </span>
-        <h3>Environmental Impact Assessment</h3>
-        <p>Baseline ecological surveys, permitting support, and compliance documentation for developments that need to withstand regulatory scrutiny.</p>
-      </article>
-
-      <article class="service-card">
-        <span class="pin" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-        </span>
-        <h3>GIS &amp; Remote Sensing</h3>
-        <p>Satellite and drone imagery analysis, spatial data modelling, and custom cartography built for the questions your team is actually asking.</p>
-      </article>
-
-      <article class="service-card">
-        <span class="pin" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-        </span>
-        <h3>Land &amp; Resource Mapping</h3>
-        <p>Terrain, watershed, and land-use analysis that gives planning and engineering teams a shared, accurate picture of the site.</p>
-      </article>
-
-      <article class="service-card">
-        <span class="pin" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
-        </span>
-        <h3>Sustainability &amp; ESG Advisory</h3>
-        <p>Carbon accounting, climate-risk mapping, and sustainability reporting that holds up to investor and regulator review.</p>
-      </article>
-
+    <div class="plate">
+      <span class="tag">Illustrative analysis layer · NDVI · LST</span>
     </div>
   </div>
 </section>
 
-<!-- ================= APPROACH ================= -->
-<section class="approach" id="approach">
+<!-- 2 WHAT WE DO -->
+<section id="services">
   <div class="wrap">
-    <p class="eyebrow mono">§ APPROACH</p>
-    <h2>How a project moves</h2>
-    <ol class="timeline">
-      <li>
-        <span class="tl-num mono">01</span>
-        <div>
-          <h3>Survey &amp; data collection</h3>
-          <p>Field surveys, drone and satellite capture, sensor deployment. We collect what the site actually needs, not a generic dataset.</p>
-        </div>
-      </li>
-      <li>
-        <span class="tl-num mono">02</span>
-        <div>
-          <h3>Spatial analysis</h3>
-          <p>GIS modelling, habitat and terrain analysis, and change detection turn raw data into a legible picture of the land.</p>
-        </div>
-      </li>
-      <li>
-        <span class="tl-num mono">03</span>
-        <div>
-          <h3>Assessment &amp; reporting</h3>
-          <p>Findings become documentation your regulators, board, or funders can read and rely on — no translation required.</p>
-        </div>
-      </li>
-      <li>
-        <span class="tl-num mono">04</span>
-        <div>
-          <h3>Implementation support</h3>
-          <p>Monitoring plans and adaptive management so the work stays accurate long after the report is filed.</p>
-        </div>
-      </li>
+    <span class="eyebrow">What we do</span>
+    <h2>Eight disciplines, one decision pipeline</h2>
+    <p class="sec-body">TerraVita combines geospatial engineering, environmental science and machine learning so a single team carries your question from raw imagery to a defensible answer.</p>
+    <div class="grid-2">
+      <div class="cell"><span class="num">01</span><div><h3>GIS &amp; Spatial Analysis</h3><p>Overlay, suitability and network modelling on one coordinate-accurate base.</p></div></div>
+      <div class="cell"><span class="num">02</span><div><h3>Remote Sensing &amp; Satellite Analysis</h3><p>Optical, SAR and thermal imagery calibrated, corrected and interpreted.</p></div></div>
+      <div class="cell"><span class="num">03</span><div><h3>Environmental Consulting</h3><p>EIA and EMP support, ESG monitoring and clearance-ready documentation.</p></div></div>
+      <div class="cell"><span class="num">04</span><div><h3>Land &amp; Site Due Diligence</h3><p>Pre-acquisition risk screening before capital is committed.</p></div></div>
+      <div class="cell"><span class="num">05</span><div><h3>Urban &amp; Climate Analytics</h3><p>NDVI, land surface temperature and built-up growth, mapped to priority areas.</p></div></div>
+      <div class="cell"><span class="num">06</span><div><h3>Geological &amp; Mineral Analysis</h3><p>Lineament mapping, lithological discrimination and prospectivity.</p></div></div>
+      <div class="cell"><span class="num">07</span><div><h3>GeoAI &amp; AI/ML Solutions</h3><p>Trained models that detect, classify and predict across large areas.</p></div></div>
+      <div class="cell"><span class="num">08</span><div><h3>Custom Geospatial Solutions</h3><p>Bespoke pipelines, dashboards and decision tooling to your spec.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 WHY IT MATTERS -->
+<section id="approach" style="background:rgba(11,31,44,.4)">
+  <div class="wrap">
+    <span class="eyebrow">Why geospatial intelligence matters</span>
+    <h2>From raw signal to decision intelligence</h2>
+    <p class="sec-body">Satellite data on its own is not an answer. TerraVita moves it through four stages so what reaches your desk is something you can act on, defend and revisit.</p>
+    <ol class="pipeline">
+      <li><span class="step">1</span><h3>Raw Satellite Data</h3><p>Optical, radar, thermal and elevation feeds acquired, ortho-rectified and calibrated to a common datum.</p><p class="out">→ Analysis-ready imagery</p></li>
+      <li><span class="step">2</span><h3>GIS Analysis</h3><p>Vectors, rasters and terrain joined into one queryable spatial model with your own records folded in.</p><p class="out">→ Structured spatial model</p></li>
+      <li><span class="step">3</span><h3>AI &amp; Analytics</h3><p>Machine learning and statistics surface patterns, anomalies and multi-temporal change at scale.</p><p class="out">→ Measured change and risk</p></li>
+      <li><span class="step">4</span><h3>Decision Intelligence</h3><p>Ranked, mapped and documented recommendations your board, regulator or lender can act on.</p><p class="out">→ Defensible decision</p></li>
     </ol>
   </div>
 </section>
 
-<!-- ================= WORK ================= -->
-<section class="work" id="work">
+<!-- 4 CAPABILITIES -->
+<section>
   <div class="wrap">
-    <p class="eyebrow mono">§ SELECTED WORK</p>
-    <h2>Recent projects</h2>
-    <div class="work-grid">
-      <article class="work-card">
-        <div class="work-coord mono">28.6139° N, 77.2090° E</div>
-        <h3>Wetland Baseline Survey</h3>
-        <p>[Project summary — replace with a real client outcome once available.]</p>
+    <span class="eyebrow">Featured capabilities</span>
+    <h2>Solutions built around real decisions</h2>
+    <p class="sec-body">Three of the engagements clients come back to, each ending in something specific: a risk register, a priority map, a change matrix.</p>
+    <div class="cards">
+      <article class="glass" style="overflow:hidden">
+        <div class="card-img"><span class="tag">Diligence</span></div>
+        <div class="card-body"><h3>Environmental Due Diligence</h3>
+          <p>Identify land-use, vegetation, water and development-related factors before a major project decision is taken.</p>
+          <div class="chips"><span class="chip">Risk register</span><span class="chip">Buffer screening</span><span class="chip">Baseline evidence</span></div></div>
       </article>
-      <article class="work-card">
-        <div class="work-coord mono">19.0760° N, 72.8777° E</div>
-        <h3>Coastal Land-Use Mapping</h3>
-        <p>[Project summary — replace with a real client outcome once available.]</p>
+      <article class="glass" style="overflow:hidden">
+        <div class="card-img"><span class="tag">Urban</span></div>
+        <div class="card-body"><h3>Urban Heat &amp; Climate Analytics</h3>
+          <p>Analyse NDVI, land surface temperature and built-up extent to locate hotspots and set mitigation priorities.</p>
+          <div class="chips"><span class="chip">NDVI</span><span class="chip">LST</span><span class="chip">Built-up extent</span></div></div>
       </article>
-      <article class="work-card">
-        <div class="work-coord mono">12.9716° N, 77.5946° E</div>
-        <h3>Watershed Risk Assessment</h3>
-        <p>[Project summary — replace with a real client outcome once available.]</p>
+      <article class="glass" style="overflow:hidden">
+        <div class="card-img"><span class="tag">Change</span></div>
+        <div class="card-body"><h3>Land-Use &amp; Change Detection</h3>
+          <p>Map land-use / land-cover across periods and quantify what changed, where, and by how much.</p>
+          <div class="chips"><span class="chip">LULC classes</span><span class="chip">Change matrix</span><span class="chip">Confidence scoring</span></div></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section class="about" id="about">
-  <div class="wrap about-inner">
-    <div class="about-copy">
-      <p class="eyebrow mono">§ ABOUT</p>
-      <h2>A young consultancy, built on old fieldwork instincts</h2>
-      <p>Tarravita was founded in 2026 to close the gap between environmental science and geospatial technology — two disciplines that too often work from different maps. [Replace with your real founding story, team background, and mission — a sentence or two on why Tarravita exists.]</p>
-      <p>[Optional: founder name(s) and one line on relevant background/credentials.]</p>
+<!-- 5 WHO WE WORK WITH + WORK -->
+<section id="work">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Who we work with</span>
+      <h2>Built for teams that have to defend the decision</h2>
+      <ul class="aud">
+        <li><strong>Infrastructure &amp; real-estate developers</strong><p>Site selection, corridor studies and clearance timelines that do not slip on missing data.</p></li>
+        <li><strong>Environmental consultants</strong><p>Extra analytical capacity for baselines, buffers and change evidence behind your assessments.</p></li>
+        <li><strong>Engineering &amp; design firms</strong><p>Terrain, drainage and constraint layers that reach the drawing board before the ground does.</p></li>
+        <li><strong>Researchers &amp; academia</strong><p>Reproducible processing, honest accuracy reporting and datasets you can publish against.</p></li>
+        <li><strong>Project organisations &amp; programmes</strong><p>Monitoring across sites and years, with indicators that stay comparable over the programme.</p></li>
+        <li><strong>Public-sector &amp; urban agencies</strong><p>City-scale heat, cover and growth analysis prepared for policy and public reporting.</p></li>
+      </ul>
     </div>
-    <div class="about-stats">
-      <div class="stat">
-        <span class="stat-num mono">2026</span>
-        <span class="stat-label">Founded</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num mono">[X]</span>
-        <span class="stat-label">Projects delivered</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num mono">[X] km²</span>
-        <span class="stat-label">Land surveyed &amp; mapped</span>
+    <div>
+      <span class="eyebrow">Selected work</span>
+      <h2>Sample analyses &amp; deliverables</h2>
+      <p class="sec-body">Illustrative plates from our analytical library — the format and depth you receive, without reproducing a client's confidential site.</p>
+      <div style="display:grid;gap:18px;margin-top:28px">
+        <article class="glass" style="padding:18px">
+          <h3 style="font-size:18px;font-weight:600">Coastal corridor exposure</h3>
+          <p class="muted" style="font-size:14px;margin:8px 0 0">Estuary, mangrove and settlement exposure ranked by water level and storm scenario.</p>
+          <div class="chips"><span class="chip">Hazard zoning</span><span class="chip">Change since 2000</span><span class="chip">Settlement overlap</span></div>
+        </article>
+        <article class="glass" style="padding:18px">
+          <h3 style="font-size:18px;font-weight:600">Urban expansion &amp; heat</h3>
+          <p class="muted" style="font-size:14px;margin:8px 0 0">Built-up growth read against surface temperature to show where cooling capacity is lost.</p>
+          <div class="chips"><span class="chip">Built-up series</span><span class="chip">LST anomaly</span><span class="chip">Green loss</span></div>
+        </article>
+        <article class="glass" style="padding:18px">
+          <h3 style="font-size:18px;font-weight:600">Land-cover transition</h3>
+          <p class="muted" style="font-size:14px;margin:8px 0 0">Classification across two periods with a change matrix and per-class accuracy.</p>
+          <div class="chips"><span class="chip">LULC classes</span><span class="chip">Change matrix</span><span class="chip">Accuracy report</span></div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section class="contact" id="contact">
-  <div class="wrap contact-inner">
-    <div class="contact-copy">
-      <p class="eyebrow mono light">§ CONTACT</p>
-      <h2>Start a project</h2>
-      <p>Tell us about the site, the timeline, and what you need to walk away with. We'll reply within two business days.</p>
-      <div class="contact-details mono">
-        <a href="mailto:hello@tarravita.com">hello@tarravita.com</a>
-        <span>[+00 000 000 0000]</span>
-        <span>[City, Country]</span>
+<!-- 6 ENQUIRY -->
+<section id="contact" style="background:rgba(11,31,44,.4)">
+  <div class="wrap">
+    <div class="glass" style="padding:40px">
+      <div class="split">
+        <div>
+          <span class="eyebrow">Start a project</span>
+          <h2>Tell us what you're mapping — we'll scope the rest.</h2>
+          <p class="sec-body">Share your site, the data you already hold and the decision in front of you. A geospatial consultant replies, typically within two business days, with a scoped outline and an indicative quote.</p>
+          <ul class="muted" style="font-size:14px;margin-top:24px;padding-left:18px">
+            <li>No committed scope needed to start a conversation</li>
+            <li>NDA-friendly for confidential and public-sector data</li>
+            <li>India and international engagements, remote or on-site</li>
+            <li>Every deliverable documented and reproducible</li>
+          </ul>
+        </div>
+        <form action="#" method="post">
+          <div class="row">
+            <input class="field" name="full_name" placeholder="Full name" required />
+            <input class="field" name="organisation" placeholder="Organisation" />
+          </div>
+          <div class="row">
+            <input class="field" type="email" name="email" placeholder="Work email" required />
+            <input class="field" name="phone" placeholder="Phone (optional)" />
+          </div>
+          <div class="row">
+            <select class="field" name="service">
+              <option value="">Service of interest</option>
+              <option>GIS &amp; Spatial Analysis</option>
+              <option>Remote Sensing &amp; Satellite Analysis</option>
+              <option>Environmental Consulting</option>
+              <option>Land &amp; Site Due Diligence</option>
+              <option>Urban &amp; Climate Analytics</option>
+              <option>Geological &amp; Mineral Analysis</option>
+              <option>GeoAI &amp; AI/ML Solutions</option>
+              <option>Custom Geospatial Solutions</option>
+            </select>
+            <input class="field" name="region" placeholder="Region / site location" />
+          </div>
+          <textarea class="field" name="brief" rows="5" placeholder="Briefly: the site, the data you hold, the decision ahead" required></textarea>
+          <button class="btn btn-primary" type="submit" style="justify-self:start;border:0;cursor:pointer">Send Enquiry</button>
+        </form>
       </div>
     </div>
-    <form class="contact-form" id="contact-form">
-      <label>
-        <span>Name</span>
-        <input type="text" name="name" required>
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        <span>Project details</span>
-        <textarea name="message" rows="4" required></textarea>
-      </label>
-      <button type="submit" class="btn btn-primary">Send message</button>
-      <p class="form-note mono" id="form-note" aria-live="polite"></p>
-    </form>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <span class="wordmark small">Tarravita</span>
-    <span class="mono footer-note">Environmental &amp; Geospatial Consultancy</span>
-    <span class="mono footer-note">© 2026 Tarravita. All rights reserved.</span>
+<footer class="site">
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
+    <span>© <span id="yr"></span> TerraVita Environmental &amp; Geospatial Consultancy</span>
+    <span>hello@terravita.co.in</span>
   </div>
 </footer>
-
-<script src="script.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
