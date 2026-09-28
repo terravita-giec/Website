@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | TerraVita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">TV</span><span class="brand-copy"><strong>TerraVita</strong><small>Environmental & Geospatial Consultancy</small></span></a><button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button><nav class="main-nav" id="mainNav"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="projects.html">Projects</a><a href="index.html#technology">Technology</a><a href="index.html#consultation">Contact</a><a class="nav-cta" href="index.html#consultation">Request a Consultation</a></nav></div></header>
+<main>
+<section class="page-hero"><div class="container"><p class="section-kicker">PROJECT LIBRARY</p><h1>Spatial analysis with a <span>purpose.</span></h1><p>Selected TerraVita workflows demonstrating how satellite data, GIS and AI can support environmental, urban and site-level decisions.</p></div></section>
+<section class="section"><div class="container project-library">
+<article class="library-card"><div class="library-visual visual-ahmedabad"><span>NDVI / NDWI / MNDWI</span></div><div><p class="tag">REMOTE SENSING</p><h2>Ahmedabad Environmental Analysis</h2><p>Multi-index analysis of vegetation and surface-water patterns.</p><a class="btn btn-dark" href="projects/ahmedabad.html">View case study →</a></div></article>
+<article class="library-card"><div class="library-visual visual-due"><span>LULC / CHANGE / RISK</span></div><div><p class="tag">SITE INTELLIGENCE</p><h2>Satellite-Based Land Due Diligence</h2><p>A structured site-screening workflow for land and environmental constraints.</p><a class="btn btn-dark" href="projects/due-diligence.html">View case study →</a></div></article>
+<article class="library-card"><div class="library-visual visual-heat"><span>NDVI / LST / BUILT-UP</span></div><div><p class="tag">URBAN ANALYTICS</p><h2>Urban Heat Intelligence</h2><p>Integrated vegetation, built-up and surface-temperature analysis.</p><a class="btn btn-dark" href="projects/urban-heat.html">View case study →</a></div></article>
+</div></section>
+<section class="cta-band"><div class="container"><p class="section-kicker">YOUR PROJECT NEXT</p><h2>Have a dataset, site or question?</h2><a class="btn btn-primary" href="index.html#consultation">Request a Consultation ↗</a></div></section>
+</main>
+<footer><div class="container footer-bottom"><span>© 2026 TerraVita</span><a href="index.html">Back to home</a></div></footer>
+<a class="whatsapp" href="https://wa.me/919545881451" target="_blank">WA</a>
+<script src="js/script.js"></script>
+</body></html>
