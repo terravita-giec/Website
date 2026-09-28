@@ -1,29 +1,42 @@
-// Mobile nav toggle
-const navToggle = document.querySelector('.nav-toggle');
-const mainNav = document.querySelector('.main-nav');
+// TerraVita Website
+// Simple JavaScript interactions
 
-if (navToggle && mainNav) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+document.addEventListener("DOMContentLoaded", function () {
 
-  // Close menu after clicking a link (mobile)
-  mainNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+    // Add shadow to navbar when scrolling
+    const navbar = document.querySelector(".navbar");
+
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 30) {
+            navbar.style.boxShadow =
+                "0 8px 30px rgba(0,0,0,0.18)";
+        } else {
+            navbar.style.boxShadow = "none";
+        }
+
     });
-  });
-}
 
-// Contact form — placeholder handling until a real backend/form service is wired up
-const form = document.getElementById('contact-form');
-const note = document.getElementById('form-note');
 
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    note.textContent = 'Thanks — this form isn\'t connected to email yet. Replace this with Formspree, a mailto link, or your backend of choice.';
-  });
-}
+    // Close mobile menu / smooth navigation
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const target = document.querySelector(
+                this.getAttribute("href")
+            );
+
+            if (target) {
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+        });
+
+    });
+
+});
