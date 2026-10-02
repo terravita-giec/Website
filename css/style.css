@@ -75,6 +75,14 @@ a {
   color:var(--teal);
   font:700 12px "Space Grotesk";
 }
+
+.brand-mark img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
+
 .brand-copy strong,.brand-copy small {
   display:block;
 }
