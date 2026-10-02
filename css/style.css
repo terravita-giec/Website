@@ -1013,41 +1013,71 @@ footer {
   position: fixed;
   right: 24px;
   bottom: 24px;
+
   width: 62px;
   height: 62px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  overflow: hidden;
-  text-decoration: none;
-  z-index: 9999;
+
+  padding: 0;
+  margin: 0;
+
   background: transparent;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: none;
+  border-radius: 50%;
+
+  overflow: hidden;
+
+  text-decoration: none;
+
+  z-index: 9999;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .whatsapp img {
+  display: block;
+
   width: 100%;
   height: 100%;
-  display: block;
+
   object-fit: cover;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
 }
 
+/* Hover */
 .whatsapp:hover {
   transform: scale(1.08);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+
+  box-shadow:
+    0 9px 25px rgba(0, 0, 0, 0.28);
 }
 
+/* Keyboard accessibility */
 .whatsapp:focus-visible {
   outline: 3px solid #25d366;
   outline-offset: 4px;
 }
 
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 600px) {
   .whatsapp {
     width: 56px;
     height: 56px;
+
     right: 18px;
     bottom: 18px;
   }
