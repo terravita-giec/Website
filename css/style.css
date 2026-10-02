@@ -783,7 +783,6 @@ footer {
   color:#536c66;
   font-size:9px;
 }
-}
 .page-hero,.case-hero {
   padding:180px 0 100px;
   background:radial-gradient(circle at 80% 30%,#16463b,#061613 60%);
@@ -1003,19 +1002,20 @@ footer {
   .cta-band h2 {
     font-size:35px;
   }
-}
+
 }
 
 /* =========================
    WHATSAPP FLOATING BUTTON
    ========================= */
-.whatsapp {
+.whatsapp,
+img.whatsapp {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: 22px;
+  bottom: 22px;
 
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
 
   display: flex;
   align-items: center;
@@ -1025,11 +1025,10 @@ footer {
   margin: 0;
 
   background: transparent;
-  border: none;
+  border: 0;
   border-radius: 50%;
 
   overflow: hidden;
-
   text-decoration: none;
 
   z-index: 9999;
@@ -1041,44 +1040,49 @@ footer {
     box-shadow 0.2s ease;
 }
 
-.whatsapp img {
+.whatsapp img,
+img.whatsapp {
+  width: 58px;
+  height: 58px;
+  max-width: 58px;
+  max-height: 58px;
+  min-width: 0;
+  min-height: 0;
+
   display: block;
-
-  width: 100%;
-  height: 100%;
-
   object-fit: cover;
 
-  margin: 0;
   padding: 0;
-
-  border: none;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
 }
 
-/* Hover */
-.whatsapp:hover {
-  transform: scale(1.08);
-
-  box-shadow:
-    0 9px 25px rgba(0, 0, 0, 0.28);
+.whatsapp:hover,
+img.whatsapp:hover {
+  transform: scale(1.06);
+  box-shadow: 0 9px 25px rgba(0, 0, 0, 0.28);
 }
 
-/* Keyboard accessibility */
 .whatsapp:focus-visible {
   outline: 3px solid #25d366;
   outline-offset: 4px;
 }
 
-/* =========================
-   MOBILE
-   ========================= */
-
 @media (max-width: 600px) {
-  .whatsapp {
-    width: 56px;
-    height: 56px;
-
+  .whatsapp,
+  img.whatsapp {
     right: 18px;
     bottom: 18px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .whatsapp img,
+  img.whatsapp {
+    width: 52px;
+    height: 52px;
+    max-width: 52px;
+    max-height: 52px;
   }
 }
