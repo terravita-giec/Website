@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Growth & Land-Cover Intelligence | Pune 2021–2025</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js"></script>
+<style>
+  :root { --bg:#f3f5f8; --card:#fff; --text:#1d2433; --muted:#6b7385; --border:#e3e7ee;
+          --accent:#1f4e79; --pos:#2a9d8f; --neg:#c4281b; --radius:10px; --gap:16px; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  .wrap { max-width:1320px; margin:0 auto; padding:20px; }
+  header { background:var(--accent); color:#fff; border-radius:var(--radius); padding:20px 24px;
+           display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; margin-bottom:var(--gap); }
+  header h1 { font-size:20px; margin:0 0 4px; }
+  header p { margin:0; font-size:13px; opacity:.85; }
+  .upload-btn { padding:8px 14px; border-radius:6px; background:rgba(255,255,255,.18); cursor:pointer; font-size:13px; border:1px solid rgba(255,255,255,.4); }
+  .upload-btn input { display:none; }
+  .notice { font-size:13px; background:#fff7e0; color:#7a5a00; border-radius:6px; padding:8px 12px; margin-bottom:var(--gap); }
+  .card { background:var(--card); border-radius:var(--radius); padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,.07); }
+  .section-title { font-size:15px; font-weight:600; margin:24px 0 12px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
+  .kpi-label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+  .kpi-value { font-size:24px; font-weight:700; margin:6px 0 2px; }
+  .kpi-sub { font-size:12px; color:var(--muted); }
+  .pos { color:var(--pos); } .neg { color:var(--neg); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
+  .card h3 { font-size:14px; margin:0 0 12px; }
+  .chart-box { position:relative; height:300px; }
+  .note { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5; }
+  .maps { display:grid; grid-template-columns:repeat(auto-fit,minmax(460px,1fr)); gap:var(--gap); }
+  .panel-controls { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  select { padding:6px 8px; border-radius:6px; border:1px solid var(--border); font-size:13px; background:#fff; }
+  canvas.map { width:100%; height:auto; background:#e9edf3; border-radius:6px; display:block; }
+  .legend { display:flex; flex-wrap:wrap; gap:10px; font-size:12px; margin-top:10px; align-items:center; }
+  .sw { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:5px; vertical-align:middle; }
+  .ramp { width:200px; height:12px; border-radius:3px; }
+  .info { font-size:12px; color:var(--muted); margin-top:8px; min-height:18px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th,td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); }
+  th { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+  td.num, th.num { text-align:right; }
+  footer { font-size:12px; color:var(--muted); text-align:center; margin-top:18px; }
+  @media (max-width:700px) { .grid,.maps { grid-template-columns:1fr; } }
+  @media print { .upload-btn,select { display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Urban Growth & Land-Cover Intelligence</h1>
+      <p id="subtitle"></p>
+    </div>
+    <label class="upload-btn">Load TIF files (select all)
+      <input type="file" id="tifInput" accept=".tif,.tiff" multiple>
+    </label>
+  </header>
+
+  <div class="notice" id="notice">Load your TIF files to see the maps. Charts and KPIs already use your CSV.</div>
+
+  <div class="section-title">Headline numbers</div>
+  <section class="kpis" id="kpis"></section>
+
+  <div class="section-title">Trends and composition</div>
+  <section class="grid">
+    <div class="card">
+      <h3>Land-cover share of study area (%)</h3>
+      <div class="chart-box"><canvas id="shareChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Built-up area (km²)</h3>
+      <div class="chart-box"><canvas id="builtChart"></canvas></div>
+      <div class="note" id="builtNote"></div>
+    </div>
+    <div class="card">
+      <h3>Net change, first to last year (km²)</h3>
+      <div class="chart-box"><canvas id="changeChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h3 id="donutTitle">Composition, latest year</h3>
+      <div class="chart-box"><canvas id="donutChart"></canvas></div>
+    </div>
+  </section>
+
+  <div class="section-title">Map viewer (GeoTIFF, rendered locally in your browser)</div>
+  <section class="maps">
+    <div class="card" id="panel0"></div>
+    <div class="card" id="panel1"></div>
+  </section>
+
+  <div class="section-title">Detail table</div>
+  <section class="card" style="overflow-x:auto">
+    <table>
+      <thead><tr>
+        <th>Year</th><th>Class</th><th class="num">Area (ha)</th>
+        <th class="num">Area (km²)</th><th class="num">Share (%)</th><th class="num">Change vs prior year (km²)</th>
+      </tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+
+  <footer>Source: land-cover classification CSV (Dynamic World–style classes) and TIF outputs. Files stay on this computer.</footer>
+</div>
+
+<script>
+/* =====================================================================
+   1. YOUR CSV (year, class_id, class_name, area_ha, area_km2, area_percent)
+   ===================================================================== */
+const CSV = `year,class_id,class_name,area_ha,area_km2,area_percent
+2021,0,Water,307.23,3.07,1.57
+2021,1,Trees,5656.99,56.57,28.82
+2021,2,Grass,106.86,1.07,0.54
+2021,3,Flooded Vegetation,3.70,0.04,0.02
+2021,4,Crops,1921.99,19.22,9.79
+2021,5,Shrub and Scrub,1162.64,11.63,5.92
+2021,6,Built-up,10466.76,104.67,53.32
+2021,7,Bare Ground,4.73,0.05,0.02
+2021,8,Snow and Ice,0.00,0.00,0.00
+2022,0,Water,297.51,2.98,1.52
+2022,1,Trees,4926.83,49.27,25.10
+2022,2,Grass,65.63,0.66,0.33
+2022,3,Flooded Vegetation,11.95,0.12,0.06
+2022,4,Crops,2036.83,20.37,10.38
+2022,5,Shrub and Scrub,1006.19,10.06,5.13
+2022,6,Built-up,11278.64,112.79,57.45
+2022,7,Bare Ground,7.34,0.07,0.04
+2022,8,Snow and Ice,0.00,0.00,0.00
+2023,0,Water,299.67,3.00,1.53
+2023,1,Trees,5074.29,50.74,25.85
+2023,2,Grass,38.33,0.38,0.20
+2023,3,Flooded Vegetation,2.24,0.02,0.01
+2023,4,Crops,2148.86,21.49,10.95
+2023,5,Shrub and Scrub,808.25,8.08,4.12
+2023,6,Built-up,11247.87,112.48,57.30
+2023,7,Bare Ground,11.41,0.11,0.06
+2023,8,Snow and Ice,0.00,0.00,0.00
+2024,0,Water,314.78,3.15,1.60
+2024,1,Trees,4778.29,47.78,24.34
+2024,2,Grass,42.51,0.43,0.22
+2024,3,Flooded Vegetation,4.34,0.04,0.02
+2024,4,Crops,1966.45,19.66,10.02
+2024,5,Shrub and Scrub,864.37,8.64,4.40
+2024,6,Built-up,11641.89,116.42,59.30
+2024,7,Bare Ground,18.29,0.18,0.09
+2024,8,Snow and Ice,0.00,0.00,0.00
+2025,0,Water,290.55,2.91,1.48
+2025,1,Trees,4761.00,47.61,24.25
+2025,2,Grass,83.91,0.84,0.43
+2025,3,Flooded Vegetation,3.73,0.04,0.02
+2025,4,Crops,1782.56,17.83,9.08
+2025,5,Shrub and Scrub,898.24,8.98,4.58
+2025,6,Built-up,11793.06,117.93,60.07
+2025,7,Bare Ground,17.86,0.18,0.09
+2025,8,Snow and Ice,0.00,0.00,0.00`;
+
+/* Dynamic World class scheme used by your landcover TIFs */
+const DW = {
+  0:{n:'Water',c:'#419BDF'}, 1:{n:'Trees',c:'#397D49'}, 2:{n:'Grass',c:'#88B053'},
+  3:{n:'Flooded Vegetation',c:'#7A87C6'}, 4:{n:'Crops',c:'#E49635'},
+  5:{n:'Shrub and Scrub',c:'#DFC35A'}, 6:{n:'Built-up',c:'#C4281B'},
+  7:{n:'Bare Ground',c:'#A59B8F'}, 8:{n:'Snow and Ice',c:'#B39FE1'}
+};
+const RAMPS = {
+  prob:    ['#ffffff','#fdd49e','#fc8d59','#d7301f','#7f0000'],
+  viridis: ['#440154','#3b528b','#21918c','#5ec962','#fde725'],
+  loss:    ['#f7fbff','#9ecae1','#4292c6','#08306b']
+};
+
+/* ---------- Parse CSV (handles tab or comma, optional pandas index column) ---------- */
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/).filter(Boolean);
+  const d = lines[0].includes('\t') ? '\t' : ',';
+  const h = lines[0].trim().split(d).map(s => s.trim().toLowerCase());
+  const col = n => h.indexOf(n);
+  const iY = col('year'), iId = col('class_id'), iN = h.findIndex(s => s === 'class_name' || s === 'class');
+  const iHa = col('area_ha'), iKm = col('area_km2'), iP = col('area_percent');
+  if (iY < 0 || iN < 0 || iKm < 0) throw new Error('CSV needs year, class_name, area_km2');
+  return lines.slice(1).map(l => {
+    let p = l.trim().split(d).map(s => s.trim());
+    if (p.length === h.length + 1) p = p.slice(1);          // drop pandas index column
+    return { year: +p[iY], id: +p[iId], cls: p[iN], ha: +p[iHa], km2: +p[iKm], pct: +p[iP] };
+  }).filter(r => Number.isFinite(r.year));
+}
+
+const DATA = parseCSV(CSV);
+const YEARS = [...new Set(DATA.map(r => r.year))].sort();
+const Y0 = YEARS[0], Y1 = YEARS[YEARS.length - 1];
+const CLASSES = [...new Map(DATA.map(r => [r.cls, r.id])).entries()]
+                  .sort((a, b) => a[1] - b[1]).map(e => e[0]);
+const COLOR = {}; DATA.forEach(r => COLOR[r.cls] = DW[r.id] ? DW[r.id].c : '#999');
+
+const get = (y, c, f = 'km2') => DATA.filter(r => r.year === y && r.cls === c).reduce((s, r) => s + r[f], 0);
+const total = y => DATA.filter(r => r.year === y).reduce((s, r) => s + r.km2, 0);
+const fmt = (n, d = 1) => Number(n).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d });
+const signed = (n, d = 1) => (n > 0 ? '+' : '') + fmt(n, d);
+
+/* =====================================================================
+   2. KPIs and charts from CSV
+   ===================================================================== */
+document.getElementById('subtitle').textContent =
+  `Study area: Pune, Maharashtra | ${Y0}–${Y1} | Total classified area ${fmt(total(Y1), 1)} km²`;
+
+function renderKPIs() {
+  const n = Y1 - Y0;
+  const b0 = get(Y0, 'Built-up'), b1 = get(Y1, 'Built-up');
+  const bGrowth = (b1 - b0) / b0 * 100;
+  const cagr = (Math.pow(b1 / b0, 1 / n) - 1) * 100;
+  const tChg = get(Y1, 'Trees') - get(Y0, 'Trees');
+  const tPct = tChg / get(Y0, 'Trees') * 100;
+  const cChg = get(Y1, 'Crops') - get(Y0, 'Crops');
+  const sChg = get(Y1, 'Shrub and Scrub') - get(Y0, 'Shrub and Scrub');
+  const cards = [
+    { l: `Built-up ${Y1}`, v: `${fmt(b1)} km²`, s: `${get(Y1,'Built-up','pct')}% of study area`, c: '' },
+    { l: 'Built-up growth', v: `${signed(b1 - b0)} km²`, s: `${signed(bGrowth)}% since ${Y0}`, c: 'pos' },
+    { l: 'Built-up growth rate', v: `${signed(cagr, 2)}%/yr`, s: `Compound annual rate`, c: 'pos' },
+    { l: 'Tree cover change', v: `${signed(tChg)} km²`, s: `${signed(tPct)}% since ${Y0}`, c: 'neg' },
+    { l: 'Cropland change', v: `${signed(cChg)} km²`, s: `Agricultural land lost`, c: cChg < 0 ? 'neg' : 'pos' },
+    { l: 'Shrub & scrub change', v: `${signed(sChg)} km²`, s: `Fringe vegetation`, c: sChg < 0 ? 'neg' : 'pos' },
+  ];
+  document.getElementById('kpis').innerHTML = cards.map(k => `
+    <div class="card"><div class="kpi-label">${k.l}</div>
+    <div class="kpi-value ${k.c}">${k.v}</div><div class="kpi-sub">${k.s}</div></div>`).join('');
+}
+
+function buildCharts() {
+  const active = CLASSES.filter(c => YEARS.some(y => get(y, c) > 0));
+
+  new Chart(document.getElementById('shareChart'), {
+    type: 'bar',
+    data: { labels: YEARS, datasets: active.map(c => ({
+      label: c, backgroundColor: COLOR[c], data: YEARS.map(y => get(y, c, 'pct')) })) },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom' } },
+      scales: { x: { stacked: true }, y: { stacked: true, max: 100 } } }
+  });
+
+  const bu = YEARS.map(y => get(y, 'Built-up'));
+  new Chart(document.getElementById('builtChart'), {
+    type: 'line',
+    data: { labels: YEARS, datasets: [{ label: 'Built-up km²', data: bu, borderColor: COLOR['Built-up'],
+      backgroundColor: COLOR['Built-up'] + '25', fill: true, tension: .3, borderWidth: 2.5, pointRadius: 4 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+  });
+  const yoy = YEARS.slice(1).map((y, i) => (bu[i + 1] - bu[i]).toFixed(2));
+  document.getElementById('builtNote').textContent =
+    `Year-on-year change (km²): ` + YEARS.slice(1).map((y, i) => `${y} ${signed(+yoy[i], 2)}`).join(' · ') +
+    `. Most of the expansion happened in 2022 and 2024.`;
+
+  const changes = active.map(c => get(Y1, c) - get(Y0, c));
+  new Chart(document.getElementById('changeChart'), {
+    type: 'bar',
+    data: { labels: active, datasets: [{ data: changes, borderRadius: 4,
+      backgroundColor: changes.map(v => v >= 0 ? '#2a9d8f' : '#c4281b') }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { x: { title: { display: true, text: 'km² change' } } } }
+  });
+
+  document.getElementById('donutTitle').textContent = `Composition, ${Y1} (km²)`;
+  new Chart(document.getElementById('donutChart'), {
+    type: 'doughnut',
+    data: { labels: active, datasets: [{ data: active.map(c => get(Y1, c)), backgroundColor: active.map(c => COLOR[c]) }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+  });
+}
+
+function renderTable() {
+  const rows = DATA.map(r => {
+    const i = YEARS.indexOf(r.year);
+    const prev = i > 0 ? get(YEARS[i - 1], r.cls) : null;
+    return `<tr><td>${r.year}</td><td>${r.cls}</td><td class="num">${fmt(r.ha, 2)}</td>
+      <td class="num">${fmt(r.km2, 2)}</td><td class="num">${fmt(r.pct, 2)}</td>
+      <td class="num ${prev === null ? '' : (r.km2 - prev >= 0 ? 'pos' : 'neg')}">
+      ${prev === null ? '—' : signed(r.km2 - prev, 2)}</td></tr>`;
+  });
+  document.getElementById('tableBody').innerHTML = rows.join('');
+}
+
+/* =====================================================================
+   3. TIF map viewer (GeoTIFF read in the browser, nothing uploaded)
+   ===================================================================== */
+const LAYERS = {
+  landcover: { label: 'Land cover', kind: 'cat',
+    opts: YEARS.map(y => ({ v: String(y), key: `Landcover_${y}` })) },
+  prob: { label: 'Built-up probability', kind: 'cont', ramp: 'prob',
+    opts: YEARS.map(y => ({ v: String(y), key: `BuiltProbability_${y}` })) },
+  pressure: { label: 'Development pressure', kind: 'cont', ramp: 'viridis',
+    opts: YEARS.map(y => ({ v: String(y), key: `DevelopmentPressure_Screen_${y}` })) },
+  newbuilt: { label: 'New built-up (change)', kind: 'bin', color: '#e63946',
+    opts: ['2021_2022','2022_2023','2023_2024','2024_2025','2021_2025'].map(p => ({ v: p, key: `NewBuilt_${p}` })) },
+  persist: { label: 'Persistent built-up', kind: 'bin', color: '#6d597a',
+    opts: ['2021_2022','2022_2023','2023_2024','2024_2025'].map(p => ({ v: p, key: `PersistentBuilt_${p}` })) },
+  loss: { label: 'Potential built-up loss', kind: 'cont', ramp: 'loss',
+    opts: ['2021_2022','2022_2023','2023_2024','2024_2025'].map(p => ({ v: p, key: `PotentialBuiltLoss_${p}` })) },
+};
+
+let tifFiles = [];           // [{name, file}]
+const rasterCache = new Map();
+
+function findFile(key) {
+  const k = key.toLowerCase();
+  const hit = tifFiles.find(f => f.name.includes(k));
+  return hit ? hit.file : null;
+}
+
+function getRaster(file) {
+  if (!rasterCache.has(file)) rasterCache.set(file, loadRaster(file));
+  return rasterCache.get(file);
+}
+
+async function loadRaster(file) {
+  const tiff = await GeoTIFF.fromBlob(file);
+  const img = await tiff.getImage();
+  const [data] = await img.readRasters();          // first band, full resolution
+  const [rx, ry] = img.getResolution();
+  return { w: img.getWidth(), h: img.getHeight(), data,
+           nd: img.getGDALNoData(), pixArea: Math.abs(rx * ry) };   // m² per pixel if projected in metres
+}
+
+const hexRGB = h => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16));
+function rampColor(stops, t) {
+  const f = Math.min(Math.max(t, 0), 1) * (stops.length - 1);
+  const i = Math.floor(f), k = f - i;
+  const a = hexRGB(stops[i]), b = hexRGB(stops[Math.min(i + 1, stops.length - 1)]);
+  return a.map((v, j) => Math.round(v + (b[j] - v) * k));
+}
+function percentiles(data, nd) {
+  const step = Math.max(1, Math.floor(data.length / 200000));
+  const vals = [];
+  for (let i = 0; i < data.length; i += step) {
+    const v = data[i];
+    if (Number.isFinite(v) && (nd === null || v !== nd)) vals.push(v);
+  }
+  vals.sort((a, b) => a - b);
+  const n = vals.length;
+  return n ? [vals[Math.floor(0.02 * n)], vals[Math.max(0, Math.floor(0.98 * n) - 1)]] : [0, 1];
+}
+
+function paint(p, L, r, opt) {
+  const { w, h, data, nd, pixArea } = r;
+  const off = document.createElement('canvas'); off.width = w; off.height = h;
+  const ctx = off.getContext('2d');
+  const img = ctx.createImageData(w, h), px = img.data;
+  let lo = 0, hi = 1, ramp = null;
+  if (L.kind === 'cont') { [lo, hi] = percentiles(data, nd); ramp = RAMPS[L.ramp]; }
+
+  const counts = {}; let valid = 0, flagged = 0;
+  for (let i = 0; i < data.length; i++) {
+    const v = data[i], j = i * 4;
+    if (!Number.isFinite(v) || (nd !== null && v === nd)) { px[j + 3] = 0; continue; }
+    valid++;
+    let col = null;
+    if (L.kind === 'cat') {
+      if (DW[v]) { col = hexRGB(DW[v].c); counts[v] = (counts[v] || 0) + 1; }
+    } else if (L.kind === 'bin') {
+      if (v > 0) { col = hexRGB(L.color); flagged++; } else col = [235, 235, 235];
+    } else {
+      col = rampColor(ramp, (v - lo) / ((hi - lo) || 1));
+    }
+    if (!col) { px[j + 3] = 0; continue; }
+    px[j] = col[0]; px[j + 1] = col[1]; px[j + 2] = col[2]; px[j + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  return { off, counts, valid, flagged, lo, hi, pixArea, w, h };
+}
+
+function km2(pixels, pixArea) { return (pixels * pixArea) / 1e6; }
+
+function buildPanel(idx, layerKey, year) {
+  const el = document.getElementById(`panel${idx}`);
+  el.innerHTML = `
+    <div class="panel-controls">
+      <select id="layer${idx}">${Object.entries(LAYERS).map(([k, L]) =>
+        `<option value="${k}" ${k === layerKey ? 'selected' : ''}>${L.label}</option>`).join('')}</select>
+      <select id="period${idx}"></select>
+    </div>
+    <canvas class="map" id="map${idx}" width="800" height="600"></canvas>
+    <div class="legend" id="legend${idx}"></div>
+    <div class="info" id="info${idx}"></div>`;
+  document.getElementById(`layer${idx}`).addEventListener('change', () => { fillPeriods(idx, true); draw(idx); });
+  document.getElementById(`period${idx}`).addEventListener('change', () => draw(idx));
+  fillPeriods(idx, false, year);
+  draw(idx);
+}
+
+function fillPeriods(idx, reset, preferred) {
+  const L = LAYERS[document.getElementById(`layer${idx}`).value];
+  const sel = document.getElementById(`period${idx}`);
+  const prev = reset ? null : sel.value;
+  sel.innerHTML = L.opts.map(o =>
+    `<option value="${o.v}">${o.v}${findFile(o.key) ? '' : ' (not loaded)'}</option>`).join('');
+  const want = preferred != null ? String(preferred) : prev;
+  if (want && L.opts.some(o => o.v === want)) sel.value = want;
+}
+
+async function draw(idx) {
+  const L = LAYERS[document.getElementById(`layer${idx}`).value];
+  const opt = L.opts.find(o => o.v === document.getElementById(`period${idx}`).value);
+  const info = document.getElementById(`info${idx}`);
+  const canvas = document.getElementById(`map${idx}`);
+  const file = findFile(opt.key);
+  if (!file) {
+    info.textContent = `Not loaded: ${opt.key}. Select it in the file picker above.`;
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById(`legend${idx}`).innerHTML = '';
+    return;
+  }
+  info.textContent = 'Rendering…';
+  try {
+    const r = await getRaster(file);
+    const out = paint({}, L, r, opt);
+    const scale = Math.min(1, 900 / out.w);
+    canvas.width = Math.round(out.w * scale); canvas.height = Math.round(out.h * scale);
+    canvas.getContext('2d').drawImage(out.off, 0, 0, canvas.width, canvas.height);
+    document.getElementById(`legend${idx}`).innerHTML = legendHTML(L, out);
+    info.textContent = infoText(L, out, opt);
+  } catch (e) {
+    info.textContent = 'Could not read this TIF: ' + e.message;
+  }
+}
+
+function legendHTML(L, out) {
+  if (L.kind === 'cat') {
+    return Object.keys(DW).filter(k => out.counts[k] || k < 8).map(k =>
+      `<span><span class="sw" style="background:${DW[k].c}"></span>${DW[k].n}</span>`).join('');
+  }
+  if (L.kind === 'bin') {
+    return `<span><span class="sw" style="background:${L.color}"></span>Changed (value &gt; 0)</span>
+            <span><span class="sw" style="background:#ebebeb"></span>Unchanged</span>`;
+  }
+  const stops = RAMPS[L.ramp].map(c => c).join(',');
+  return `<span>${fmt(out.lo, 2)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops})"></span><span>${fmt(out.hi, 2)}</span>`;
+}
+
+function infoText(L, out, opt) {
+  if (L.kind === 'cat') {
+    const bu = out.counts[6] || 0;
+    const rasterPct = (bu / out.valid * 100);
+    const csvPct = opt.v ? get(+opt.v, 'Built-up', 'pct') : null;
+    const csvKm = opt.v ? get(+opt.v, 'Built-up') : null;
+    return `Built-up from raster: ${fmt(km2(bu, out.pixArea), 2)} km² (${fmt(rasterPct, 2)}% of valid pixels). ` +
+           `CSV for ${opt.v}: ${fmt(csvKm, 2)} km² (${fmt(csvPct, 2)}%). Small gaps are expected from pixel resampling.`;
+  }
+  if (L.kind === 'bin') {
+    return `Flagged area: ${fmt(km2(out.flagged, out.pixArea), 2)} km² (${fmt(out.flagged / out.valid * 100, 2)}% of valid pixels).`;
+  }
+  return `Stretched between the 2nd and 98th percentile: ${fmt(out.lo, 3)} to ${fmt(out.hi, 3)}.`;
+}
+
+/* ---------- TIF file picker ---------- */
+const EXPECTED = Object.values(LAYERS).reduce((s, L) => s + L.opts.length, 0);
+document.getElementById('tifInput').addEventListener('change', e => {
+  tifFiles = [...e.target.files].map(f => ({ name: f.name.toLowerCase(), file: f }));
+  rasterCache.clear();
+  const matched = Object.values(LAYERS).reduce((s, L) => s + L.opts.filter(o => findFile(o.key)).length, 0);
+  document.getElementById('notice').textContent =
+    `Loaded ${tifFiles.length} TIF files. Matched ${matched} of ${EXPECTED} expected layers.`;
+  [0, 1].forEach(i => { fillPeriods(i, false); draw(i); });
+});
+
+/* =====================================================================
+   4. Init
+   ===================================================================== */
+renderKPIs();
+buildCharts();
+renderTable();
+buildPanel(0, 'landcover', Y0);
+buildPanel(1, 'landcover', Y1);
+</script>
+</body>
+</html>
