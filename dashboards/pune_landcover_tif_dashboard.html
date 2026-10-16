@@ -3,112 +3,317 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Growth & Land-Cover Intelligence | Pune 2021–2025</title>
+<title>Pune Urban Growth and Land Cover, 2021–2025 | TerraVita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js"></script>
 <style>
-  :root { --bg:#f3f5f8; --card:#fff; --text:#1d2433; --muted:#6b7385; --border:#e3e7ee;
-          --accent:#1f4e79; --pos:#2a9d8f; --neg:#c4281b; --radius:10px; --gap:16px; }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); }
-  .wrap { max-width:1320px; margin:0 auto; padding:20px; }
-  header { background:var(--accent); color:#fff; border-radius:var(--radius); padding:20px 24px;
-           display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; margin-bottom:var(--gap); }
-  header h1 { font-size:20px; margin:0 0 4px; }
-  header p { margin:0; font-size:13px; opacity:.85; }
-  .upload-btn { padding:8px 14px; border-radius:6px; background:rgba(255,255,255,.18); cursor:pointer; font-size:13px; border:1px solid rgba(255,255,255,.4); }
-  .upload-btn input { display:none; }
-  .notice { font-size:13px; background:#fff7e0; color:#7a5a00; border-radius:6px; padding:8px 12px; margin-bottom:var(--gap); }
-  .card { background:var(--card); border-radius:var(--radius); padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,.07); }
-  .section-title { font-size:15px; font-weight:600; margin:24px 0 12px; }
-  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
-  .kpi-label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
-  .kpi-value { font-size:24px; font-weight:700; margin:6px 0 2px; }
-  .kpi-sub { font-size:12px; color:var(--muted); }
-  .pos { color:var(--pos); } .neg { color:var(--neg); }
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:var(--gap); margin-bottom:var(--gap); }
-  .card h3 { font-size:14px; margin:0 0 12px; }
-  .chart-box { position:relative; height:300px; }
-  .note { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5; }
-  .maps { display:grid; grid-template-columns:repeat(auto-fit,minmax(460px,1fr)); gap:var(--gap); }
-  .panel-controls { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
-  select { padding:6px 8px; border-radius:6px; border:1px solid var(--border); font-size:13px; background:#fff; }
-  canvas.map { width:100%; height:auto; background:#e9edf3; border-radius:6px; display:block; }
-  .legend { display:flex; flex-wrap:wrap; gap:10px; font-size:12px; margin-top:10px; align-items:center; }
-  .sw { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:5px; vertical-align:middle; }
-  .ramp { width:200px; height:12px; border-radius:3px; }
-  .info { font-size:12px; color:var(--muted); margin-top:8px; min-height:18px; }
-  table { width:100%; border-collapse:collapse; font-size:13px; }
-  th,td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); }
-  th { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
-  td.num, th.num { text-align:right; }
-  footer { font-size:12px; color:var(--muted); text-align:center; margin-top:18px; }
-  @media (max-width:700px) { .grid,.maps { grid-template-columns:1fr; } }
-  @media print { .upload-btn,select { display:none; } }
+  :root {
+    --navy: #0e1c2a;
+    --navy-2: #1a2e42;
+    --ink: #1c2630;
+    --muted: #5d6874;
+    --paper: #f3f4f2;
+    --white: #ffffff;
+    --rule: #d6dbdd;
+    --amber: #d9a441;
+    --built: #b5452f;
+    --forest: #2e6b4f;
+    --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.6; font-size: 16px; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  img, canvas { display: block; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  /* Top bar */
+  .topbar { position: sticky; top: 0; z-index: 30; background: var(--navy); color: #fff; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 20px; }
+  .brand { display: flex; align-items: baseline; gap: 10px; color: #fff; text-decoration: none; }
+  .brand strong { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: .01em; }
+  .brand span { font-size: 13px; color: #9fb0bf; }
+  .topbar nav { display: flex; gap: 26px; }
+  .topbar nav a { color: #c5d1db; text-decoration: none; font-size: 14px; padding: 6px 0; border-bottom: 2px solid transparent; }
+  .topbar nav a:hover { color: #fff; border-bottom-color: var(--amber); }
+
+  /* Hero */
+  .hero { background: var(--navy); color: #fff; padding: 72px 0 0; }
+  .hero-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: end; padding-bottom: 56px; }
+  .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.1; margin: 0 0 18px; letter-spacing: -.01em; }
+  .hero .lede { color: #b8c6d2; font-size: 17px; margin: 0; max-width: 620px; }
+  .hero-meta { border-left: 1px solid #2c4156; padding-left: 36px; display: grid; gap: 22px; }
+  .hero-meta div { display: flex; flex-direction: column; }
+  .hero-meta strong { font-family: var(--serif); font-weight: 500; font-size: 38px; line-height: 1.1; }
+  .hero-meta span { font-size: 14px; color: #9fb0bf; }
+  .hero-anim { animation: fade .9s ease-out both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .hero-anim { animation: none; } html { scroll-behavior: auto; } }
+
+  /* Sections */
+  section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: 0; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
+  .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: 32px; margin: 0; letter-spacing: -.01em; }
+  .section-head p { margin: 0; color: var(--muted); max-width: 560px; font-size: 15px; }
+
+  /* Map comparison */
+  .map-panel { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 24px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 18px; align-items: end; margin-bottom: 18px; }
+  .controls label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 500; }
+  select { font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid #c4cbcf; border-radius: 4px; background: #fff; color: var(--ink); min-width: 220px; }
+  .layer-note { margin: 0 0 18px; color: var(--muted); font-size: 15px; max-width: 760px; }
+  .stage { position: relative; width: 100%; aspect-ratio: 16 / 10; background: #dde4e6; border-radius: 3px; overflow: hidden; }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #canvasL { clip-path: inset(0 50% 0 0); }
+  .stage-msg { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); background: rgba(221,228,230,.92); font-size: 15px; }
+  .stage-msg.hidden { display: none; }
+  .divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); pointer-events: none; }
+  .divider::after { content: ''; position: absolute; top: 50%; left: 50%; width: 34px; height: 34px; transform: translate(-50%, -50%);
+                    border-radius: 50%; background: var(--amber); box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                    background-image: linear-gradient(90deg, transparent 42%, var(--navy) 42%, var(--navy) 58%, transparent 58%); }
+  .tag { position: absolute; top: 14px; padding: 6px 10px; background: rgba(14,28,42,.85); color: #fff; font-size: 13px; border-radius: 3px; pointer-events: none; }
+  .tag.l { left: 14px; } .tag.r { right: 14px; }
+  .slider-row { display: flex; align-items: center; gap: 14px; margin-top: 16px; font-size: 13px; color: var(--muted); }
+  .slider-row input { flex: 1; accent-color: var(--navy); }
+  .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px 32px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); align-items: center; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); align-items: center; }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .sw { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+  .ramp { width: 160px; height: 8px; border-radius: 2px; display: inline-block; }
+  .map-info { margin: 0; font-size: 15px; max-width: 520px; }
+
+  /* Headline figures */
+  .figures { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); }
+  .figure { padding: 22px 24px 4px 0; }
+  .figure + .figure { padding-left: 24px; border-left: 1px solid var(--rule); }
+  .figure .label { font-size: 14px; color: var(--muted); }
+  .figure .value { font-family: var(--serif); font-size: 44px; font-weight: 500; line-height: 1.15; margin: 6px 0 4px; }
+  .figure .delta { font-size: 14px; color: var(--muted); }
+  .figure .delta.up { color: var(--built); }
+  .figure .delta.down { color: var(--forest); }
+
+  /* Charts */
+  .chart-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
+  .panel { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 24px; }
+  .panel h3 { font-family: var(--serif); font-weight: 500; font-size: 20px; margin: 0 0 4px; }
+  .panel .caption { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .chart-box { position: relative; height: 320px; }
+  .takeaway { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 15px; }
+  .mix-panel { margin-top: 24px; }
+
+  /* Data table */
+  .data-tools { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; gap: 16px; flex-wrap: wrap; }
+  .data-tools p { margin: 0; color: var(--muted); font-size: 14px; }
+  .btn { font: inherit; font-size: 14px; font-weight: 500; padding: 10px 16px; border-radius: 4px; background: var(--navy); color: #fff; border: 0; cursor: pointer; }
+  .btn:hover { background: var(--navy-2); }
+  .table-wrap { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  th { font-size: 13px; font-weight: 600; color: var(--muted); background: #f8f9f8; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* Method */
+  .method { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 56px; }
+  .method dl { margin: 0; }
+  .method div { padding: 20px 0; border-top: 1px solid var(--rule); }
+  .method dt { font-family: var(--serif); font-size: 20px; margin-bottom: 6px; }
+  .method dd { margin: 0; color: var(--muted); font-size: 15px; }
+
+  footer { background: var(--navy); color: #9fb0bf; font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 1000px) {
+    .hero-top, .chart-grid, .method { grid-template-columns: 1fr; }
+    .hero-meta { border-left: 0; padding-left: 0; grid-template-columns: repeat(3, 1fr); }
+    .figures { grid-template-columns: repeat(2, 1fr); }
+    .figure:nth-child(3) { border-left: 0; padding-left: 0; }
+    .figure:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
+  @media (max-width: 620px) {
+    .topbar nav { display: none; }
+    .hero-meta { grid-template-columns: 1fr; }
+    .figures { grid-template-columns: 1fr; }
+    .figure + .figure, .figure:nth-child(3) { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); }
+    .stage { aspect-ratio: 4 / 3; }
+    .hero-meta strong { font-size: 30px; }
+  }
+  @media print {
+    .topbar, .controls, .slider-row, .data-tools { display: none; }
+    body, .hero { background: #fff; color: #000; }
+    .hero h1, .hero .lede, .hero-meta span { color: #000; }
+    section { padding: 24px 0; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div>
-      <h1>Urban Growth & Land-Cover Intelligence</h1>
-      <p id="subtitle"></p>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><strong>TerraVita</strong><span>Pune land cover, 2021–2025</span></a>
+    <nav aria-label="Sections">
+      <a href="#maps">Maps</a>
+      <a href="#figures">Figures</a>
+      <a href="#change">Change</a>
+      <a href="#mix">Mix</a>
+      <a href="#data">Data</a>
+      <a href="#method">Method</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero-anim">
+    <div class="hero-top">
+      <div>
+        <h1 id="heroTitle"></h1>
+        <p class="lede" id="heroLede"></p>
+      </div>
+      <div class="hero-meta" id="heroMeta"></div>
     </div>
-    <label class="upload-btn">Load TIF files (select all)
-      <input type="file" id="tifInput" accept=".tif,.tiff" multiple>
-    </label>
-  </header>
-
-  <div class="notice" id="notice">Load your TIF files to see the maps. Charts and KPIs already use your CSV.</div>
-
-  <div class="section-title">Headline numbers</div>
-  <section class="kpis" id="kpis"></section>
-
-  <div class="section-title">Trends and composition</div>
-  <section class="grid">
-    <div class="card">
-      <h3>Land-cover share of study area (%)</h3>
-      <div class="chart-box"><canvas id="shareChart"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Built-up area (km²)</h3>
-      <div class="chart-box"><canvas id="builtChart"></canvas></div>
-      <div class="note" id="builtNote"></div>
-    </div>
-    <div class="card">
-      <h3>Net change, first to last year (km²)</h3>
-      <div class="chart-box"><canvas id="changeChart"></canvas></div>
-    </div>
-    <div class="card">
-      <h3 id="donutTitle">Composition, latest year</h3>
-      <div class="chart-box"><canvas id="donutChart"></canvas></div>
-    </div>
-  </section>
-
-  <div class="section-title">Map viewer (GeoTIFF, rendered locally in your browser)</div>
-  <section class="maps">
-    <div class="card" id="panel0"></div>
-    <div class="card" id="panel1"></div>
-  </section>
-
-  <div class="section-title">Detail table</div>
-  <section class="card" style="overflow-x:auto">
-    <table>
-      <thead><tr>
-        <th>Year</th><th>Class</th><th class="num">Area (ha)</th>
-        <th class="num">Area (km²)</th><th class="num">Share (%)</th><th class="num">Change vs prior year (km²)</th>
-      </tr></thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </section>
-
-  <footer>Source: land-cover classification CSV (Dynamic World–style classes) and TIF outputs. Files stay on this computer.</footer>
+  </div>
 </div>
+
+<main class="wrap">
+
+  <section id="maps">
+    <div class="section-head">
+      <h2>Compare the land cover</h2>
+      <p>Choose a layer and two periods, then drag the divider to see how the study area changed.</p>
+    </div>
+    <div class="map-panel">
+      <div class="controls">
+        <label>Layer <select id="layerSel"></select></label>
+        <label>Left map <select id="leftSel"></select></label>
+        <label>Right map <select id="rightSel"></select></label>
+      </div>
+      <p class="layer-note" id="layerNote"></p>
+
+      <div class="stage" id="stage">
+        <canvas id="canvasR" role="img" aria-label="Right map"></canvas>
+        <canvas id="canvasL" role="img" aria-label="Left map"></canvas>
+        <div class="divider" id="divider"></div>
+        <span class="tag l" id="tagL"></span>
+        <span class="tag r" id="tagR"></span>
+        <div class="stage-msg" id="stageMsg">Loading maps…</div>
+      </div>
+
+      <div class="slider-row">
+        <span>Left</span>
+        <input type="range" id="split" min="0" max="100" value="50" aria-label="Move the divider between the left and right maps">
+        <span>Right</span>
+      </div>
+
+      <div class="map-foot">
+        <div class="legend" id="legend"></div>
+        <p class="map-info" id="mapInfo"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="figures">
+    <div class="section-head">
+      <h2>Headline figures</h2>
+      <p id="figuresNote"></p>
+    </div>
+    <div class="figures" id="figuresRow"></div>
+  </section>
+
+  <section id="change">
+    <div class="section-head">
+      <h2>How the city has changed</h2>
+      <p>Built-up area over time, and the net change in each land-cover class between the first and latest year.</p>
+    </div>
+    <div class="chart-grid">
+      <div class="panel">
+        <h3>Built-up area by year</h3>
+        <p class="caption">Square kilometres</p>
+        <div class="chart-box"><canvas id="builtChart" role="img" aria-label="Line chart of built-up area by year"></canvas></div>
+        <p class="takeaway" id="builtTakeaway"></p>
+      </div>
+      <div class="panel">
+        <h3>Net change by land cover</h3>
+        <p class="caption">Square kilometres, first year to latest year</p>
+        <div class="chart-box"><canvas id="changeChart" role="img" aria-label="Bar chart of net change by land-cover class"></canvas></div>
+        <p class="takeaway" id="changeTakeaway"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="mix">
+    <div class="section-head">
+      <h2>Land cover mix</h2>
+      <p>The share of the study area covered by each class in every year.</p>
+    </div>
+    <div class="panel">
+      <div class="chart-box" style="height:380px"><canvas id="mixChart" role="img" aria-label="Stacked bar chart of land-cover share by year"></canvas></div>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="section-head">
+      <h2>Data</h2>
+      <p>Every figure behind the charts and maps on this page.</p>
+    </div>
+    <div class="data-tools">
+      <p>Values are from the classified land-cover summary.</p>
+      <button class="btn" id="downloadCsv" type="button">Download CSV</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th><th>Land cover</th>
+            <th class="num">Area (ha)</th><th class="num">Area (km²)</th>
+            <th class="num">Share</th><th class="num">Change from prior year (km²)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="method">
+    <div class="section-head">
+      <h2>Method</h2>
+      <p>How the maps and figures were produced, and what each layer shows.</p>
+    </div>
+    <div class="method">
+      <dl>
+        <div><dt>Land-cover classification</dt><dd>Each year's map assigns every pixel to one of nine classes, including trees, crops, shrubland, and built-up land.</dd></div>
+        <div><dt>New built-up land</dt><dd>Pixels that changed to built-up between two years. Persistent built-up land was already built-up at the start and remained so.</dd></div>
+      </dl>
+      <dl>
+        <div><dt>Built-up likelihood</dt><dd>The estimated probability that each pixel is built-up in a given year.</dd></div>
+        <div><dt>Development pressure and potential loss</dt><dd>Screening layers that highlight where growth is most likely to continue, and where built-up land is most likely to be lost.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 TerraVita · Environmental and geospatial analysis</span>
+    <span>Study area: Pune, Maharashtra</span>
+  </div>
+</footer>
 
 <script>
 /* =====================================================================
-   1. YOUR CSV (year, class_id, class_name, area_ha, area_km2, area_percent)
+   SETTINGS
+   TIF files live in images/ next to this page. Names must match exactly.
+   ===================================================================== */
+const BASE = 'images/';
+const MAX_SIDE = 1200;     // larger = sharper maps, slower to load
+
+/* =====================================================================
+   SUMMARY DATA (year, class_id, class_name, area_ha, area_km2, area_percent)
    ===================================================================== */
 const CSV = `year,class_id,class_name,area_ha,area_km2,area_percent
 2021,0,Water,307.23,3.07,1.57
@@ -157,167 +362,225 @@ const CSV = `year,class_id,class_name,area_ha,area_km2,area_percent
 2025,7,Bare Ground,17.86,0.18,0.09
 2025,8,Snow and Ice,0.00,0.00,0.00`;
 
-/* Dynamic World class scheme used by your landcover TIFs */
+/* =====================================================================
+   MAP LAYERS
+   ===================================================================== */
+const YEARS_LIST = [2021, 2022, 2023, 2024, 2025];
+const PERIODS = ['2021_2022', '2022_2023', '2023_2024', '2024_2025'];
+const periodLabel = p => p.replace('_', ' to ');
+
+const LAYERS = {
+  landcover: {
+    label: 'Land cover', kind: 'cat',
+    note: 'Each pixel is coloured by its land-cover class. Compare two years to see where cover changed.',
+    opts: YEARS_LIST.map(y => ({ label: String(y), file: `TV_Landcover_${y}.tif` }))
+  },
+  newbuilt: {
+    label: 'New built-up land', kind: 'bin', color: '#b5452f',
+    note: 'Red pixels became built-up during the period. Grey pixels did not change.',
+    opts: [...PERIODS, '2021_2025'].map(p => ({ label: periodLabel(p), file: `TV_NewBuilt_${p}.tif` }))
+  },
+  persist: {
+    label: 'Persistent built-up', kind: 'bin', color: '#6b5b8a',
+    note: 'Purple pixels were built-up at the start of the period and stayed built-up.',
+    opts: PERIODS.map(p => ({ label: periodLabel(p), file: `TV_PersistentBuilt_${p}.tif` }))
+  },
+  prob: {
+    label: 'Built-up likelihood', kind: 'cont', ramp: 'prob',
+    note: 'Darker pixels are more likely to be built-up. Both maps share one colour scale.',
+    opts: YEARS_LIST.map(y => ({ label: String(y), file: `TV_BuiltProbability_${y}.tif` }))
+  },
+  pressure: {
+    label: 'Development pressure', kind: 'cont', ramp: 'viridis',
+    note: 'Brighter pixels show where development pressure is highest. Both maps share one colour scale.',
+    opts: YEARS_LIST.map(y => ({ label: String(y), file: `TV_DevelopmentPressure_Screen_${y}.tif` }))
+  },
+  loss: {
+    label: 'Potential built-up loss', kind: 'cont', ramp: 'loss',
+    note: 'Darker pixels mark places where built-up land is most likely to be lost. Both maps share one colour scale.',
+    opts: PERIODS.map(p => ({ label: periodLabel(p), file: `TV_PotentialBuiltLoss_${p}.tif` }))
+  }
+};
+
+/* Dynamic World class colours */
 const DW = {
-  0:{n:'Water',c:'#419BDF'}, 1:{n:'Trees',c:'#397D49'}, 2:{n:'Grass',c:'#88B053'},
-  3:{n:'Flooded Vegetation',c:'#7A87C6'}, 4:{n:'Crops',c:'#E49635'},
-  5:{n:'Shrub and Scrub',c:'#DFC35A'}, 6:{n:'Built-up',c:'#C4281B'},
-  7:{n:'Bare Ground',c:'#A59B8F'}, 8:{n:'Snow and Ice',c:'#B39FE1'}
+  0: { n: 'Water', c: '#419BDF' }, 1: { n: 'Trees', c: '#397D49' }, 2: { n: 'Grass', c: '#88B053' },
+  3: { n: 'Flooded vegetation', c: '#7A87C6' }, 4: { n: 'Crops', c: '#E49635' },
+  5: { n: 'Shrub and scrub', c: '#DFC35A' }, 6: { n: 'Built-up', c: '#C4281B' },
+  7: { n: 'Bare ground', c: '#A59B8F' }
 };
 const RAMPS = {
-  prob:    ['#ffffff','#fdd49e','#fc8d59','#d7301f','#7f0000'],
-  viridis: ['#440154','#3b528b','#21918c','#5ec962','#fde725'],
-  loss:    ['#f7fbff','#9ecae1','#4292c6','#08306b']
+  prob: ['#f4f1ea', '#fdd49e', '#fc8d59', '#d7301f', '#7f0000'],
+  viridis: ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'],
+  loss: ['#f2f7fb', '#9ecae1', '#4292c6', '#08306b']
 };
 
-/* ---------- Parse CSV (handles tab or comma, optional pandas index column) ---------- */
+/* =====================================================================
+   DATA HELPERS
+   ===================================================================== */
 function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/).filter(Boolean);
-  const d = lines[0].includes('\t') ? '\t' : ',';
-  const h = lines[0].trim().split(d).map(s => s.trim().toLowerCase());
-  const col = n => h.indexOf(n);
-  const iY = col('year'), iId = col('class_id'), iN = h.findIndex(s => s === 'class_name' || s === 'class');
-  const iHa = col('area_ha'), iKm = col('area_km2'), iP = col('area_percent');
-  if (iY < 0 || iN < 0 || iKm < 0) throw new Error('CSV needs year, class_name, area_km2');
+  const h = lines[0].split(',').map(s => s.trim().toLowerCase());
+  const iY = h.indexOf('year'), iId = h.indexOf('class_id'), iN = h.indexOf('class_name');
+  const iHa = h.indexOf('area_ha'), iKm = h.indexOf('area_km2'), iP = h.indexOf('area_percent');
   return lines.slice(1).map(l => {
-    let p = l.trim().split(d).map(s => s.trim());
-    if (p.length === h.length + 1) p = p.slice(1);          // drop pandas index column
+    const p = l.split(',').map(s => s.trim());
     return { year: +p[iY], id: +p[iId], cls: p[iN], ha: +p[iHa], km2: +p[iKm], pct: +p[iP] };
-  }).filter(r => Number.isFinite(r.year));
+  });
 }
-
 const DATA = parseCSV(CSV);
 const YEARS = [...new Set(DATA.map(r => r.year))].sort();
 const Y0 = YEARS[0], Y1 = YEARS[YEARS.length - 1];
-const CLASSES = [...new Map(DATA.map(r => [r.cls, r.id])).entries()]
-                  .sort((a, b) => a[1] - b[1]).map(e => e[0]);
-const COLOR = {}; DATA.forEach(r => COLOR[r.cls] = DW[r.id] ? DW[r.id].c : '#999');
+const CLASSES = [...new Map(DATA.map(r => [r.cls, r.id])).entries()].sort((a, b) => a[1] - b[1]).map(e => e[0]);
+const COLOR = {};
+DATA.forEach(r => COLOR[r.cls] = (DW[r.id] || { c: '#999' }).c);
 
 const get = (y, c, f = 'km2') => DATA.filter(r => r.year === y && r.cls === c).reduce((s, r) => s + r[f], 0);
-const total = y => DATA.filter(r => r.year === y).reduce((s, r) => s + r.km2, 0);
 const fmt = (n, d = 1) => Number(n).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: d });
-const signed = (n, d = 1) => (n > 0 ? '+' : '') + fmt(n, d);
+const signed = (n, d = 1) => (n > 0 ? '+' : n < 0 ? '−' : '') + fmt(Math.abs(n), d);
+
+Chart.defaults.font.family = "'Public Sans', system-ui, sans-serif";
+Chart.defaults.color = '#5d6874';
+Chart.defaults.borderColor = '#e4e8ea';
 
 /* =====================================================================
-   2. KPIs and charts from CSV
+   NUMBERS USED IN THE NARRATIVE (all calculated from the data)
    ===================================================================== */
-document.getElementById('subtitle').textContent =
-  `Study area: Pune, Maharashtra | ${Y0}–${Y1} | Total classified area ${fmt(total(Y1), 1)} km²`;
+const built0 = get(Y0, 'Built-up'), built1 = get(Y1, 'Built-up');
+const builtShare1 = get(Y1, 'Built-up', 'pct');
+const builtGain = built1 - built0;
+const builtGrowthPct = builtGain / built0 * 100;
+const builtRate = (Math.pow(built1 / built0, 1 / (Y1 - Y0)) - 1) * 100;
+const trees0 = get(Y0, 'Trees'), trees1 = get(Y1, 'Trees');
+const shrub0 = get(Y0, 'Shrub and Scrub'), shrub1 = get(Y1, 'Shrub and Scrub');
+const treeShrubLoss = (trees1 - trees0) + (shrub1 - shrub0);
+const builtSeries = YEARS.map(y => get(y, 'Built-up'));
+const yoyGains = YEARS.slice(1).map((y, i) => ({ year: y, chg: builtSeries[i + 1] - builtSeries[i] }));
+const biggestJump = yoyGains.reduce((a, b) => (b.chg > a.chg ? b : a));
 
-function renderKPIs() {
-  const n = Y1 - Y0;
-  const b0 = get(Y0, 'Built-up'), b1 = get(Y1, 'Built-up');
-  const bGrowth = (b1 - b0) / b0 * 100;
-  const cagr = (Math.pow(b1 / b0, 1 / n) - 1) * 100;
-  const tChg = get(Y1, 'Trees') - get(Y0, 'Trees');
-  const tPct = tChg / get(Y0, 'Trees') * 100;
-  const cChg = get(Y1, 'Crops') - get(Y0, 'Crops');
-  const sChg = get(Y1, 'Shrub and Scrub') - get(Y0, 'Shrub and Scrub');
-  const cards = [
-    { l: `Built-up ${Y1}`, v: `${fmt(b1)} km²`, s: `${get(Y1,'Built-up','pct')}% of study area`, c: '' },
-    { l: 'Built-up growth', v: `${signed(b1 - b0)} km²`, s: `${signed(bGrowth)}% since ${Y0}`, c: 'pos' },
-    { l: 'Built-up growth rate', v: `${signed(cagr, 2)}%/yr`, s: `Compound annual rate`, c: 'pos' },
-    { l: 'Tree cover change', v: `${signed(tChg)} km²`, s: `${signed(tPct)}% since ${Y0}`, c: 'neg' },
-    { l: 'Cropland change', v: `${signed(cChg)} km²`, s: `Agricultural land lost`, c: cChg < 0 ? 'neg' : 'pos' },
-    { l: 'Shrub & scrub change', v: `${signed(sChg)} km²`, s: `Fringe vegetation`, c: sChg < 0 ? 'neg' : 'pos' },
-  ];
-  document.getElementById('kpis').innerHTML = cards.map(k => `
-    <div class="card"><div class="kpi-label">${k.l}</div>
-    <div class="kpi-value ${k.c}">${k.v}</div><div class="kpi-sub">${k.s}</div></div>`).join('');
-}
+/* Hero */
+document.getElementById('heroTitle').textContent =
+  `Built-up land grew by ${fmt(builtGain)} km² between ${Y0} and ${Y1}.`;
+document.getElementById('heroLede').textContent =
+  `Tree cover and shrubland declined by ${fmt(Math.abs(treeShrubLoss))} km² over the same period. ` +
+  `This report maps where that change happened and how land cover shifted across the study area.`;
+document.getElementById('heroMeta').innerHTML = `
+  <div><strong>${fmt(built1)} km²</strong><span>built-up area in ${Y1}</span></div>
+  <div><strong>${fmt(builtShare1)}%</strong><span>of the study area is built-up</span></div>
+  <div><strong>${signed(builtGrowthPct)}%</strong><span>built-up growth since ${Y0}</span></div>`;
 
-function buildCharts() {
-  const active = CLASSES.filter(c => YEARS.some(y => get(y, c) > 0));
-
-  new Chart(document.getElementById('shareChart'), {
-    type: 'bar',
-    data: { labels: YEARS, datasets: active.map(c => ({
-      label: c, backgroundColor: COLOR[c], data: YEARS.map(y => get(y, c, 'pct')) })) },
-    options: { responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { position: 'bottom' } },
-      scales: { x: { stacked: true }, y: { stacked: true, max: 100 } } }
-  });
-
-  const bu = YEARS.map(y => get(y, 'Built-up'));
-  new Chart(document.getElementById('builtChart'), {
-    type: 'line',
-    data: { labels: YEARS, datasets: [{ label: 'Built-up km²', data: bu, borderColor: COLOR['Built-up'],
-      backgroundColor: COLOR['Built-up'] + '25', fill: true, tension: .3, borderWidth: 2.5, pointRadius: 4 }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-  });
-  const yoy = YEARS.slice(1).map((y, i) => (bu[i + 1] - bu[i]).toFixed(2));
-  document.getElementById('builtNote').textContent =
-    `Year-on-year change (km²): ` + YEARS.slice(1).map((y, i) => `${y} ${signed(+yoy[i], 2)}`).join(' · ') +
-    `. Most of the expansion happened in 2022 and 2024.`;
-
-  const changes = active.map(c => get(Y1, c) - get(Y0, c));
-  new Chart(document.getElementById('changeChart'), {
-    type: 'bar',
-    data: { labels: active, datasets: [{ data: changes, borderRadius: 4,
-      backgroundColor: changes.map(v => v >= 0 ? '#2a9d8f' : '#c4281b') }] },
-    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-      scales: { x: { title: { display: true, text: 'km² change' } } } }
-  });
-
-  document.getElementById('donutTitle').textContent = `Composition, ${Y1} (km²)`;
-  new Chart(document.getElementById('donutChart'), {
-    type: 'doughnut',
-    data: { labels: active, datasets: [{ data: active.map(c => get(Y1, c)), backgroundColor: active.map(c => COLOR[c]) }] },
-    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
-  });
-}
-
-function renderTable() {
-  const rows = DATA.map(r => {
-    const i = YEARS.indexOf(r.year);
-    const prev = i > 0 ? get(YEARS[i - 1], r.cls) : null;
-    return `<tr><td>${r.year}</td><td>${r.cls}</td><td class="num">${fmt(r.ha, 2)}</td>
-      <td class="num">${fmt(r.km2, 2)}</td><td class="num">${fmt(r.pct, 2)}</td>
-      <td class="num ${prev === null ? '' : (r.km2 - prev >= 0 ? 'pos' : 'neg')}">
-      ${prev === null ? '—' : signed(r.km2 - prev, 2)}</td></tr>`;
-  });
-  document.getElementById('tableBody').innerHTML = rows.join('');
-}
+/* Headline figures */
+document.getElementById('figuresNote').textContent =
+  `Change between ${Y0} and ${Y1}. Areas in square kilometres, rounded to one decimal place.`;
+const figs = [
+  { l: `Built-up in ${Y1}`, v: `${fmt(built1)} km²`, d: `${fmt(builtShare1)}% of the study area`, c: '' },
+  { l: `Built-up added since ${Y0}`, v: `${signed(builtGain)} km²`, d: `${signed(builtGrowthPct)}% overall`, c: 'up' },
+  { l: 'Average annual growth', v: `${signed(builtRate, 1)}%`, d: 'Compound rate per year', c: 'up' },
+  { l: 'Tree cover change', v: `${signed(trees1 - trees0)} km²`, d: `${signed((trees1 - trees0) / trees0 * 100)}% since ${Y0}`, c: 'up' }
+];
+document.getElementById('figuresRow').innerHTML = figs.map(f => `
+  <div class="figure"><div class="label">${f.l}</div>
+  <div class="value">${f.v}</div><div class="delta ${f.c}">${f.d}</div></div>`).join('');
 
 /* =====================================================================
-   3. TIF map viewer (GeoTIFF read in the browser, nothing uploaded)
+   CHARTS
    ===================================================================== */
-const LAYERS = {
-  landcover: { label: 'Land cover', kind: 'cat',
-    opts: YEARS.map(y => ({ v: String(y), key: `Landcover_${y}` })) },
-  prob: { label: 'Built-up probability', kind: 'cont', ramp: 'prob',
-    opts: YEARS.map(y => ({ v: String(y), key: `BuiltProbability_${y}` })) },
-  pressure: { label: 'Development pressure', kind: 'cont', ramp: 'viridis',
-    opts: YEARS.map(y => ({ v: String(y), key: `DevelopmentPressure_Screen_${y}` })) },
-  newbuilt: { label: 'New built-up (change)', kind: 'bin', color: '#e63946',
-    opts: ['2021_2022','2022_2023','2023_2024','2024_2025','2021_2025'].map(p => ({ v: p, key: `NewBuilt_${p}` })) },
-  persist: { label: 'Persistent built-up', kind: 'bin', color: '#6d597a',
-    opts: ['2021_2022','2022_2023','2023_2024','2024_2025'].map(p => ({ v: p, key: `PersistentBuilt_${p}` })) },
-  loss: { label: 'Potential built-up loss', kind: 'cont', ramp: 'loss',
-    opts: ['2021_2022','2022_2023','2023_2024','2024_2025'].map(p => ({ v: p, key: `PotentialBuiltLoss_${p}` })) },
-};
+const activeClasses = CLASSES.filter(c => YEARS.some(y => get(y, c) > 0));
 
-let tifFiles = [];           // [{name, file}]
+new Chart(document.getElementById('builtChart'), {
+  type: 'line',
+  data: { labels: YEARS, datasets: [{
+    label: 'Built-up km²', data: builtSeries, borderColor: '#b5452f',
+    backgroundColor: 'rgba(181,69,47,.08)', fill: true, tension: .25,
+    borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: '#fff', pointBorderColor: '#b5452f', pointBorderWidth: 2
+  }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { title: { display: true, text: 'km²' } } }
+  }
+});
+document.getElementById('builtTakeaway').textContent =
+  `Built-up area rose from ${fmt(built0)} km² to ${fmt(built1)} km². The largest single-year gain was in ${biggestJump.year}, at ${signed(biggestJump.chg, 1)} km².`;
+
+const changes = activeClasses.map(c => get(Y1, c) - get(Y0, c));
+new Chart(document.getElementById('changeChart'), {
+  type: 'bar',
+  data: { labels: activeClasses, datasets: [{
+    data: changes, borderRadius: 2, barThickness: 18,
+    backgroundColor: changes.map(v => v >= 0 ? '#2e6b4f' : '#b5452f')
+  }] },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { title: { display: true, text: `km² change, ${Y0} to ${Y1}` } } }
+  }
+});
+const biggestLoss = activeClasses.map((c, i) => ({ c, v: changes[i] })).reduce((a, b) => (b.v < a.v ? b : a));
+document.getElementById('changeTakeaway').textContent =
+  `Built-up land gained the most area. ${biggestLoss.c} lost the most, at ${fmt(Math.abs(biggestLoss.v))} km².`;
+
+new Chart(document.getElementById('mixChart'), {
+  type: 'bar',
+  data: { labels: YEARS, datasets: activeClasses.map(c => ({
+    label: c, backgroundColor: COLOR[c], data: YEARS.map(y => get(y, c, 'pct')), barThickness: 56
+  })) },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right' },
+      tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${fmt(ctx.raw, 2)}%` } }
+    },
+    scales: {
+      x: { stacked: true },
+      y: { stacked: true, max: 100, title: { display: true, text: '% of study area' } }
+    }
+  }
+});
+
+/* =====================================================================
+   DATA TABLE AND CSV
+   ===================================================================== */
+document.getElementById('tableBody').innerHTML = DATA.map(r => {
+  const i = YEARS.indexOf(r.year);
+  const prev = i > 0 ? get(YEARS[i - 1], r.cls) : null;
+  const chg = prev === null ? '—' : signed(r.km2 - prev, 2);
+  return `<tr><td>${r.year}</td><td>${r.cls}</td><td class="num">${fmt(r.ha, 2)}</td>
+    <td class="num">${fmt(r.km2, 2)}</td><td class="num">${fmt(r.pct, 2)}%</td>
+    <td class="num">${chg}</td></tr>`;
+}).join('');
+
+document.getElementById('downloadCsv').addEventListener('click', () => {
+  const rows = ['year,class_name,area_ha,area_km2,area_percent',
+    ...DATA.map(r => [r.year, r.cls, r.ha, r.km2, r.pct].join(','))];
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([rows.join('\n')], { type: 'text/csv' }));
+  a.download = `pune_land_cover_${Y0}_${Y1}.csv`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+/* =====================================================================
+   MAP COMPARISON
+   ===================================================================== */
 const rasterCache = new Map();
 
-function findFile(key) {
-  const k = key.toLowerCase();
-  const hit = tifFiles.find(f => f.name.includes(k));
-  return hit ? hit.file : null;
-}
-
-function getRaster(file) {
-  if (!rasterCache.has(file)) rasterCache.set(file, loadRaster(file));
+function loadRaster(file) {
+  if (!rasterCache.has(file)) {
+    const p = (async () => {
+      const tiff = await GeoTIFF.fromUrl(BASE + file);
+      const img = await tiff.getImage();
+      const W0 = img.getWidth(), H0 = img.getHeight();
+      const s = Math.min(1, MAX_SIDE / Math.max(W0, H0));
+      const w = Math.max(1, Math.round(W0 * s)), h = Math.max(1, Math.round(H0 * s));
+      const [data] = await img.readRasters({ width: w, height: h, resampleMethod: 'nearest' });
+      const [rx, ry] = img.getResolution();
+      return { w, h, data, nd: img.getGDALNoData(), pixArea: Math.abs(rx * ry) * (W0 / w) * (H0 / h) };
+    })();
+    rasterCache.set(file, p);
+    p.catch(() => rasterCache.delete(file));
+  }
   return rasterCache.get(file);
-}
-
-async function loadRaster(file) {
-  const tiff = await GeoTIFF.fromBlob(file);
-  const img = await tiff.getImage();
-  const [data] = await img.readRasters();          // first band, full resolution
-  const [rx, ry] = img.getResolution();
-  return { w: img.getWidth(), h: img.getHeight(), data,
-           nd: img.getGDALNoData(), pixArea: Math.abs(rx * ry) };   // m² per pixel if projected in metres
 }
 
 const hexRGB = h => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16));
@@ -327,36 +590,37 @@ function rampColor(stops, t) {
   const a = hexRGB(stops[i]), b = hexRGB(stops[Math.min(i + 1, stops.length - 1)]);
   return a.map((v, j) => Math.round(v + (b[j] - v) * k));
 }
-function percentiles(data, nd) {
-  const step = Math.max(1, Math.floor(data.length / 200000));
+function sharedRange(rasters) {
   const vals = [];
-  for (let i = 0; i < data.length; i += step) {
-    const v = data[i];
-    if (Number.isFinite(v) && (nd === null || v !== nd)) vals.push(v);
-  }
+  rasters.forEach(r => {
+    const step = Math.max(1, Math.floor(r.data.length / 100000));
+    for (let i = 0; i < r.data.length; i += step) {
+      const v = r.data[i];
+      if (Number.isFinite(v) && (r.nd === null || v !== r.nd)) vals.push(v);
+    }
+  });
   vals.sort((a, b) => a - b);
   const n = vals.length;
   return n ? [vals[Math.floor(0.02 * n)], vals[Math.max(0, Math.floor(0.98 * n) - 1)]] : [0, 1];
 }
 
-function paint(p, L, r, opt) {
-  const { w, h, data, nd, pixArea } = r;
-  const off = document.createElement('canvas'); off.width = w; off.height = h;
+function paint(r, L, lo, hi, W, H, canvas) {
+  const off = document.createElement('canvas');
+  off.width = r.w; off.height = r.h;
   const ctx = off.getContext('2d');
-  const img = ctx.createImageData(w, h), px = img.data;
-  let lo = 0, hi = 1, ramp = null;
-  if (L.kind === 'cont') { [lo, hi] = percentiles(data, nd); ramp = RAMPS[L.ramp]; }
+  const img = ctx.createImageData(r.w, r.h), px = img.data;
+  const ramp = L.kind === 'cont' ? RAMPS[L.ramp] : null;
+  let valid = 0, flagged = 0;
 
-  const counts = {}; let valid = 0, flagged = 0;
-  for (let i = 0; i < data.length; i++) {
-    const v = data[i], j = i * 4;
-    if (!Number.isFinite(v) || (nd !== null && v === nd)) { px[j + 3] = 0; continue; }
+  for (let i = 0; i < r.data.length; i++) {
+    const v = r.data[i], j = i * 4;
+    if (!Number.isFinite(v) || (r.nd !== null && v === r.nd)) { px[j + 3] = 0; continue; }
     valid++;
     let col = null;
     if (L.kind === 'cat') {
-      if (DW[v]) { col = hexRGB(DW[v].c); counts[v] = (counts[v] || 0) + 1; }
+      if (DW[v]) col = hexRGB(DW[v].c);
     } else if (L.kind === 'bin') {
-      if (v > 0) { col = hexRGB(L.color); flagged++; } else col = [235, 235, 235];
+      if (v > 0) { col = hexRGB(L.color); flagged++; } else col = [232, 236, 238];
     } else {
       col = rampColor(ramp, (v - lo) / ((hi - lo) || 1));
     }
@@ -364,111 +628,96 @@ function paint(p, L, r, opt) {
     px[j] = col[0]; px[j + 1] = col[1]; px[j + 2] = col[2]; px[j + 3] = 255;
   }
   ctx.putImageData(img, 0, 0);
-  return { off, counts, valid, flagged, lo, hi, pixArea, w, h };
+  canvas.width = W; canvas.height = H;
+  canvas.getContext('2d').drawImage(off, 0, 0, W, H);
+  return { valid, flagged, pixArea: r.pixArea };
 }
 
-function km2(pixels, pixArea) { return (pixels * pixArea) / 1e6; }
+const layerSel = document.getElementById('layerSel');
+const leftSel = document.getElementById('leftSel');
+const rightSel = document.getElementById('rightSel');
+const stageMsg = document.getElementById('stageMsg');
 
-function buildPanel(idx, layerKey, year) {
-  const el = document.getElementById(`panel${idx}`);
-  el.innerHTML = `
-    <div class="panel-controls">
-      <select id="layer${idx}">${Object.entries(LAYERS).map(([k, L]) =>
-        `<option value="${k}" ${k === layerKey ? 'selected' : ''}>${L.label}</option>`).join('')}</select>
-      <select id="period${idx}"></select>
-    </div>
-    <canvas class="map" id="map${idx}" width="800" height="600"></canvas>
-    <div class="legend" id="legend${idx}"></div>
-    <div class="info" id="info${idx}"></div>`;
-  document.getElementById(`layer${idx}`).addEventListener('change', () => { fillPeriods(idx, true); draw(idx); });
-  document.getElementById(`period${idx}`).addEventListener('change', () => draw(idx));
-  fillPeriods(idx, false, year);
-  draw(idx);
+layerSel.innerHTML = Object.entries(LAYERS).map(([k, L]) => `<option value="${k}">${L.label}</option>`).join('');
+
+function fillOptions() {
+  const L = LAYERS[layerSel.value];
+  const html = L.opts.map((o, i) => `<option value="${i}">${o.label}</option>`).join('');
+  leftSel.innerHTML = html;
+  rightSel.innerHTML = html;
+  leftSel.value = '0';
+  rightSel.value = String(L.opts.length - 1);
+  document.getElementById('layerNote').textContent = L.note;
 }
 
-function fillPeriods(idx, reset, preferred) {
-  const L = LAYERS[document.getElementById(`layer${idx}`).value];
-  const sel = document.getElementById(`period${idx}`);
-  const prev = reset ? null : sel.value;
-  sel.innerHTML = L.opts.map(o =>
-    `<option value="${o.v}">${o.v}${findFile(o.key) ? '' : ' (not loaded)'}</option>`).join('');
-  const want = preferred != null ? String(preferred) : prev;
-  if (want && L.opts.some(o => o.v === want)) sel.value = want;
-}
+async function renderCompare() {
+  const L = LAYERS[layerSel.value];
+  const optL = L.opts[+leftSel.value], optR = L.opts[+rightSel.value];
+  document.getElementById('tagL').textContent = optL.label;
+  document.getElementById('tagR').textContent = optR.label;
+  stageMsg.classList.remove('hidden');
+  stageMsg.textContent = 'Loading maps…';
 
-async function draw(idx) {
-  const L = LAYERS[document.getElementById(`layer${idx}`).value];
-  const opt = L.opts.find(o => o.v === document.getElementById(`period${idx}`).value);
-  const info = document.getElementById(`info${idx}`);
-  const canvas = document.getElementById(`map${idx}`);
-  const file = findFile(opt.key);
-  if (!file) {
-    info.textContent = `Not loaded: ${opt.key}. Select it in the file picker above.`;
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-    document.getElementById(`legend${idx}`).innerHTML = '';
-    return;
-  }
-  info.textContent = 'Rendering…';
   try {
-    const r = await getRaster(file);
-    const out = paint({}, L, r, opt);
-    const scale = Math.min(1, 900 / out.w);
-    canvas.width = Math.round(out.w * scale); canvas.height = Math.round(out.h * scale);
-    canvas.getContext('2d').drawImage(out.off, 0, 0, canvas.width, canvas.height);
-    document.getElementById(`legend${idx}`).innerHTML = legendHTML(L, out);
-    info.textContent = infoText(L, out, opt);
+    const [rl, rr] = await Promise.all([loadRaster(optL.file), loadRaster(optR.file)]);
+    const [lo, hi] = L.kind === 'cont' ? sharedRange([rl, rr]) : [0, 1];
+    const W = 1000, H = Math.round(W * rl.h / rl.w);
+    document.getElementById('stage').style.aspectRatio = `${W} / ${H}`;
+    paint(rl, L, lo, hi, W, H, document.getElementById('canvasL'));
+    const pr = paint(rr, L, lo, hi, W, H, document.getElementById('canvasR'));
+    stageMsg.classList.add('hidden');
+    renderLegend(L, lo, hi);
+    renderInfo(L, optR, pr);
   } catch (e) {
-    info.textContent = 'Could not read this TIF: ' + e.message;
+    stageMsg.classList.remove('hidden');
+    stageMsg.textContent = `Could not load ${optL.file} or ${optR.file}. Check that the files are in the images folder and that this page is opened from your website, not from a file on your computer.`;
   }
+  applySplit();
 }
 
-function legendHTML(L, out) {
+function renderLegend(L, lo, hi) {
+  const el = document.getElementById('legend');
   if (L.kind === 'cat') {
-    return Object.keys(DW).filter(k => out.counts[k] || k < 8).map(k =>
-      `<span><span class="sw" style="background:${DW[k].c}"></span>${DW[k].n}</span>`).join('');
+    el.innerHTML = Object.keys(DW).map(k =>
+      `<span><i class="sw" style="background:${DW[k].c}"></i>${DW[k].n}</span>`).join('');
+  } else if (L.kind === 'bin') {
+    el.innerHTML = `<span><i class="sw" style="background:${L.color}"></i>Changed or persistent</span>
+                    <span><i class="sw" style="background:#e8ecee"></i>Not in this layer</span>`;
+  } else {
+    el.innerHTML = `<span>Lower</span><i class="ramp" style="background:linear-gradient(90deg,${RAMPS[L.ramp].join(',')})"></i><span>Higher</span>`;
   }
-  if (L.kind === 'bin') {
-    return `<span><span class="sw" style="background:${L.color}"></span>Changed (value &gt; 0)</span>
-            <span><span class="sw" style="background:#ebebeb"></span>Unchanged</span>`;
-  }
-  const stops = RAMPS[L.ramp].map(c => c).join(',');
-  return `<span>${fmt(out.lo, 2)}</span><span class="ramp" style="background:linear-gradient(90deg,${stops})"></span><span>${fmt(out.hi, 2)}</span>`;
 }
 
-function infoText(L, out, opt) {
+function renderInfo(L, optR, pr) {
+  const info = document.getElementById('mapInfo');
   if (L.kind === 'cat') {
-    const bu = out.counts[6] || 0;
-    const rasterPct = (bu / out.valid * 100);
-    const csvPct = opt.v ? get(+opt.v, 'Built-up', 'pct') : null;
-    const csvKm = opt.v ? get(+opt.v, 'Built-up') : null;
-    return `Built-up from raster: ${fmt(km2(bu, out.pixArea), 2)} km² (${fmt(rasterPct, 2)}% of valid pixels). ` +
-           `CSV for ${opt.v}: ${fmt(csvKm, 2)} km² (${fmt(csvPct, 2)}%). Small gaps are expected from pixel resampling.`;
+    const yr = +optR.label;
+    info.textContent = YEARS.includes(yr)
+      ? `In ${yr}, built-up land covers ${fmt(get(yr, 'Built-up', 'pct'), 1)}% of the study area, or ${fmt(get(yr, 'Built-up'))} km².`
+      : '';
+  } else if (L.kind === 'bin') {
+    const km = pr.flagged * pr.pixArea / 1e6;
+    info.textContent = `About ${fmt(km, 1)} km² (${fmt(pr.flagged / pr.valid * 100, 1)}% of the area) is flagged on the right-hand map.`;
+  } else {
+    info.textContent = 'Use the divider to see where the two periods differ. Both maps use the same colour scale.';
   }
-  if (L.kind === 'bin') {
-    return `Flagged area: ${fmt(km2(out.flagged, out.pixArea), 2)} km² (${fmt(out.flagged / out.valid * 100, 2)}% of valid pixels).`;
-  }
-  return `Stretched between the 2nd and 98th percentile: ${fmt(out.lo, 3)} to ${fmt(out.hi, 3)}.`;
 }
 
-/* ---------- TIF file picker ---------- */
-const EXPECTED = Object.values(LAYERS).reduce((s, L) => s + L.opts.length, 0);
-document.getElementById('tifInput').addEventListener('change', e => {
-  tifFiles = [...e.target.files].map(f => ({ name: f.name.toLowerCase(), file: f }));
-  rasterCache.clear();
-  const matched = Object.values(LAYERS).reduce((s, L) => s + L.opts.filter(o => findFile(o.key)).length, 0);
-  document.getElementById('notice').textContent =
-    `Loaded ${tifFiles.length} TIF files. Matched ${matched} of ${EXPECTED} expected layers.`;
-  [0, 1].forEach(i => { fillPeriods(i, false); draw(i); });
-});
+function applySplit() {
+  const v = +document.getElementById('split').value;
+  document.getElementById('canvasL').style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+  document.getElementById('divider').style.left = `${v}%`;
+  document.getElementById('tagL').style.opacity = v > 8 ? 1 : 0;
+  document.getElementById('tagR').style.opacity = v < 92 ? 1 : 0;
+}
 
-/* =====================================================================
-   4. Init
-   ===================================================================== */
-renderKPIs();
-buildCharts();
-renderTable();
-buildPanel(0, 'landcover', Y0);
-buildPanel(1, 'landcover', Y1);
+layerSel.addEventListener('change', () => { fillOptions(); renderCompare(); });
+leftSel.addEventListener('change', renderCompare);
+rightSel.addEventListener('change', renderCompare);
+document.getElementById('split').addEventListener('input', applySplit);
+
+fillOptions();
+renderCompare();
 </script>
 </body>
 </html>
