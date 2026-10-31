@@ -45,6 +45,19 @@
 .two-col ul{padding-left:18px;margin:10px 0 0}
 .two-col li{margin-bottom:6px}
 @media (max-width:560px){.stage{grid-template-columns:40px 1fr}}
+
+/* Map pop-up viewer */
+.lb{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.88);padding:56px 16px 24px}
+.lb.open{display:flex}
+.lb figure{margin:0;max-width:1200px;width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:10px}
+.lb img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;background:#fff;border-radius:6px}
+.lb figcaption{color:#fff;font-size:.95rem;text-align:center}
+.lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:1.5rem;cursor:pointer;line-height:1}
+.lb button:hover,.lb button:focus-visible{background:rgba(255,255,255,.3);outline:2px solid #fff}
+.lb .lb-close{top:12px;right:12px}
+.lb .lb-prev{left:12px;top:50%}
+.lb .lb-next{right:12px;top:50%}
+body.lb-lock{overflow:hidden}
 </style>
 </head>
 <body>
@@ -184,16 +197,16 @@
       <p>Each map includes a title, legend, north arrow, scale bar, CRS, data source and imagery date, exported at 300 DPI. Click any map to open it at full size.</p>
     </div>
     <div class="map-grid">
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/01_Site_Location.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/01_Site_Location.png" alt="Site location and context map" loading="lazy"></a><figcaption>1. Site Location & Context<small>AOI, buffer, surroundings</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/02_LULC_2025.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/02_LULC_2025.png" alt="Land use and land cover map, 2025" loading="lazy"></a><figcaption>2. Land Use / Land Cover<small>Classes, area, accuracy</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/03_LULC_Change.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/03_LULC_Change.png" alt="Historical land use change map, 2015 to 2025" loading="lazy"></a><figcaption>3. Historical LULC Change<small>2015 → 2020 → 2025</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/04_NDVI.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/04_NDVI.png" alt="NDVI vegetation map" loading="lazy"></a><figcaption>4. NDVI<small>Vegetation condition and change</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/05_Water_Proximity.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/05_Water_Proximity.png" alt="NDWI and water proximity map" loading="lazy"></a><figcaption>5. NDWI / MNDWI & Water Proximity<small>Detected water and wet areas</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/06_BuiltUp_Expansion.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/06_BuiltUp_Expansion.png" alt="Built-up expansion map" loading="lazy"></a><figcaption>6. Built-Up Expansion<small>Growth and direction</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/07_Flood_Screening.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/07_Flood_Screening.png" alt="Flood and drainage screening map" loading="lazy"></a><figcaption>7. Flood / Drainage Risk Screening<small>Preliminary screening only</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/08_Road_Accessibility.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/08_Road_Accessibility.png" alt="Road accessibility map" loading="lazy"></a><figcaption>8. Road Accessibility<small>Road classes, distances</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/09_Environmental_Constraints.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/09_Environmental_Constraints.png" alt="Environmental constraints map" loading="lazy"></a><figcaption>9. Environmental Constraints<small>Combined constraint layers</small></figcaption></figure>
-      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/10_Site_Suitability.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/10_Site_Suitability.png" alt="Final site suitability and risk map" loading="lazy"></a><figcaption>10. Final Site Suitability / Risk<small>Weighted overlay result</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/01_Site_Location.png"><img src="../images/ahmedabad/01_Site_Location.png" alt="Site location and context map" loading="lazy"></a><figcaption>1. Site Location & Context<small>AOI, buffer, surroundings</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/02_LULC_2025.png"><img src="../images/ahmedabad/02_LULC_2025.png" alt="Land use and land cover map, 2025" loading="lazy"></a><figcaption>2. Land Use / Land Cover<small>Classes, area, accuracy</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/03_LULC_Change.png"><img src="../images/ahmedabad/03_LULC_Change.png" alt="Historical land use change map, 2015 to 2025" loading="lazy"></a><figcaption>3. Historical LULC Change<small>2015 → 2020 → 2025</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/04_NDVI.png"><img src="../images/ahmedabad/04_NDVI.png" alt="NDVI vegetation map" loading="lazy"></a><figcaption>4. NDVI<small>Vegetation condition and change</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/05_Water_Proximity.png"><img src="../images/ahmedabad/05_Water_Proximity.png" alt="NDWI and water proximity map" loading="lazy"></a><figcaption>5. NDWI / MNDWI & Water Proximity<small>Detected water and wet areas</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/06_BuiltUp_Expansion.png"><img src="../images/ahmedabad/06_BuiltUp_Expansion.png" alt="Built-up expansion map" loading="lazy"></a><figcaption>6. Built-Up Expansion<small>Growth and direction</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/07_Flood_Screening.png"><img src="../images/ahmedabad/07_Flood_Screening.png" alt="Flood and drainage screening map" loading="lazy"></a><figcaption>7. Flood / Drainage Risk Screening<small>Preliminary screening only</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/08_Road_Accessibility.png"><img src="../images/ahmedabad/08_Road_Accessibility.png" alt="Road accessibility map" loading="lazy"></a><figcaption>8. Road Accessibility<small>Road classes, distances</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/09_Environmental_Constraints.png"><img src="../images/ahmedabad/09_Environmental_Constraints.png" alt="Environmental constraints map" loading="lazy"></a><figcaption>9. Environmental Constraints<small>Combined constraint layers</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/10_Site_Suitability.png"><img src="../images/ahmedabad/10_Site_Suitability.png" alt="Final site suitability and risk map" loading="lazy"></a><figcaption>10. Final Site Suitability / Risk<small>Weighted overlay result</small></figcaption></figure>
     </div>
   </div>
 </section>
@@ -278,5 +291,39 @@
 
 <a class="whatsapp" href="https://wa.me/919545881451" target="_blank" rel="noopener">WA</a>
 <script src="../js/script.js"></script>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Map viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous map">&#8249;</button>
+  <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-next" id="lbNext" aria-label="Next map">&#8250;</button>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.map-card a.map-slot'));
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  var i=0,last=null;
+  function show(n){
+    i=(n+links.length)%links.length;
+    var a=links[i];
+    img.src=a.getAttribute('href');
+    img.alt=a.querySelector('img').alt;
+    cap.textContent=a.parentNode.querySelector('figcaption').firstChild.textContent;
+  }
+  function open(n){last=document.activeElement;show(n);lb.classList.add('open');document.body.classList.add('lb-lock');document.getElementById('lbClose').focus();}
+  function close(){lb.classList.remove('open');document.body.classList.remove('lb-lock');img.src='';if(last)last.focus();}
+  links.forEach(function(a,n){a.addEventListener('click',function(e){e.preventDefault();open(n);});});
+  document.getElementById('lbClose').onclick=close;
+  document.getElementById('lbPrev').onclick=function(){show(i-1);};
+  document.getElementById('lbNext').onclick=function(){show(i+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowLeft')show(i-1);
+    if(e.key==='ArrowRight')show(i+1);
+  });
+})();
+</script>
 </body>
 </html>
