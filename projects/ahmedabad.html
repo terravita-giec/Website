@@ -32,7 +32,8 @@
 .map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .map-card{border:1px solid rgba(128,128,128,.35);border-radius:12px;overflow:hidden}
 .map-slot{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:16px;font-size:.9rem;opacity:.7;background:repeating-linear-gradient(45deg,rgba(128,128,128,.08) 0 10px,transparent 10px 20px)}
-.map-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.map-slot img{width:100%;height:100%;object-fit:contain;display:block}
+.map-slot{text-decoration:none;color:inherit}
 .map-card figcaption{padding:12px 14px;font-weight:600}
 .map-card figcaption small{display:block;font-weight:400;opacity:.75;margin-top:2px}
 .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
@@ -47,7 +48,7 @@
 </style>
 </head>
 <body>
- 
+
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="brand" href="../index.html"><span class="brand-mark">TV</span><span class="brand-copy"><strong>TerraVita</strong><small>Environmental & Geospatial Consultancy</small></span></a>
@@ -61,9 +62,9 @@
     </nav>
   </div>
 </header>
- 
+
 <main>
- 
+
 <!-- HERO -->
 <section class="case-hero">
   <div class="container">
@@ -78,7 +79,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- QUESTION + WORKFLOW -->
 <section class="section">
   <div class="container case-grid">
@@ -98,7 +99,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- STUDY SITE -->
 <section class="section">
   <div class="container">
@@ -124,7 +125,7 @@
     <div class="notice">Analysis starts only after the AOI is finalised and approved.</div>
   </div>
 </section>
- 
+
 <!-- DATA INVENTORY -->
 <section class="section">
   <div class="container">
@@ -149,7 +150,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- METHODOLOGY -->
 <section class="section">
   <div class="container">
@@ -173,30 +174,30 @@
     <div class="notice">The flood analysis is a preliminary screening and not a certified flood-risk assessment. Weights and scoring will be published alongside the final map.</div>
   </div>
 </section>
- 
+
 <!-- MAPS -->
 <section class="section case-output">
   <div class="container">
     <div class="block-head">
       <p class="section-kicker">FINAL MAPS</p>
       <h2>Ten maps, one consistent design</h2>
-      <p>Each map includes a title, legend, north arrow, scale bar, CRS, data source and imagery date, exported at 300 DPI. To add a finished map, replace the placeholder text inside its box with an image tag, for example <code>&lt;img src="../images/map-01.jpg" alt="Site location and context map"&gt;</code>.</p>
+      <p>Each map includes a title, legend, north arrow, scale bar, CRS, data source and imagery date, exported at 300 DPI. Click any map to open it at full size.</p>
     </div>
     <div class="map-grid">
-      <figure class="map-card"><div class="map-slot">Map 01 coming soon</div><figcaption>1. Site Location & Context<small>AOI, buffer, surroundings</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 02 coming soon</div><figcaption>2. Land Use / Land Cover<small>Classes, area, accuracy</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 03 coming soon</div><figcaption>3. Historical LULC Change<small>2015 → 2020 → 2025</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 04 coming soon</div><figcaption>4. NDVI<small>Vegetation condition and change</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 05 coming soon</div><figcaption>5. NDWI / MNDWI & Water Proximity<small>Detected water and wet areas</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 06 coming soon</div><figcaption>6. Built-Up Expansion<small>Growth and direction</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 07 coming soon</div><figcaption>7. Flood / Drainage Risk Screening<small>Preliminary screening only</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 08 coming soon</div><figcaption>8. Road Accessibility<small>Road classes, distances</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 09 coming soon</div><figcaption>9. Environmental Constraints<small>Combined constraint layers</small></figcaption></figure>
-      <figure class="map-card"><div class="map-slot">Map 10 coming soon</div><figcaption>10. Final Site Suitability / Risk<small>Weighted overlay result</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/01_Site_Location.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/01_Site_Location.png" alt="Site location and context map" loading="lazy"></a><figcaption>1. Site Location & Context<small>AOI, buffer, surroundings</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/02_LULC_2025.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/02_LULC_2025.png" alt="Land use and land cover map, 2025" loading="lazy"></a><figcaption>2. Land Use / Land Cover<small>Classes, area, accuracy</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/03_LULC_Change.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/03_LULC_Change.png" alt="Historical land use change map, 2015 to 2025" loading="lazy"></a><figcaption>3. Historical LULC Change<small>2015 → 2020 → 2025</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/04_NDVI.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/04_NDVI.png" alt="NDVI vegetation map" loading="lazy"></a><figcaption>4. NDVI<small>Vegetation condition and change</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/05_Water_Proximity.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/05_Water_Proximity.png" alt="NDWI and water proximity map" loading="lazy"></a><figcaption>5. NDWI / MNDWI & Water Proximity<small>Detected water and wet areas</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/06_BuiltUp_Expansion.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/06_BuiltUp_Expansion.png" alt="Built-up expansion map" loading="lazy"></a><figcaption>6. Built-Up Expansion<small>Growth and direction</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/07_Flood_Screening.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/07_Flood_Screening.png" alt="Flood and drainage screening map" loading="lazy"></a><figcaption>7. Flood / Drainage Risk Screening<small>Preliminary screening only</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/08_Road_Accessibility.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/08_Road_Accessibility.png" alt="Road accessibility map" loading="lazy"></a><figcaption>8. Road Accessibility<small>Road classes, distances</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/09_Environmental_Constraints.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/09_Environmental_Constraints.png" alt="Environmental constraints map" loading="lazy"></a><figcaption>9. Environmental Constraints<small>Combined constraint layers</small></figcaption></figure>
+      <figure class="map-card"><a class="map-slot" href="../images/ahmedabad/10_Site_Suitability.png" target="_blank" rel="noopener"><img src="../images/ahmedabad/10_Site_Suitability.png" alt="Final site suitability and risk map" loading="lazy"></a><figcaption>10. Final Site Suitability / Risk<small>Weighted overlay result</small></figcaption></figure>
     </div>
   </div>
 </section>
- 
+
 <!-- RESULTS -->
 <section class="section">
   <div class="container">
@@ -215,7 +216,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- DELIVERABLES -->
 <section class="section">
   <div class="container">
@@ -243,7 +244,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- QUALITY -->
 <section class="section case-output">
   <div class="container">
@@ -257,7 +258,7 @@
     </div>
   </div>
 </section>
- 
+
 <section class="cta-band">
   <div class="container">
     <p class="section-kicker">BUILD YOUR WORKFLOW</p>
@@ -265,18 +266,17 @@
     <a class="btn btn-primary" href="../index.html#consultation">Request a Consultation ↗</a>
   </div>
 </section>
- 
+
 </main>
- 
+
 <footer>
   <div class="container footer-bottom">
     <span>© 2026 TerraVita</span>
     <a href="../projects.html">All projects</a>
   </div>
 </footer>
- 
+
 <a class="whatsapp" href="https://wa.me/919545881451" target="_blank" rel="noopener">WA</a>
 <script src="../js/script.js"></script>
 </body>
 </html>
- 
