@@ -1,1 +1,282 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ahmedabad Environmental Analysis | TerraVita</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/style.css"></head><body><header class="site-header"><div class="container nav-wrap"><a class="brand" href="../index.html"><span class="brand-mark">TV</span><span class="brand-copy"><strong>TerraVita</strong><small>Environmental & Geospatial Consultancy</small></span></a><button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button><nav class="main-nav" id="mainNav"><a href="../index.html#about">About</a><a href="../index.html#services">Services</a><a href="../projects.html">Projects</a><a href="../index.html#technology">Technology</a><a href="../index.html#consultation">Contact</a></nav></div></header><main><section class="case-hero"><div class="container"><p class="section-kicker">REMOTE SENSING</p><h1>Ahmedabad Environmental Analysis</h1><p>A multi-index satellite workflow for understanding vegetation and surface-water patterns across an urban and peri-urban landscape.</p></div></section><section class="section"><div class="container case-grid"><div><p class="section-kicker">THE QUESTION</p><h2>How are vegetation and water-related surface patterns distributed and changing?</h2><p class="case-note">This portfolio page is a demonstration of TerraVita’s analytical workflow. Final methods and datasets are selected according to the client’s study area and objectives.</p></div><div class="case-panel"><p class="section-kicker">WORKFLOW</p><div class="workflow-step"><b>01</b><span>Define area of interest</span></div><div class="workflow-step"><b>02</b><span>Prepare cloud-filtered satellite imagery</span></div><div class="workflow-step"><b>03</b><span>Calculate NDVI, NDWI and MNDWI</span></div><div class="workflow-step"><b>04</b><span>Compare spatial patterns and time periods</span></div><div class="workflow-step"><b>05</b><span>Create professional decision-ready maps</span></div></div></div></section><section class="section case-output"><div class="container"><p class="section-kicker">KEY OUTPUTS</p><div class="output-grid"><div><span>↗</span><strong>Vegetation index maps</strong></div><div><span>↗</span><strong>Water index maps</strong></div><div><span>↗</span><strong>Comparative spatial analysis</strong></div><div><span>↗</span><strong>GIS-ready outputs</strong></div><div><span>↗</span><strong>Decision-support report</strong></div></div></div></section><section class="cta-band"><div class="container"><p class="section-kicker">BUILD YOUR WORKFLOW</p><h2>Turn your spatial question into a project brief.</h2><a class="btn btn-primary" href="../index.html#consultation">Request a Consultation ↗</a></div></section></main><footer><div class="container footer-bottom"><span>© 2026 TerraVita</span><a href="../projects.html">All projects</a></div></footer><a class="whatsapp" href="https://wa.me/919545881451" target="_blank">WA</a><script src="../js/script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Satellite-Based Land & Environmental Due Diligence, Ahmedabad | TerraVita</title>
+<meta name="description" content="Preliminary land and environmental due-diligence case study for a hypothetical 25–50 ha site in the Shela–Ghuma–Sanathal–Telav corridor, Ahmedabad, using Sentinel-2, Landsat, DEM and OpenStreetMap data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* Page-specific additions. Your main style.css is unchanged. */
+.case-sub{max-width:760px;margin-top:14px}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.meta-row span{border:1px solid rgba(128,128,128,.35);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.block-head{max-width:760px;margin-bottom:28px}
+.block-head p{margin-top:10px;opacity:.85}
+.table-wrap{overflow-x:auto;max-width:100%}
+.data-table{width:100%;border-collapse:collapse;min-width:640px;font-size:.95rem}
+.data-table th,.data-table td{text-align:left;padding:12px 14px;border-bottom:1px solid rgba(128,128,128,.28);vertical-align:top}
+.data-table th{font-family:"Space Grotesk",sans-serif;font-weight:600}
+.tag{display:inline-block;border-radius:999px;padding:3px 11px;font-size:.8rem;font-weight:600;border:1px solid currentColor;white-space:nowrap}
+.tag.pending{opacity:.7}
+.tag.done{color:#1d7a4d}
+.stage-list{display:grid;gap:14px;margin-top:8px}
+.stage{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(128,128,128,.28)}
+.stage b{font-family:"Space Grotesk",sans-serif;font-size:1.3rem}
+.stage h3{margin:0 0 6px}
+.stage p{margin:0;opacity:.88}
+.stage .out{margin-top:8px;font-size:.9rem;opacity:.75}
+.map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.map-card{border:1px solid rgba(128,128,128,.35);border-radius:12px;overflow:hidden}
+.map-slot{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:16px;font-size:.9rem;opacity:.7;background:repeating-linear-gradient(45deg,rgba(128,128,128,.08) 0 10px,transparent 10px 20px)}
+.map-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.map-card figcaption{padding:12px 14px;font-weight:600}
+.map-card figcaption small{display:block;font-weight:400;opacity:.75;margin-top:2px}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.result-grid div{border:1px solid rgba(128,128,128,.35);border-radius:12px;padding:18px}
+.result-grid strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.4rem}
+.result-grid span{display:block;margin-top:4px;font-size:.9rem;opacity:.8}
+.notice{border-left:4px solid currentColor;padding:14px 18px;margin-top:24px;max-width:820px;opacity:.9}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.two-col ul{padding-left:18px;margin:10px 0 0}
+.two-col li{margin-bottom:6px}
+@media (max-width:560px){.stage{grid-template-columns:40px 1fr}}
+</style>
+</head>
+<body>
+ 
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">TV</span><span class="brand-copy"><strong>TerraVita</strong><small>Environmental & Geospatial Consultancy</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../index.html#technology">Technology</a>
+      <a href="../index.html#consultation">Contact</a>
+    </nav>
+  </div>
+</header>
+ 
+<main>
+ 
+<!-- HERO -->
+<section class="case-hero">
+  <div class="container">
+    <p class="section-kicker">REMOTE SENSING · GIS · DUE DILIGENCE</p>
+    <h1>Satellite-Based Land & Environmental Due Diligence</h1>
+    <p class="case-sub">A preliminary screening of a hypothetical 25–50 hectare development site in Ahmedabad’s Shela–Ghuma–Sanathal–Telav peri-urban corridor, combining land-cover change, vegetation, water, terrain, access and constraint analysis into one suitability view.</p>
+    <div class="meta-row">
+      <span>Ahmedabad, Gujarat</span>
+      <span>Analysis years: 2015 · 2020 · 2025</span>
+      <span>Sentinel-2 + Landsat</span>
+      <span>10 final maps</span>
+    </div>
+  </div>
+</section>
+ 
+<!-- QUESTION + WORKFLOW -->
+<section class="section">
+  <div class="container case-grid">
+    <div>
+      <p class="section-kicker">THE QUESTION</p>
+      <h2>Is this land relatively suitable for development, and what environmental constraints should be understood first?</h2>
+      <p class="case-note">This is a demonstration of TerraVita’s analytical workflow on a hypothetical site. It is a screening study, not a certified flood-risk, legal or environmental clearance assessment. Final methods and datasets are selected according to each client’s study area and objectives.</p>
+    </div>
+    <div class="case-panel">
+      <p class="section-kicker">WORKFLOW</p>
+      <div class="workflow-step"><b>01</b><span>Select site and define the AOI with a 2–5 km buffer</span></div>
+      <div class="workflow-step"><b>02</b><span>Collect and document datasets</span></div>
+      <div class="workflow-step"><b>03</b><span>Prepare cloud-masked, aligned satellite imagery</span></div>
+      <div class="workflow-step"><b>04</b><span>Classify land cover and map change 2015–2025</span></div>
+      <div class="workflow-step"><b>05</b><span>Analyse NDVI, water, built-up growth, terrain and roads</span></div>
+      <div class="workflow-step"><b>06</b><span>Combine constraints into a weighted suitability map</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- STUDY SITE -->
+<section class="section">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">STUDY SITE</p>
+      <h2>Site and area of interest</h2>
+      <p>The site is chosen to be relatively continuous, close to road access, and surrounded by agricultural or open land and existing development, with meaningful environmental features nearby.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Parameter</th><th>Value</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Study corridor</td><td>Shela – Ghuma – Sanathal – Telav, Ahmedabad, Gujarat</td><td><span class="tag done">Defined</span></td></tr>
+          <tr><td>Target site size</td><td>Approx. 25–50 ha (hypothetical)</td><td><span class="tag done">Defined</span></td></tr>
+          <tr><td>Centre latitude / longitude</td><td>To be added from the approved AOI</td><td><span class="tag pending">Pending approval</span></td></tr>
+          <tr><td>Site area</td><td>To be calculated in GIS</td><td><span class="tag pending">Pending</span></td></tr>
+          <tr><td>Perimeter</td><td>To be calculated in GIS</td><td><span class="tag pending">Pending</span></td></tr>
+          <tr><td>Analysis CRS</td><td>To be confirmed (projected CRS, UTM zone 43N expected)</td><td><span class="tag pending">Pending</span></td></tr>
+          <tr><td>Surrounding buffer</td><td>2–5 km around the site</td><td><span class="tag pending">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notice">Analysis starts only after the AOI is finalised and approved.</div>
+  </div>
+</section>
+ 
+<!-- DATA INVENTORY -->
+<section class="section">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">DATA INVENTORY</p>
+      <h2>Datasets used</h2>
+      <p>Only documented, traceable datasets are used. Exact scene dates and versions are recorded when data is downloaded.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Dataset</th><th>Source</th><th>Year</th><th>Resolution</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Sentinel-2</td><td>Copernicus</td><td>2020, 2025</td><td>10 m</td><td>LULC and spectral indices</td></tr>
+          <tr><td>Landsat</td><td>USGS</td><td>2015</td><td>30 m</td><td>Historical change</td></tr>
+          <tr><td>DEM</td><td>SRTM or Copernicus</td><td>—</td><td>To be confirmed</td><td>Elevation, slope, drainage</td></tr>
+          <tr><td>Roads</td><td>OpenStreetMap</td><td>Current</td><td>—</td><td>Accessibility</td></tr>
+          <tr><td>Administrative boundaries</td><td>Authoritative source, to be documented</td><td>Current</td><td>—</td><td>Context and mapping</td></tr>
+          <tr><td>Waterbodies and drainage</td><td>Authoritative or open source, to be documented</td><td>Current</td><td>—</td><td>Water proximity, drainage</td></tr>
+          <tr><td>Protected and regulated areas</td><td>Authoritative sources only, where available</td><td>Current</td><td>—</td><td>Environmental constraints</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+ 
+<!-- METHODOLOGY -->
+<section class="section">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">METHODOLOGY</p>
+      <h2>From data to decision</h2>
+      <p>Each stage produces a map or table, and every statistic is calculated directly from the GIS data.</p>
+    </div>
+    <div class="stage-list">
+      <div class="stage"><b>01</b><div><h3>Prepare satellite data</h3><p>Check cloud cover, apply cloud masking, clip to the AOI and buffer, reproject to one CRS, and align imagery across years using comparable seasons.</p><p class="out">Output: analysis-ready rasters and a preprocessing log</p></div></div>
+      <div class="stage"><b>02</b><div><h3>Land use / land cover</h3><p>Supervised classification (such as Random Forest) into built-up, agriculture, vegetation, barren or open land, water and other relevant classes.</p><p class="out">Output: LULC map, area and percentage by class, confusion matrix, accuracy</p></div></div>
+      <div class="stage"><b>03</b><div><h3>Historical change, 2015 → 2020 → 2025</h3><p>Compare classified maps to identify transitions such as agriculture to built-up, open land to built-up and vegetation to built-up.</p><p class="out">Output: change map, change statistics, transition matrix</p></div></div>
+      <div class="stage"><b>04</b><div><h3>NDVI vegetation analysis</h3><p>Calculate NDVI for each year and report minimum, maximum and mean values, area by NDVI class, and vegetation loss and gain.</p><p class="out">Output: NDVI maps, statistics, interpretation</p></div></div>
+      <div class="stage"><b>05</b><div><h3>NDWI / MNDWI and water proximity</h3><p>Detect water bodies and potential wet areas, then run proximity analysis at 50, 100, 250 and 500 m. These are screening distances, not legal setbacks. Satellite-detected water is kept separate from officially designated wetlands.</p><p class="out">Output: water map, proximity map, statistics</p></div></div>
+      <div class="stage"><b>06</b><div><h3>Built-up expansion</h3><p>Use LULC, NDBI where useful, and historical imagery to find existing built-up areas, new development, direction of growth and development around the site.</p><p class="out">Output: expansion map, growth statistics</p></div></div>
+      <div class="stage"><b>07</b><div><h3>Terrain and flood / drainage screening</h3><p>Derive elevation, slope, flow direction, flow accumulation and distance from water from the DEM. Where data allows, add rainfall, flood history and land use for a preliminary susceptibility map.</p><p class="out">Output: DEM, slope, flow maps, flood screening map, weighting method</p></div></div>
+      <div class="stage"><b>08</b><div><h3>Road accessibility</h3><p>Classify highways, primary, secondary and local roads, and measure approximate distance from the site to the nearest highway, main road, settlement and key infrastructure.</p><p class="out">Output: accessibility map, distance table</p></div></div>
+      <div class="stage"><b>09</b><div><h3>Environmental constraints</h3><p>Combine water, wet areas, high vegetation, flood susceptibility, steep slopes, built-up areas and protected areas from authoritative sources.</p><p class="out">Output: constraint layers and a combined constraints map</p></div></div>
+      <div class="stage"><b>10</b><div><h3>Site suitability and risk</h3><p>A documented weighted-overlay method: input layers, standardisation, weights, scoring, final calculation and classification into relatively more suitable, moderately constrained and relatively more constrained areas.</p><p class="out">Output: final suitability map and calculation tables</p></div></div>
+    </div>
+    <div class="notice">The flood analysis is a preliminary screening and not a certified flood-risk assessment. Weights and scoring will be published alongside the final map.</div>
+  </div>
+</section>
+ 
+<!-- MAPS -->
+<section class="section case-output">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">FINAL MAPS</p>
+      <h2>Ten maps, one consistent design</h2>
+      <p>Each map includes a title, legend, north arrow, scale bar, CRS, data source and imagery date, exported at 300 DPI. To add a finished map, replace the placeholder text inside its box with an image tag, for example <code>&lt;img src="../images/map-01.jpg" alt="Site location and context map"&gt;</code>.</p>
+    </div>
+    <div class="map-grid">
+      <figure class="map-card"><div class="map-slot">Map 01 coming soon</div><figcaption>1. Site Location & Context<small>AOI, buffer, surroundings</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 02 coming soon</div><figcaption>2. Land Use / Land Cover<small>Classes, area, accuracy</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 03 coming soon</div><figcaption>3. Historical LULC Change<small>2015 → 2020 → 2025</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 04 coming soon</div><figcaption>4. NDVI<small>Vegetation condition and change</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 05 coming soon</div><figcaption>5. NDWI / MNDWI & Water Proximity<small>Detected water and wet areas</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 06 coming soon</div><figcaption>6. Built-Up Expansion<small>Growth and direction</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 07 coming soon</div><figcaption>7. Flood / Drainage Risk Screening<small>Preliminary screening only</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 08 coming soon</div><figcaption>8. Road Accessibility<small>Road classes, distances</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 09 coming soon</div><figcaption>9. Environmental Constraints<small>Combined constraint layers</small></figcaption></figure>
+      <figure class="map-card"><div class="map-slot">Map 10 coming soon</div><figcaption>10. Final Site Suitability / Risk<small>Weighted overlay result</small></figcaption></figure>
+    </div>
+  </div>
+</section>
+ 
+<!-- RESULTS -->
+<section class="section">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">RESULTS</p>
+      <h2>Key findings</h2>
+      <p>Figures will be published here once the GIS analysis is complete. Every number comes directly from the processed data, none are estimated.</p>
+    </div>
+    <div class="result-grid">
+      <div><strong>— ha</strong><span>Site area</span></div>
+      <div><strong>— %</strong><span>Overall LULC accuracy</span></div>
+      <div><strong>— ha</strong><span>Built-up growth, 2015–2025</span></div>
+      <div><strong>—</strong><span>Mean NDVI (2015 / 2020 / 2025)</span></div>
+      <div><strong>— m</strong><span>Distance to nearest highway</span></div>
+      <div><strong>— %</strong><span>Site area in each suitability class</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- DELIVERABLES -->
+<section class="section">
+  <div class="container">
+    <div class="block-head">
+      <p class="section-kicker">DELIVERABLES</p>
+      <h2>What the client receives</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Maps and report</h3>
+        <ul>
+          <li>10 high-resolution final maps (300 DPI)</li>
+          <li>Concise 2–3 page case study report</li>
+          <li>Methodology document: data, processing, method, analysis, results</li>
+        </ul>
+      </div>
+      <div>
+        <h3>GIS project and data</h3>
+        <ul>
+          <li>QGIS or ArcGIS project with symbology and layouts</li>
+          <li>Raster and vector datasets, AOI and derived layers</li>
+          <li>Tables: statistics, change matrix, accuracy assessment, suitability calculations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- QUALITY -->
+<section class="section case-output">
+  <div class="container">
+    <p class="section-kicker">QUALITY CHECKS</p>
+    <div class="output-grid">
+      <div><span>↗</span><strong>CRS, geometry and raster alignment verified</strong></div>
+      <div><span>↗</span><strong>AOI clipping and no-data areas checked</strong></div>
+      <div><span>↗</span><strong>Classification accuracy assessed</strong></div>
+      <div><span>↗</span><strong>Area calculations validated</strong></div>
+      <div><span>↗</span><strong>Every statistic traceable to GIS data</strong></div>
+    </div>
+  </div>
+</section>
+ 
+<section class="cta-band">
+  <div class="container">
+    <p class="section-kicker">BUILD YOUR WORKFLOW</p>
+    <h2>Turn your spatial question into a project brief.</h2>
+    <a class="btn btn-primary" href="../index.html#consultation">Request a Consultation ↗</a>
+  </div>
+</section>
+ 
+</main>
+ 
+<footer>
+  <div class="container footer-bottom">
+    <span>© 2026 TerraVita</span>
+    <a href="../projects.html">All projects</a>
+  </div>
+</footer>
+ 
+<a class="whatsapp" href="https://wa.me/919545881451" target="_blank" rel="noopener">WA</a>
+<script src="../js/script.js"></script>
+</body>
+</html>
+ 
