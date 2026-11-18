@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071724">
+
+  <meta name="description" content="Explore TerraVita's GIS mapping, remote sensing, environmental analytics, urban intelligence, geological analysis and GeoAI services.">
+
+  <title>Our Services | TerraVita Geospatial Consultancy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* SERVICES PAGE */
+
+    .tv-services-page {
+      background: #071724;
+      color: #edf5f8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .tv-page-hero {
+      padding: 100px 0 75px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(36, 203, 165, .13), transparent 35%),
+        #071724;
+    }
+
+    .tv-eyebrow {
+      color: #35d9b3;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .tv-page-hero h1 {
+      max-width: 850px;
+      margin: 18px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+
+    .tv-page-hero h1 span {
+      color: #35d9b3;
+    }
+
+    .tv-page-hero p {
+      max-width: 700px;
+      color: #a9bdca;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .tv-page-section {
+      padding: 75px 0;
+      background: #091b29;
+    }
+
+    .tv-section-heading {
+      max-width: 760px;
+      margin-bottom: 40px;
+    }
+
+    .tv-section-heading h2 {
+      margin: 12px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+    }
+
+    .tv-section-heading p {
+      color: #a9bdca;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* SERVICE CARDS */
+
+    .tv-services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .tv-service-card {
+      padding: 30px;
+      border: 1px solid rgba(160, 190, 210, .16);
+      border-radius: 13px;
+      background: #102331;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .tv-service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(53, 217, 179, .55);
+    }
+
+    .tv-service-number {
+      color: #35d9b3;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .tv-service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      margin: 22px 0;
+      border: 1px solid rgba(53, 217, 179, .25);
+      border-radius: 10px;
+      background: rgba(53, 217, 179, .09);
+      color: #35d9b3;
+      font-size: 24px;
+    }
+
+    .tv-service-card h3 {
+      margin: 0 0 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .tv-service-card > p {
+      margin: 0 0 20px;
+      color: #a9bdca;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .tv-service-card h4 {
+      margin: 22px 0 12px;
+      color: #e6f0f4;
+      font-size: 12px;
+    }
+
+    .tv-service-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px 15px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tv-service-list li {
+      position: relative;
+      padding-left: 15px;
+      color: #b6c8d2;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .tv-service-list li::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #35d9b3;
+    }
+
+    .tv-service-footer {
+      margin-top: 24px;
+      padding-top: 17px;
+      border-top: 1px solid rgba(160, 190, 210, .13);
+    }
+
+    .tv-service-footer a {
+      color: #35d9b3;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    /* WORKFLOW */
+
+    .tv-workflow {
+      padding: 75px 0;
+      background: #071724;
+    }
+
+    .tv-workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .tv-workflow-card {
+      padding: 23px;
+      border: 1px solid rgba(160, 190, 210, .15);
+      border-radius: 10px;
+      background: #102331;
+    }
+
+    .tv-workflow-card span {
+      color: #35d9b3;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tv-workflow-card h3 {
+      margin: 13px 0 9px;
+      font-size: 16px;
+    }
+
+    .tv-workflow-card p {
+      margin: 0;
+      color: #a9bdca;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* CTA */
+
+    .tv-services-cta {
+      padding: 75px 20px;
+      text-align: center;
+      background: #102b37;
+    }
+
+    .tv-services-cta h2 {
+      margin: 0 0 15px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .tv-services-cta p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #b0c2cc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .tv-services-button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 6px;
+      background: #28cba5;
+      color: #061923;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background .2s ease;
+    }
+
+    .tv-services-button:hover {
+      background: #70e8cb;
+    }
+
+    .tv-services-footer {
+      padding: 22px 15px;
+      background: #04121d;
+      color: #8da3b1;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    @media(max-width: 850px) {
+      .tv-workflow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media(max-width: 650px) {
+      .tv-page-hero {
+        padding: 70px 0 55px;
+      }
+
+      .tv-page-hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .tv-page-section,
+      .tv-workflow {
+        padding: 55px 0;
+      }
+
+      .tv-services-grid,
+      .tv-workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tv-service-card {
+        padding: 23px;
+      }
+
+      .tv-service-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="tv-services-page">
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+
+      <a href="index.html" class="brand">
+        <img src="images/favicon-64.png" alt="TerraVita Logo">
+
+        <span class="brand-copy">
+          <strong>TERRAVITA</strong>
+          <small>Environmental & Geospatial Consultancy</small>
+        </span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" aria-current="page">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="technology.html">Technology</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="btn btn-primary">
+        Let's Talk
+      </a>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="tv-page-hero">
+    <div class="container">
+
+      <span class="tv-eyebrow">
+        TERRAVITA / OUR SERVICES
+      </span>
+
+      <h1>
+        Geospatial solutions
+        <span>for informed decisions.</span>
+      </h1>
+
+      <p>
+        We integrate Geographic Information Systems, satellite remote
+        sensing, spatial analytics and geospatial technologies to
+        support environmental, urban, infrastructure and geological
+        decision-making.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+
+  <section class="tv-page-section">
+    <div class="container">
+
+      <div class="tv-section-heading">
+        <span class="tv-eyebrow">WHAT WE DO</span>
+
+        <h2>
+          Our Geospatial & Environmental Services
+        </h2>
+
+        <p>
+          Explore our technical capabilities and geospatial
+          service areas, from spatial data preparation to
+          satellite-based analysis and decision-support outputs.
+        </p>
+      </div>
+
+      <div class="tv-services-grid">
+
+        <!-- SERVICE 01 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 01 / GIS</span>
+
+          <div class="tv-service-icon">⌖</div>
+
+          <h3>GIS Mapping & Spatial Analysis</h3>
+
+          <p>
+            Transform spatial datasets into accurate, structured
+            maps and analytical outputs for planning, assessment
+            and spatial decision-making.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>GIS mapping and digitization</li>
+            <li>CAD to GIS conversion</li>
+            <li>Spatial database preparation</li>
+            <li>Coordinate transformation</li>
+            <li>Terrain and elevation analysis</li>
+            <li>Watershed and drainage mapping</li>
+            <li>Buffer and proximity analysis</li>
+            <li>Thematic map preparation</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About GIS Services →</a>
+          </div>
+
+        </article>
+
+        <!-- SERVICE 02 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 02 / REMOTE SENSING</span>
+
+          <div class="tv-service-icon">◉</div>
+
+          <h3>Satellite Remote Sensing & Earth Observation</h3>
+
+          <p>
+            Use satellite imagery and earth observation data
+            to monitor land, vegetation, water and environmental
+            changes over time.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>Satellite image processing</li>
+            <li>Land Use / Land Cover mapping</li>
+            <li>NDVI and vegetation analysis</li>
+            <li>NDWI and MNDWI analysis</li>
+            <li>Land surface temperature</li>
+            <li>Change detection</li>
+            <li>Multi-temporal assessment</li>
+            <li>Satellite-based monitoring</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About Remote Sensing →</a>
+          </div>
+
+        </article>
+
+        <!-- SERVICE 03 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 03 / ENVIRONMENT</span>
+
+          <div class="tv-service-icon">♧</div>
+
+          <h3>Environmental & Natural Resource Analytics</h3>
+
+          <p>
+            Apply geospatial methods to environmental datasets
+            for natural resource assessment, spatial monitoring
+            and environmental research.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>Wetland mapping and monitoring</li>
+            <li>Water resource spatial analysis</li>
+            <li>Groundwater data mapping</li>
+            <li>Flood susceptibility screening</li>
+            <li>Watershed assessment</li>
+            <li>Soil and land degradation mapping</li>
+            <li>Environmental change analysis</li>
+            <li>Natural resource mapping</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About Environmental Services →</a>
+          </div>
+
+        </article>
+
+        <!-- SERVICE 04 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 04 / URBAN</span>
+
+          <div class="tv-service-icon">▦</div>
+
+          <h3>Urban & Infrastructure Intelligence</h3>
+
+          <p>
+            Support urban and infrastructure studies through
+            satellite-based monitoring, spatial indicators
+            and GIS-driven analytical workflows.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>Urban growth monitoring</li>
+            <li>Built-up area analysis</li>
+            <li>Urban heat assessment</li>
+            <li>Urban vegetation mapping</li>
+            <li>Land suitability screening</li>
+            <li>Infrastructure mapping</li>
+            <li>Spatial proximity assessment</li>
+            <li>Development pattern analysis</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About Urban Services →</a>
+          </div>
+
+        </article>
+
+        <!-- SERVICE 05 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 05 / GEOLOGY</span>
+
+          <div class="tv-service-icon">◇</div>
+
+          <h3>Geological & Mineral Intelligence</h3>
+
+          <p>
+            Integrate geological, terrain and remote sensing
+            datasets to support geological interpretation
+            and mineral exploration research workflows.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>Geological map digitization</li>
+            <li>Geological data integration</li>
+            <li>Lineament mapping</li>
+            <li>Terrain and geomorphology analysis</li>
+            <li>Remote sensing interpretation</li>
+            <li>Prospectivity modelling support</li>
+            <li>Spatial data analysis</li>
+            <li>Geological map preparation</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About Geological Services →</a>
+          </div>
+
+        </article>
+
+        <!-- SERVICE 06 -->
+
+        <article class="tv-service-card">
+
+          <span class="tv-service-number">SERVICE 06 / GEOAI</span>
+
+          <div class="tv-service-icon">⌘</div>
+
+          <h3>GeoAI, Data Analytics & Automation</h3>
+
+          <p>
+            Combine GIS, Python, machine learning and
+            geospatial automation to build efficient
+            analytical workflows and data-driven outputs.
+          </p>
+
+          <h4>Key Capabilities</h4>
+
+          <ul class="tv-service-list">
+            <li>Python geospatial automation</li>
+            <li>Machine learning workflows</li>
+            <li>Satellite image classification</li>
+            <li>Spatial data processing</li>
+            <li>Google Earth Engine scripting</li>
+            <li>Geospatial data visualization</li>
+            <li>GIS workflow automation</li>
+            <li>Analytical dashboards</li>
+          </ul>
+
+          <div class="tv-service-footer">
+            <a href="contact.html">Enquire About GeoAI Services →</a>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+
+  <section class="tv-workflow">
+    <div class="container">
+
+      <div class="tv-section-heading">
+        <span class="tv-eyebrow">OUR APPROACH</span>
+
+        <h2>
+          How We Deliver Geospatial Solutions
+        </h2>
+
+        <p>
+          A structured workflow that connects spatial data,
+          technical analysis and meaningful deliverables.
+        </p>
+      </div>
+
+      <div class="tv-workflow-grid">
+
+        <div class="tv-workflow-card">
+          <span>01 / UNDERSTAND</span>
+          <h3>Project Understanding</h3>
+          <p>
+            Define the study objective, area of interest,
+            requirements and expected outputs.
+          </p>
+        </div>
+
+        <div class="tv-workflow-card">
+          <span>02 / PROCESS</span>
+          <h3>Data & Processing</h3>
+          <p>
+            Collect, prepare and process relevant satellite,
+            GIS and supporting datasets.
+          </p>
+        </div>
+
+        <div class="tv-workflow-card">
+          <span>03 / ANALYSE</span>
+          <h3>Spatial Analysis</h3>
+          <p>
+            Apply appropriate geospatial methods,
+            indicators and analytical workflows.
+          </p>
+        </div>
+
+        <div class="tv-workflow-card">
+          <span>04 / DELIVER</span>
+          <h3>Final Deliverables</h3>
+          <p>
+            Prepare maps, datasets, reports and
+            analytical outputs according to project scope.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section class="tv-services-cta">
+
+    <h2>Have a geospatial project in mind?</h2>
+
+    <p>
+      Tell us about your requirements. Let's explore
+      how GIS, satellite remote sensing and spatial analytics
+      can support your project.
+    </p>
+
+    <a href="contact.html" class="tv-services-button">
+      Discuss Your Project →
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="tv-services-footer">
+    © 2026 TerraVita Environmental & Geospatial Consultancy.
+    All rights reserved.
+  </footer>
+
+</div>
+
+</body>
+</html>
