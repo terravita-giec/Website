@@ -2066,3 +2066,106 @@ h1 em {
   }
 }
 
+/* =========================================
+   TERRAVITA MOBILE NAVIGATION
+========================================= */
+
+.tv-project-header {
+  position: relative;
+  z-index: 1000;
+}
+
+.tv-mobile-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border: 1px solid rgba(53, 217, 179, .35);
+  border-radius: 7px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.tv-mobile-toggle span {
+  display: block;
+  width: 19px;
+  height: 2px;
+  margin: 4px auto;
+  border-radius: 2px;
+  background: #35d9b3;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.tv-mobile-toggle.active span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.tv-mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.tv-mobile-toggle.active span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media(max-width: 850px) {
+
+  .tv-project-header .nav-wrap {
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .tv-mobile-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .tv-project-header .tv-main-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px;
+    border: 1px solid rgba(53, 217, 179, .25);
+    border-radius: 10px;
+    background: #0a1d2a;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .35);
+  }
+
+  .tv-project-header .tv-main-nav.open {
+    display: flex;
+  }
+
+  .tv-project-header .tv-main-nav a {
+    display: block;
+    padding: 13px 12px;
+    color: #eaf2f6;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(160, 190, 210, .10);
+  }
+
+  .tv-project-header .tv-main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  .tv-project-header .tv-header-cta {
+    display: none;
+  }
+}
+
+@media(max-width: 480px) {
+  .tv-project-header .brand-copy small {
+    font-size: 9px;
+  }
+
+  .tv-project-header .brand img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
