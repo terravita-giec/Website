@@ -1687,3 +1687,119 @@ h1 em {
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================
+   PROJECT CARD GEOSPATIAL VISUALS
+========================================= */
+
+.case-card-top {
+  position: relative;
+  isolation: isolate;
+  min-height: 175px;
+  overflow: hidden;
+}
+
+.case-card-top::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 35px 15% 15px;
+  border: 1px solid rgba(91, 224, 194, 0.25);
+  border-radius: 45% 55% 40% 60%;
+  transform: rotate(-15deg);
+}
+
+.case-card-top::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 90px;
+  height: 90px;
+  right: 18%;
+  top: 40px;
+  border: 1px solid rgba(83, 220, 190, 0.55);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 12px rgba(83, 220, 190, 0.07),
+    0 0 0 25px rgba(83, 220, 190, 0.05);
+}
+
+/* 01 - URBAN HEAT */
+
+.case-card:nth-child(1) .case-card-top {
+  background:
+    radial-gradient(ellipse at 35% 75%, rgba(255, 90, 55, .65), transparent 25%),
+    radial-gradient(ellipse at 65% 48%, rgba(255, 175, 65, .55), transparent 28%),
+    radial-gradient(ellipse at 80% 85%, rgba(220, 70, 80, .5), transparent 25%),
+    #142e3c;
+}
+
+/* 02 - LAND COVER */
+
+.case-card:nth-child(2) .case-card-top {
+  background:
+    linear-gradient(35deg, transparent 35%, rgba(126, 175, 103, .65) 36% 52%, transparent 53%),
+    linear-gradient(140deg, transparent 25%, rgba(183, 163, 94, .55) 26% 48%, transparent 49%),
+    linear-gradient(70deg, #173c39, #142a39);
+}
+
+/* 03 - GROUNDWATER */
+
+.case-card:nth-child(3) .case-card-top {
+  background:
+    radial-gradient(ellipse at 45% 65%, transparent 0 15%, rgba(47, 190, 218, .5) 16% 17%, transparent 18% 25%, rgba(47, 190, 218, .35) 26% 27%, transparent 28%),
+    radial-gradient(circle at 70% 45%, rgba(40, 190, 210, .5), transparent 12%),
+    #102d40;
+}
+
+/* 04 - VEGETATION */
+
+.case-card:nth-child(4) .case-card-top {
+  background:
+    radial-gradient(ellipse at 25% 65%, rgba(91, 176, 102, .8), transparent 23%),
+    radial-gradient(ellipse at 60% 45%, rgba(62, 145, 99, .8), transparent 25%),
+    radial-gradient(ellipse at 80% 75%, rgba(157, 186, 84, .6), transparent 20%),
+    #142f2b;
+}
+
+/* 05 - SOLAR */
+
+.case-card:nth-child(5) .case-card-top {
+  background:
+    repeating-linear-gradient(110deg, transparent 0 15px, rgba(118, 190, 205, .23) 16px 18px),
+    linear-gradient(135deg, #253a46, #173044);
+}
+
+.case-card:nth-child(5) .case-card-top::before {
+  border-radius: 5px;
+  transform: rotate(-15deg);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(65, 125, 153, .65) 0 15px,
+    rgba(160, 207, 211, .35) 16px 17px
+  );
+}
+
+/* 06 - DRONE MAPPING */
+
+.case-card:nth-child(6) .case-card-top {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 17px, rgba(65, 204, 174, .15) 18px 19px),
+    repeating-linear-gradient(90deg, transparent 0 17px, rgba(65, 204, 174, .15) 18px 19px),
+    #122d3d;
+}
+
+.case-card:nth-child(6) .case-card-top::before {
+  border-radius: 48% 52% 40% 60%;
+  transform: rotate(25deg);
+  box-shadow:
+    0 0 0 12px rgba(65, 204, 174, .08),
+    0 0 0 25px rgba(65, 204, 174, .06);
+}
+
+@media(max-width: 650px) {
+  .case-card-top {
+    min-height: 155px;
+  }
+}
+
