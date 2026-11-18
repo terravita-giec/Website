@@ -3,53 +3,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  
-<header class="site-header tv-project-header">
-  <div class="container nav-wrap">
-
-    <a href="index.html" class="brand">
-      <img src="images/favicon-64.png" alt="TerraVita Logo">
-      <span class="brand-copy">
-        <strong>TERRAVITA</strong>
-        <small>Environmental & Geospatial Consultancy</small>
-      </span>
-    </a>
-
-    <button
-      class="tv-mobile-toggle"
-      id="tvMobileToggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="tvMainNav">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav id="tvMainNav" class="tv-main-nav">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#services">Services</a>
-      <a href="projects.html" aria-current="page">Projects</a>
-      <a href="index.html#technology">Technology</a>
-      <a href="index.html#consultation">Contact</a>
-    </nav>
-
-    <a href="index.html#consultation" class="btn btn-primary tv-header-cta">
-      Let's Talk
-    </a>
-
-  </div>
-</header>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Explore TerraVita's GIS, remote sensing, environmental analytics, urban intelligence and geospatial research projects.">
-
   <meta name="theme-color" content="#071724">
 
-  <title>Projects & Case Studies | TerraVita Geospatial Consultancy</title>
+  <meta name="description" content="Explore TerraVita's GIS, satellite remote sensing, environmental intelligence, urban analytics and geospatial research projects across India.">
+
+  <title>Projects & Research | TerraVita</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,27 +19,50 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* PROJECT PAGE */
+    /* =====================================
+       TERRAVITA PROJECTS PAGE
+    ===================================== */
 
-    .case-page {
-      min-height: 100vh;
+    .tv-projects-page {
       background: #071724;
       color: #edf5f8;
       font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
     }
 
-    .case-hero {
+    .tv-projects-page *,
+    .tv-projects-page *::before,
+    .tv-projects-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* HERO */
+
+    .tv-project-hero {
+      position: relative;
+      overflow: hidden;
       padding: 100px 0 75px;
       background:
-        radial-gradient(circle at 80% 20%, rgba(34, 190, 157, 0.13), transparent 35%),
-        #071724;
+        radial-gradient(circle at 85% 20%, rgba(36,203,165,.14), transparent 35%),
+        linear-gradient(135deg, #071724, #0c2532);
     }
 
-    .case-hero-content {
-      max-width: 850px;
+    .tv-project-hero::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      right: -120px;
+      top: -150px;
+      border: 1px solid rgba(53,217,179,.13);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 35px rgba(53,217,179,.035),
+        0 0 0 75px rgba(53,217,179,.025);
+      pointer-events: none;
     }
 
-    .case-eyebrow {
+    .tv-eyebrow {
       color: #35d9b3;
       font-size: 11px;
       font-weight: 800;
@@ -88,673 +70,1078 @@
       text-transform: uppercase;
     }
 
-    .case-hero h1 {
+    .tv-project-hero h1 {
+      max-width: 850px;
       margin: 18px 0;
       font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(38px, 6vw, 68px);
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -2px;
     }
 
-    .case-hero h1 span {
+    .tv-project-hero h1 span {
       color: #35d9b3;
     }
 
-    .case-hero p {
-      max-width: 680px;
+    .tv-project-hero p {
+      max-width: 700px;
       color: #a9bdca;
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 15px;
+      line-height: 1.9;
     }
 
-    .case-back {
-      display: inline-block;
-      margin-top: 25px;
-      color: #35d9b3;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .case-section {
-      padding: 65px 0;
-      background: #091b29;
-    }
-
-    .case-section-heading {
-      margin-bottom: 35px;
-    }
-
-    .case-section-heading h2 {
-      margin: 10px 0;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 34px;
-    }
-
-    .case-section-heading p {
-      color: #a9bdca;
-      line-height: 1.7;
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .case-card {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid rgba(160, 190, 210, 0.16);
-      border-radius: 14px;
-      background: #102331;
-      transition: transform .25s ease, border-color .25s ease;
-    }
-
-    .case-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(53, 217, 179, .55);
-    }
-
-    .case-card-top {
-      min-height: 155px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        linear-gradient(135deg, rgba(42, 183, 154, .18), rgba(15, 40, 55, .5)),
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 23px,
-          rgba(130, 190, 190, .08) 24px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 23px,
-          rgba(130, 190, 190, .08) 24px
-        );
-    }
-
-    .case-number {
-      color: #35d9b3;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-    }
-
-    .case-status {
-      display: inline-block;
-      align-self: flex-start;
-      padding: 6px 10px;
-      border-radius: 4px;
-      background: rgba(53, 217, 179, .12);
-      color: #70e8cb;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .8px;
-      text-transform: uppercase;
-    }
-
-    .case-card-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .case-location {
-      margin-bottom: 10px;
-      color: #35d9b3;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .case-card h3 {
-      margin: 0 0 12px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 21px;
-      line-height: 1.35;
-    }
-
-    .case-card p {
-      margin: 0 0 20px;
-      color: #a9bdca;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .case-tags {
+    .tv-project-hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 22px;
+      gap: 14px;
+      margin-top: 28px;
     }
 
-    .case-tags span {
-      padding: 6px 9px;
-      border: 1px solid rgba(160, 190, 210, .18);
-      border-radius: 4px;
-      color: #c7d8e1;
-      font-size: 10px;
-    }
-
-    .case-link {
-      margin-top: auto;
-      color: #35d9b3;
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .case-link:hover {
-      color: #a0f4de;
-    }
-
-    /* METHODOLOGY */
-
-    .case-methodology {
-      padding: 75px 0;
-      background: #071724;
-    }
-
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 35px;
-    }
-
-    .method-card {
-      padding: 22px;
-      border: 1px solid rgba(160, 190, 210, .15);
-      border-radius: 10px;
-      background: #102331;
-    }
-
-    .method-card span {
-      color: #35d9b3;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .method-card h3 {
-      margin: 12px 0 8px;
-      font-size: 16px;
-    }
-
-    .method-card p {
-      color: #a9bdca;
-      font-size: 12px;
-      line-height: 1.7;
-    }
-
-    /* CTA */
-
-    .case-cta {
-      padding: 70px 20px;
-      text-align: center;
-      background: #102b37;
-    }
-
-    .case-cta h2 {
-      margin: 0 0 14px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 4vw, 42px);
-    }
-
-    .case-cta p {
-      margin: 0 auto 25px;
-      max-width: 600px;
-      color: #b0c2cc;
-      line-height: 1.8;
-    }
-
-    .case-cta a {
+    .tv-project-button {
       display: inline-block;
-      padding: 13px 23px;
+      padding: 13px 21px;
+      border: 1px solid #28cba5;
       border-radius: 6px;
       background: #28cba5;
       color: #061923;
       font-size: 13px;
       font-weight: 800;
       text-decoration: none;
+      transition: .2s ease;
     }
 
-    .case-footer {
-      padding: 25px 15px;
-      text-align: center;
-      color: #8da3b1;
-      background: #06131e;
+    .tv-project-button:hover {
+      background: #70e8cb;
+      border-color: #70e8cb;
+    }
+
+    .tv-project-button-outline {
+      background: transparent;
+      color: #35d9b3;
+    }
+
+    .tv-project-button-outline:hover {
+      background: rgba(53,217,179,.1);
+      color: #70e8cb;
+    }
+
+    /* INTRO STRIP */
+
+    .tv-project-intro {
+      padding: 28px 0;
+      border-top: 1px solid rgba(160,190,210,.12);
+      border-bottom: 1px solid rgba(160,190,210,.12);
+      background: #091b29;
+    }
+
+    .tv-project-intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .tv-project-intro-item {
+      padding: 8px 18px;
+      border-left: 2px solid #35d9b3;
+    }
+
+    .tv-project-intro-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #edf5f8;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+    }
+
+    .tv-project-intro-item span {
+      color: #91a8b6;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* PROJECT SECTION */
+
+    .tv-project-section {
+      padding: 80px 0;
+      background: #071724;
+    }
+
+    .tv-projects-heading {
+      max-width: 750px;
+      margin-bottom: 42px;
+    }
+
+    .tv-projects-heading h2 {
+      margin: 13px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(29px, 4vw, 44px);
+      line-height: 1.2;
+    }
+
+    .tv-projects-heading h2 span {
+      color: #35d9b3;
+    }
+
+    .tv-projects-heading p {
+      color: #a9bdca;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* GRID */
+
+    .tv-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .tv-project-card {
+      overflow: hidden;
+      border: 1px solid rgba(160,190,210,.15);
+      border-radius: 12px;
+      background: #102331;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .tv-project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(53,217,179,.5);
+    }
+
+    /* PROJECT VISUALS */
+
+    .tv-project-visual {
+      position: relative;
+      min-height: 225px;
+      overflow: hidden;
+      padding: 18px;
+      isolation: isolate;
+    }
+
+    .tv-project-index,
+    .tv-project-type,
+    .tv-visual-caption {
+      position: absolute;
+      z-index: 3;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+    }
+
+    .tv-project-index {
+      top: 18px;
+      left: 18px;
+      color: #e7f5f5;
+    }
+
+    .tv-project-type {
+      top: 18px;
+      right: 18px;
+      color: #a4e9d7;
+      text-align: right;
+    }
+
+    .tv-visual-caption {
+      bottom: 17px;
+      left: 18px;
+      color: #d6e9e9;
+    }
+
+    .tv-map-art {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: .95;
+    }
+
+    /* 01 HEAT */
+
+    .tv-heat {
+      background:
+        radial-gradient(ellipse at 35% 65%, rgba(244,83,57,.8), transparent 25%),
+        radial-gradient(ellipse at 70% 48%, rgba(255,181,63,.65), transparent 28%),
+        radial-gradient(ellipse at 80% 85%, rgba(203,58,81,.6), transparent 25%),
+        #142e3c;
+    }
+
+    .heat-zone {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+
+    .hz-1 {
+      width: 100px;
+      height: 85px;
+      left: 17%;
+      top: 32%;
+      background: rgba(255,93,62,.6);
+    }
+
+    .hz-2 {
+      width: 125px;
+      height: 100px;
+      right: 17%;
+      top: 22%;
+      background: rgba(255,184,70,.45);
+    }
+
+    .hz-3 {
+      width: 85px;
+      height: 80px;
+      right: 33%;
+      bottom: 9%;
+      background: rgba(219,67,84,.5);
+    }
+
+    .heat-road {
+      position: absolute;
+      top: 55%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(205,229,230,.5);
+      transform: rotate(-18deg);
+    }
+
+    .heat-road-2 {
+      top: 45%;
+      transform: rotate(28deg);
+    }
+
+    /* 02 LAND COVER */
+
+    .tv-land {
+      background: linear-gradient(135deg, #193c36, #263e36, #142a39);
+    }
+
+    .land-patch {
+      position: absolute;
+      display: block;
+      border: 1px solid rgba(225,235,177,.35);
+      border-radius: 40% 60% 35% 65%;
+      transform: rotate(-20deg);
+    }
+
+    .lp-1 { width: 100px; height: 70px; top: 22%; left: 10%; background: rgba(130,180,95,.7); }
+    .lp-2 { width: 130px; height: 85px; top: 35%; left: 38%; background: rgba(188,165,91,.6); }
+    .lp-3 { width: 80px; height: 70px; top: 15%; right: 8%; background: rgba(72,146,100,.7); }
+    .lp-4 { width: 100px; height: 65px; bottom: 5%; left: 24%; background: rgba(174,145,74,.65); }
+    .lp-5 { width: 90px; height: 75px; bottom: 4%; right: 12%; background: rgba(84,165,108,.7); }
+    .lp-6 { width: 65px; height: 55px; top: 47%; left: 8%; background: rgba(117,151,79,.7); }
+
+    /* 03 GROUNDWATER */
+
+    .tv-groundwater {
+      background:
+        radial-gradient(circle at 55% 50%, rgba(36,183,219,.2), transparent 32%),
+        linear-gradient(135deg, #102f43, #123c4b);
+    }
+
+    .water-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70px;
+      height: 70px;
+      border: 1px solid rgba(78,218,230,.65);
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .wr-2 { width: 130px; height: 130px; }
+    .wr-3 { width: 195px; height: 195px; }
+
+    .water-point {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: #32cce2;
+      box-shadow: 0 0 12px #32cce2;
+    }
+
+    .wp-1 { top: 35%; left: 32%; }
+    .wp-2 { top: 63%; left: 65%; }
+    .wp-3 { top: 27%; right: 25%; }
+
+    /* 04 VEGETATION */
+
+    .tv-vegetation {
+      background:
+        radial-gradient(ellipse at 20% 65%, rgba(91,176,102,.8), transparent 23%),
+        radial-gradient(ellipse at 60% 45%, rgba(62,145,99,.8), transparent 25%),
+        radial-gradient(ellipse at 80% 75%, rgba(157,186,84,.6), transparent 20%),
+        #142f2b;
+    }
+
+    .veg-patch {
+      position: absolute;
+      display: block;
+      border: 1px solid rgba(175,230,150,.4);
+      border-radius: 50%;
+    }
+
+    .vp-1 { width: 110px; height: 70px; left: 8%; top: 20%; background: rgba(85,177,103,.5); }
+    .vp-2 { width: 100px; height: 85px; left: 35%; top: 45%; background: rgba(35,127,79,.7); }
+    .vp-3 { width: 115px; height: 75px; right: 9%; top: 20%; background: rgba(158,187,77,.5); }
+    .vp-4 { width: 80px; height: 70px; right: 22%; bottom: 5%; background: rgba(64,150,85,.6); }
+    .vp-5 { width: 75px; height: 65px; left: 13%; bottom: 8%; background: rgba(106,169,76,.5); }
+
+    /* 05 SOLAR */
+
+    .tv-solar {
+      background:
+        radial-gradient(circle at 75% 25%, rgba(255,203,97,.55), transparent 15%),
+        linear-gradient(135deg, #243b47, #142b3d);
+    }
+
+    .solar-panel {
+      position: absolute;
+      width: 105px;
+      height: 50px;
+      border: 1px solid rgba(126,209,224,.8);
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(48,109,147,.85) 0 14px,
+        rgba(174,214,218,.5) 15px 16px
+      );
+      transform: skewY(-16deg);
+      box-shadow: 0 8px 15px rgba(0,0,0,.2);
+    }
+
+    .sp-1 { top: 30%; left: 12%; }
+    .sp-2 { top: 48%; left: 27%; }
+    .sp-3 { top: 20%; right: 15%; }
+    .sp-4 { top: 58%; right: 10%; }
+
+    .solar-sun {
+      position: absolute;
+      top: 20%;
+      right: 29%;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255,202,92,.85);
+      box-shadow: 0 0 35px rgba(255,202,92,.5);
+    }
+
+    /* 06 DRONE */
+
+    .tv-drone {
+      background: linear-gradient(135deg, #12303d, #1c4249);
+    }
+
+    .drone-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(70,211,177,.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(70,211,177,.16) 1px, transparent 1px);
+      background-size: 25px 25px;
+    }
+
+    .drone-contour {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 210px;
+      height: 125px;
+      border: 1px solid rgba(103,222,185,.7);
+      border-radius: 48% 52% 40% 60%;
+      transform: translate(-50%,-50%) rotate(-25deg);
+    }
+
+    .dc-2 { width: 160px; height: 90px; }
+    .dc-3 { width: 110px; height: 60px; }
+
+    .drone-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #65e9c4;
+      box-shadow: 0 0 20px #65e9c4;
+      transform: translate(-50%,-50%);
+    }
+
+    /* CARD CONTENT */
+
+    .tv-project-content {
+      padding: 25px;
+    }
+
+    .tv-project-location {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #35d9b3;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+    }
+
+    .tv-project-content h3 {
+      margin: 0 0 13px;
+      color: #edf5f8;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .tv-project-content p {
+      margin: 0;
+      color: #a9bdca;
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .tv-project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tv-project-tags span {
+      padding: 6px 9px;
+      border: 1px solid rgba(53,217,179,.2);
+      border-radius: 4px;
+      background: rgba(53,217,179,.07);
+      color: #a9d9cc;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .tv-project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 23px;
+      color: #35d9b3;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .tv-project-link span {
+      transition: transform .2s ease;
+    }
+
+    .tv-project-link:hover span {
+      transform: translateX(5px);
+    }
+
+    /* PROJECT NOTE */
+
+    .tv-project-note {
+      margin-top: 35px;
+      padding: 19px 22px;
+      border-left: 3px solid #35d9b3;
+      background: #102331;
+      color: #a9bdca;
       font-size: 12px;
+      line-height: 1.8;
     }
 
-    @media(max-width: 850px) {
-      .method-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .tv-project-note strong {
+      color: #edf5f8;
+    }
+
+    /* CTA */
+
+    .tv-project-cta {
+      padding: 75px 20px;
+      text-align: center;
+      background: #102b37;
+    }
+
+    .tv-project-cta h2 {
+      margin: 0 0 15px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .tv-project-cta p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #b0c2cc;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+
+    .tv-project-footer {
+      padding: 23px 15px;
+      border-top: 1px solid rgba(160,190,210,.12);
+      background: #04121d;
+      color: #8da3b1;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .tv-project-footer a {
+      color: #35d9b3;
+      text-decoration: none;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 900px) {
+      .tv-projects-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 17px;
+      }
+
+      .tv-project-content {
+        padding: 20px;
+      }
+
+      .tv-project-content h3 {
+        font-size: 18px;
       }
     }
 
     @media(max-width: 650px) {
-      .case-hero {
+      .tv-project-hero {
         padding: 70px 0 55px;
       }
 
-      .case-grid,
-      .method-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .case-hero h1 {
+      .tv-project-hero h1 {
         letter-spacing: -1px;
       }
 
-      .case-section,
-      .case-methodology {
-        padding: 50px 0;
+      .tv-project-section {
+        padding: 55px 0;
       }
 
-      .case-section-heading h2 {
-        font-size: 28px;
+      .tv-projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tv-project-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .tv-project-visual {
+        min-height: 200px;
+      }
+
+      .tv-project-content {
+        padding: 23px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
-<div class="case-page">
+<div class="tv-projects-page">
 
   <!-- HEADER -->
+
   <header class="site-header">
     <div class="container nav-wrap">
 
       <a href="index.html" class="brand">
         <img src="images/favicon-64.png" alt="TerraVita Logo">
+
         <span class="brand-copy">
           <strong>TERRAVITA</strong>
           <small>Environmental & Geospatial Consultancy</small>
         </span>
       </a>
 
-      <nav id="mainNav">
-        <a href="index.html#home">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#services">Services</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
         <a href="projects.html" aria-current="page">Projects</a>
-        <a href="index.html#technology">Technology</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="technology.html">Technology</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
-      <a href="index.html#consultation" class="btn btn-primary">
+      <a href="contact.html" class="btn btn-primary">
         Let's Talk
       </a>
 
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="case-hero">
-    <div class="container">
-      <div class="case-hero-content">
+  <main>
 
-        <span class="case-eyebrow">
-          TERRAVITA / PROJECT PORTFOLIO
+    <!-- HERO -->
+
+    <section class="tv-project-hero">
+      <div class="container">
+
+        <span class="tv-eyebrow">
+          TERRAVITA / PROJECTS & RESEARCH
         </span>
 
         <h1>
-          Geospatial intelligence.
-          <span>Real-world perspective.</span>
+          Turning geospatial data into
+          <span>real-world intelligence.</span>
         </h1>
 
         <p>
-          Discover our GIS, remote sensing, environmental research
-          and spatial analytics work. Each project demonstrates how
-          satellite observations and geospatial technologies can
-          support informed decisions.
+          Explore TerraVita's geospatial studies, satellite analytics,
+          environmental assessments and technology-driven demonstrations.
+          Each project connects spatial data with practical research
+          questions and decision-support applications.
         </p>
 
-        <a href="index.html#projects" class="case-back">
-          ← Back to Homepage
-        </a>
+        <div class="tv-project-hero-actions">
+          <a href="#projects" class="tv-project-button">
+            Explore Projects ↓
+          </a>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT LIBRARY -->
-  <section class="case-section">
-    <div class="container">
-
-      <div class="case-section-heading">
-        <span class="case-eyebrow">OUR PORTFOLIO</span>
-        <h2>Selected Projects & Research</h2>
-        <p>
-          Explore selected analytical studies, demonstrations
-          and ongoing research initiatives.
-        </p>
-      </div>
-
-      <div class="case-grid">
-
-        <!-- 01 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 01 / URBAN</span>
-            <span class="case-status">Analytical Study</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Pune, Maharashtra, India</span>
-            <h3>Urban Heat Risk & Cooling Priority Intelligence</h3>
-            <p>
-              Satellite-based assessment of land surface temperature,
-              vegetation and built-up patterns to understand urban
-              heat distribution and cooling priorities.
-            </p>
-            <div class="case-tags">
-              <span>Google Earth Engine</span>
-              <span>LST</span>
-              <span>NDVI</span>
-              <span>NDBI</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-        <!-- 02 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 02 / LAND</span>
-            <span class="case-status">Analytical Study</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Gujarat, India</span>
-            <h3>Multi-Temporal Land Cover & Vegetation Analysis</h3>
-            <p>
-              Multi-year satellite analysis using vegetation indicators
-              and land-cover information to examine spatial patterns
-              and landscape changes.
-            </p>
-            <div class="case-tags">
-              <span>Sentinel-2</span>
-              <span>NDVI</span>
-              <span>LULC</span>
-              <span>GIS</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-        <!-- 03 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 03 / WATER</span>
-            <span class="case-status">Research Pilot / In Progress</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Gujarat, India</span>
-            <h3>Agricultural Groundwater & Environmental Exposure Intelligence</h3>
-            <p>
-              Research-oriented GIS initiative integrating groundwater
-              quality, agricultural land use and environmental datasets
-              for spatial exposure assessment.
-            </p>
-            <div class="case-tags">
-              <span>CGWB</span>
-              <span>Groundwater</span>
-              <span>GIS</span>
-              <span>Python</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 04 / VEGETATION</span>
-            <span class="case-status">Demonstration Analysis</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Bengaluru, Karnataka, India</span>
-            <h3>Urban Vegetation Change Assessment</h3>
-            <p>
-              Multi-year NDVI analysis exploring vegetation gain,
-              stability and loss patterns across an urban study area.
-            </p>
-            <div class="case-tags">
-              <span>Remote Sensing</span>
-              <span>NDVI</span>
-              <span>Python</span>
-              <span>GIS</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-        <!-- 05 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 05 / ENERGY</span>
-            <span class="case-status">Geospatial Demonstration</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Dholera, Gujarat, India</span>
-            <h3>Solar Energy Site Geospatial Assessment</h3>
-            <p>
-              Geospatial demonstration exploring satellite-derived
-              land characteristics and spatial context for
-              renewable energy assessment.
-            </p>
-            <div class="case-tags">
-              <span>Satellite Data</span>
-              <span>GIS</span>
-              <span>Land Analysis</span>
-              <span>Mapping</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-        <!-- 06 -->
-        <article class="case-card">
-          <div class="case-card-top">
-            <span class="case-number">PROJECT 06 / DRONE</span>
-            <span class="case-status">In Progress</span>
-          </div>
-          <div class="case-card-body">
-            <span class="case-location">Gambhira, India</span>
-            <h3>Drone-Based Orthomosaic & Surface Modelling</h3>
-            <p>
-              An ongoing photogrammetry workflow focused on raw RGB
-              drone imagery, orthomosaic generation and digital
-              surface modelling.
-            </p>
-            <div class="case-tags">
-              <span>Drone Survey</span>
-              <span>Photogrammetry</span>
-              <span>Orthomosaic</span>
-              <span>DSM</span>
-            </div>
-            <a class="case-link" href="index.html#consultation">
-              Discuss a Similar Project →
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- METHODOLOGY -->
-  <section class="case-methodology">
-    <div class="container">
-
-      <div class="case-section-heading">
-        <span class="case-eyebrow">OUR APPROACH</span>
-        <h2>From satellite data to spatial insight.</h2>
-        <p>
-          A structured geospatial workflow designed to transform
-          complex spatial information into understandable outputs.
-        </p>
-      </div>
-
-      <div class="method-grid">
-
-        <div class="method-card">
-          <span>01 / DATA</span>
-          <h3>Data Acquisition</h3>
-          <p>
-            Satellite imagery, geospatial datasets,
-            field information and supporting data.
-          </p>
-        </div>
-
-        <div class="method-card">
-          <span>02 / PROCESS</span>
-          <h3>Spatial Processing</h3>
-          <p>
-            Image processing, GIS analysis,
-            classification and spatial modelling.
-          </p>
-        </div>
-
-        <div class="method-card">
-          <span>03 / ANALYSE</span>
-          <h3>Intelligence</h3>
-          <p>
-            Spatial indicators, change detection,
-            risk analysis and interpretation.
-          </p>
-        </div>
-
-        <div class="method-card">
-          <span>04 / DELIVER</span>
-          <h3>Decision Support</h3>
-          <p>
-            Thematic maps, reports, dashboards
-            and geospatial deliverables.
-          </p>
+          <a href="contact.html" class="tv-project-button tv-project-button-outline">
+            Discuss Your Project →
+          </a>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT CTA -->
-  <section class="case-cta">
-    <h2>Have a project in mind?</h2>
-    <p>
-      Let's explore how satellite data, GIS and geospatial analytics
-      can support your environmental, urban or infrastructure project.
-    </p>
-    <a href="index.html#consultation">
-      Start a Conversation →
-    </a>
-  </section>
+    <!-- INTRO STRIP -->
+
+    <section class="tv-project-intro">
+      <div class="container">
+
+        <div class="tv-project-intro-grid">
+
+          <div class="tv-project-intro-item">
+            <strong>Satellite Analytics</strong>
+            <span>Earth observation and multi-temporal analysis</span>
+          </div>
+
+          <div class="tv-project-intro-item">
+            <strong>Spatial Intelligence</strong>
+            <span>GIS-based environmental and urban assessment</span>
+          </div>
+
+          <div class="tv-project-intro-item">
+            <strong>Applied Research</strong>
+            <span>Geospatial workflows and technical demonstrations</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section class="tv-project-section" id="projects">
+      <div class="container">
+
+        <div class="tv-projects-heading">
+          <span class="tv-eyebrow">SELECTED WORK & RESEARCH</span>
+
+          <h2>
+            Geospatial projects for
+            <span>complex challenges.</span>
+          </h2>
+
+          <p>
+            Discover our current analytical studies, research pilots
+            and geospatial demonstrations across environmental,
+            urban, geological and infrastructure themes.
+          </p>
+        </div>
+
+        <div class="tv-projects-grid">
+
+          <!-- PROJECT 01 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-heat">
+
+              <span class="tv-project-index">01 / URBAN</span>
+              <span class="tv-project-type">HEAT RISK ANALYSIS</span>
+
+              <div class="tv-map-art heat-art">
+                <span class="heat-zone hz-1"></span>
+                <span class="heat-zone hz-2"></span>
+                <span class="heat-zone hz-3"></span>
+                <span class="heat-road"></span>
+                <span class="heat-road heat-road-2"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                LAND SURFACE TEMPERATURE
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                PUNE, MAHARASHTRA, INDIA
+              </span>
+
+              <h3>
+                Urban Heat Risk & Cooling Priority Intelligence
+              </h3>
+
+              <p>
+                A satellite-based urban heat assessment using
+                Land Surface Temperature, vegetation and built-up
+                indicators to identify heat patterns and potential
+                cooling priorities.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>Google Earth Engine</span>
+                <span>LST</span>
+                <span>NDVI</span>
+                <span>GIS</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss This Project <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 02 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-land">
+
+              <span class="tv-project-index">02 / LAND USE</span>
+              <span class="tv-project-type">CHANGE MONITORING</span>
+
+              <div class="tv-map-art land-art">
+                <span class="land-patch lp-1"></span>
+                <span class="land-patch lp-2"></span>
+                <span class="land-patch lp-3"></span>
+                <span class="land-patch lp-4"></span>
+                <span class="land-patch lp-5"></span>
+                <span class="land-patch lp-6"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                MULTI-TEMPORAL LAND COVER
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                GUJARAT, INDIA
+              </span>
+
+              <h3>
+                Multi-Temporal Land Cover & Vegetation Analysis
+              </h3>
+
+              <p>
+                A regional satellite-based study using multi-year
+                vegetation indicators and geospatial analysis to
+                understand changes in land cover and vegetation patterns.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>Sentinel-2</span>
+                <span>NDVI</span>
+                <span>LULC</span>
+                <span>Python</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss This Project <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 03 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-groundwater">
+
+              <span class="tv-project-index">03 / GROUNDWATER</span>
+              <span class="tv-project-type">RESEARCH PILOT</span>
+
+              <div class="tv-map-art water-art">
+                <span class="water-ring wr-1"></span>
+                <span class="water-ring wr-2"></span>
+                <span class="water-ring wr-3"></span>
+                <span class="water-point wp-1"></span>
+                <span class="water-point wp-2"></span>
+                <span class="water-point wp-3"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                GROUNDWATER & EXPOSURE
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                GUJARAT, INDIA
+              </span>
+
+              <h3>
+                Agricultural Groundwater & Environmental Exposure Intelligence
+              </h3>
+
+              <p>
+                A research-oriented GIS pilot designed to integrate
+                groundwater quality, agricultural land-use and
+                environmental datasets for spatial exposure assessment.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>CGWB Data</span>
+                <span>Groundwater</span>
+                <span>GIS</span>
+                <span>Research</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss Research Projects <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 04 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-vegetation">
+
+              <span class="tv-project-index">04 / VEGETATION</span>
+              <span class="tv-project-type">MULTI-YEAR NDVI ANALYSIS</span>
+
+              <div class="tv-map-art vegetation-art">
+                <span class="veg-patch vp-1"></span>
+                <span class="veg-patch vp-2"></span>
+                <span class="veg-patch vp-3"></span>
+                <span class="veg-patch vp-4"></span>
+                <span class="veg-patch vp-5"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                VEGETATION CHANGE
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                BENGALURU, KARNATAKA, INDIA
+              </span>
+
+              <h3>
+                Urban Vegetation Change Assessment
+              </h3>
+
+              <p>
+                A satellite-based vegetation assessment examining
+                multi-year NDVI patterns to understand urban vegetation
+                dynamics and spatial changes.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>Remote Sensing</span>
+                <span>NDVI</span>
+                <span>Python</span>
+                <span>GIS</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss This Project <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 05 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-solar">
+
+              <span class="tv-project-index">05 / RENEWABLE ENERGY</span>
+              <span class="tv-project-type">GEOSPATIAL DEMONSTRATION</span>
+
+              <div class="tv-map-art solar-art">
+                <span class="solar-panel sp-1"></span>
+                <span class="solar-panel sp-2"></span>
+                <span class="solar-panel sp-3"></span>
+                <span class="solar-panel sp-4"></span>
+                <span class="solar-sun"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                SOLAR SITE INTELLIGENCE
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                DHOLERA, GUJARAT, INDIA
+              </span>
+
+              <h3>
+                Solar Energy Site Geospatial Assessment
+              </h3>
+
+              <p>
+                A geospatial demonstration exploring satellite-based
+                land-surface characteristics and site context for
+                renewable energy assessment.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>Satellite Data</span>
+                <span>GIS</span>
+                <span>Land Analysis</span>
+                <span>Mapping</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss This Project <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 06 -->
+
+          <article class="tv-project-card">
+
+            <div class="tv-project-visual tv-drone">
+
+              <span class="tv-project-index">06 / DRONE MAPPING</span>
+              <span class="tv-project-type">PHOTOGRAMMETRY WORKFLOW</span>
+
+              <div class="tv-map-art drone-art">
+                <span class="drone-grid"></span>
+                <span class="drone-contour dc-1"></span>
+                <span class="drone-contour dc-2"></span>
+                <span class="drone-contour dc-3"></span>
+                <span class="drone-center"></span>
+              </div>
+
+              <span class="tv-visual-caption">
+                ORTHOMOSAIC & SURFACE MODELLING
+              </span>
+
+            </div>
+
+            <div class="tv-project-content">
+
+              <span class="tv-project-location">
+                GAMBHIRA, INDIA
+              </span>
+
+              <h3>
+                Drone-Based Orthomosaic & Surface Modelling
+              </h3>
+
+              <p>
+                An ongoing photogrammetry workflow focused on processing
+                raw RGB drone imagery for orthomosaic generation and
+                digital surface modelling.
+              </p>
+
+              <div class="tv-project-tags">
+                <span>Drone Survey</span>
+                <span>Photogrammetry</span>
+                <span>Orthomosaic</span>
+                <span>DSM</span>
+              </div>
+
+              <a href="contact.html" class="tv-project-link">
+                Discuss This Project <span>→</span>
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+
+        <div class="tv-project-note">
+          <strong>Project transparency:</strong>
+          These entries represent a mix of analytical studies,
+          demonstrations and ongoing research workflows.
+          Illustrative card graphics are design elements, not actual
+          satellite imagery or validated analytical results.
+          Project-specific datasets, maps and findings should be
+          included in individual case studies when ready.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+
+    <section class="tv-project-cta">
+
+      <span class="tv-eyebrow">LET'S COLLABORATE</span>
+
+      <h2>
+        Have a geospatial project in mind?
+      </h2>
+
+      <p>
+        From GIS mapping and satellite monitoring to environmental
+        analytics and GeoAI workflows, let's discuss your project
+        requirements and potential solutions.
+      </p>
+
+      <a href="contact.html" class="tv-project-button">
+        Start a Conversation →
+      </a>
+
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
-  <footer class="case-footer">
-    © 2026 TerraVita Environmental & Geospatial Consultancy.
-    All rights reserved.
+
+  <footer class="tv-project-footer">
+    <p>
+      © 2026 TerraVita Environmental & Geospatial Consultancy.
+      All rights reserved.
+    </p>
+
+    <p>
+      Ahmedabad, Gujarat, India |
+      <a href="mailto:terravita.giec@gmail.com">
+        terravita.giec@gmail.com
+      </a>
+    </p>
   </footer>
 
 </div>
 
-</body>
-</html>
 
 
-<footer class="tv-footer">
-
-  <div class="container">
-
-    <div class="tv-footer-grid">
-
-      <!-- BRAND -->
-      <div class="tv-footer-brand">
-
-        <a href="index.html" class="tv-footer-logo">
-          <img src="images/favicon-64.png" alt="TerraVita logo">
-          <span>
-            <strong>TERRAVITA</strong>
-            <small>Environmental & Geospatial Consultancy</small>
-          </span>
-        </a>
-
-        <p>
-          Satellite + GIS + AI for Environmental, Urban
-          and Geological Decision-Making.
-        </p>
-
-        <span class="tv-footer-location">
-          Ahmedabad, Gujarat, India
-        </span>
-
-      </div>
-
-      <!-- QUICK LINKS -->
-      <div class="tv-footer-column">
-        <h3>Quick Links</h3>
-        <a href="index.html#home">Home</a>
-        <a href="index.html#about">About Us</a>
-        <a href="index.html#services">Our Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="index.html#technology">Technology</a>
-        <a href="index.html#consultation">Contact</a>
-      </div>
-
-      <!-- SERVICES -->
-      <div class="tv-footer-column">
-        <h3>Our Expertise</h3>
-        <a href="index.html#services">GIS Mapping</a>
-        <a href="index.html#services">Remote Sensing</a>
-        <a href="index.html#services">Environmental Analytics</a>
-        <a href="index.html#services">Urban Intelligence</a>
-        <a href="index.html#services">GeoAI & Automation</a>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="tv-footer-column tv-footer-contact">
-        <h3>Get in Touch</h3>
-
-        <a href="mailto:terravita.giec@gmail.com">
-          terravita.giec@gmail.com
-        </a>
-
-        <a href="https://wa.me/919545881451"
-           target="_blank" rel="noopener noreferrer">
-          WhatsApp: +91 95458 81451
-        </a>
-
-        <a href="https://www.linkedin.com/company/terravita-environmental-and-geospatial-consultant/"
-           target="_blank" rel="noopener noreferrer">
-          LinkedIn Company Page ↗
-        </a>
-
-        <a href="index.html#consultation"
-           class="tv-footer-button">
-          Discuss Your Project →
-        </a>
-
-      </div>
-
-    </div>
 
     <div class="tv-footer-bottom">
       <p>
