@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="TerraVita Environmental & Geospatial Consultancy delivers satellite intelligence, GIS mapping, remote sensing, environmental analytics, spatial modelling and GeoAI solutions.">
+  <title>TerraVita | Environmental & Geospatial Consultancy</title>
 
-  <meta name="keywords" content="TerraVita, GIS Consultancy, Remote Sensing, Geospatial Analytics, Environmental Consultancy, GeoAI, Satellite Imagery, India">
+  <meta name="description" content="TerraVita provides GIS mapping, satellite remote sensing, environmental analytics, spatial modelling and GeoAI solutions.">
+
+  <meta name="keywords" content="TerraVita, GIS, Remote Sensing, Geospatial Consultancy, Environmental Analytics, GeoAI">
 
   <meta name="author" content="TerraVita Environmental & Geospatial Consultancy">
   <meta name="theme-color" content="#071725">
-
-  <title>TerraVita | Environmental & Geospatial Intelligence</title>
 
   <link rel="canonical" href="https://terravita-giec.github.io/Website/">
 
@@ -23,6 +23,458 @@
 
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ======================================
+       HOME PAGE STYLES
+    ====================================== */
+
+    .home-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 0 100px;
+      background: #071725;
+      color: #ffffff;
+    }
+
+    .home-hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .15;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 45px 45px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
+
+    .home-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .home-eyebrow,
+    .home-kicker {
+      color: #39d6c3;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .home-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .home-eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #39d6c3;
+      box-shadow: 0 0 15px #39d6c3;
+    }
+
+    .home-hero h1 {
+      max-width: 720px;
+      margin: 0 0 25px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(40px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .home-hero h1 span,
+    .home-section-heading span {
+      color: #39d6c3;
+    }
+
+    .home-hero-text {
+      max-width: 610px;
+      color: #b8c8d4;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .home-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 23px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .home-btn-primary {
+      background: #39d6c3;
+      color: #071725;
+    }
+
+    .home-btn-primary:hover {
+      background: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .home-btn-outline {
+      border: 1px solid rgba(255,255,255,.35);
+      color: #ffffff;
+    }
+
+    .home-btn-outline:hover {
+      border-color: #39d6c3;
+      color: #39d6c3;
+    }
+
+    .home-hero-visual {
+      min-height: 370px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-globe {
+      width: min(340px, 80vw);
+      aspect-ratio: 1;
+      position: relative;
+      border-radius: 50%;
+      border: 1px solid rgba(57,214,195,.5);
+      background:
+        radial-gradient(circle at 35% 35%, rgba(57,214,195,.25), transparent 40%),
+        radial-gradient(circle at center, #12394a, #071725 70%);
+      box-shadow:
+        0 0 60px rgba(57,214,195,.13),
+        inset 0 0 50px rgba(57,214,195,.12);
+    }
+
+    .home-globe::before,
+    .home-globe::after {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(57,214,195,.3);
+      border-radius: 50%;
+      transform: rotate(-35deg) scaleX(.45);
+    }
+
+    .home-globe::after {
+      transform: rotate(35deg) scaleX(.45);
+    }
+
+    .home-globe-ring {
+      position: absolute;
+      inset: 25%;
+      border: 1px solid rgba(57,214,195,.4);
+      border-radius: 50%;
+    }
+
+    .home-globe-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #39d6c3;
+      box-shadow: 0 0 20px #39d6c3;
+      top: 28%;
+      right: 24%;
+    }
+
+    .home-globe-label {
+      position: absolute;
+      padding: 9px 13px;
+      border: 1px solid rgba(57,214,195,.35);
+      border-radius: 4px;
+      background: rgba(7,23,37,.9);
+      color: #d7f7f1;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .home-label-one {
+      top: 12%;
+      left: -5%;
+    }
+
+    .home-label-two {
+      right: -8%;
+      bottom: 25%;
+    }
+
+    .home-label-three {
+      left: 5%;
+      bottom: 8%;
+    }
+
+    .home-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 540px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .home-proof strong {
+      display: block;
+      color: #39d6c3;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+    }
+
+    .home-proof span {
+      display: block;
+      margin-top: 5px;
+      color: #aabdc9;
+      font-size: 12px;
+    }
+
+    .home-section {
+      padding: 85px 0;
+    }
+
+    .home-section-heading {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .home-section-heading h2 {
+      margin: 12px 0 16px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.2;
+    }
+
+    .home-section-heading p {
+      color: #9eb0bd;
+      line-height: 1.8;
+    }
+
+    .home-intro-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .home-intro-copy {
+      color: #aabac6;
+      line-height: 1.9;
+    }
+
+    .home-intro-copy p {
+      margin-bottom: 18px;
+    }
+
+    .home-text-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: #39d6c3;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .home-text-link:hover {
+      color: #ffffff;
+    }
+
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .home-card {
+      padding: 27px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 9px;
+      background: rgba(255,255,255,.025);
+      transition: .25s ease;
+    }
+
+    .home-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(57,214,195,.55);
+      background: rgba(57,214,195,.045);
+    }
+
+    .home-card-number {
+      color: #39d6c3;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .home-card h3 {
+      margin: 18px 0 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+    }
+
+    .home-card p {
+      color: #aabac6;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .home-projects {
+      background: #091d2b;
+    }
+
+    .home-project-card {
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 9px;
+      background: #0d2636;
+    }
+
+    .home-project-visual {
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(57,214,195,.35), transparent 28%),
+        linear-gradient(135deg, #123b4a, #102333);
+      color: #39d6c3;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .home-project-content {
+      padding: 23px;
+    }
+
+    .home-project-content h3 {
+      margin: 10px 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 19px;
+    }
+
+    .home-project-content p {
+      color: #aabac6;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .home-project-location {
+      color: #39d6c3;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .home-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .home-tech-item {
+      padding: 20px;
+      border-left: 2px solid #39d6c3;
+      background: rgba(255,255,255,.035);
+    }
+
+    .home-tech-item strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #ffffff;
+    }
+
+    .home-tech-item span {
+      color: #aabac6;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .home-cta {
+      padding: 75px 25px;
+      text-align: center;
+      background: linear-gradient(120deg, #0c3543, #0a2232);
+      border: 1px solid rgba(57,214,195,.2);
+      border-radius: 10px;
+    }
+
+    .home-cta h2 {
+      max-width: 700px;
+      margin: 12px auto;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(30px, 4vw, 43px);
+    }
+
+    .home-cta p {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #b3c4ce;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
+      .home-hero-inner,
+      .home-intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .home-hero-visual {
+        min-height: 320px;
+      }
+
+      .home-cards,
+      .home-tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .home-hero {
+        padding: 75px 0;
+      }
+
+      .home-cards,
+      .home-tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .home-proof {
+        gap: 10px;
+      }
+
+      .home-proof strong {
+        font-size: 15px;
+      }
+
+      .home-proof span {
+        font-size: 10px;
+      }
+
+      .home-label-one {
+        left: 0;
+      }
+
+      .home-label-two {
+        right: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -32,11 +484,9 @@
 ====================================== -->
 
 <header class="site-header" id="siteHeader">
-
   <div class="container nav-wrap">
 
     <a class="brand" href="index.html" aria-label="TerraVita home">
-
       <span class="brand-mark">
         <img src="images/favicon-64.png" alt="TerraVita logo">
       </span>
@@ -45,7 +495,6 @@
         <strong>TerraVita</strong>
         <small>Environmental & Geospatial Consultancy</small>
       </span>
-
     </a>
 
     <button
@@ -62,7 +511,6 @@
     </button>
 
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
@@ -71,86 +519,57 @@
       <a href="insights.html">Insights</a>
       <a href="contact.html">Contact</a>
 
-      <a class="nav-cta" href="#consultation">
+      <a class="nav-cta" href="contact.html#contact-form">
         Request a Consultation
       </a>
-
     </nav>
 
   </div>
-
 </header>
 
 
 <main>
 
 <!-- ======================================
-     HERO SECTION
-     SATELLITE + GIS + GEOAI
+     HOME HERO SECTION
 ====================================== -->
 
-<section class="hero" id="home">
+<section class="home-hero" id="home">
 
-  <!-- Background effects -->
+  <div class="home-hero-grid"></div>
 
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
+  <div class="container home-hero-inner">
 
-  <div class="orbit orbit-a"></div>
-  <div class="orbit orbit-b"></div>
+    <div class="home-hero-content">
 
-  <!-- Satellite illustration -->
-
-  <div class="satellite" aria-hidden="true">
-    <div class="sat-body"></div>
-    <div class="panel panel-left"></div>
-    <div class="panel panel-right"></div>
-    <div class="antenna"></div>
-  </div>
-
-
-  <div class="container hero-inner">
-
-    <!-- Hero text -->
-
-    <div class="hero-copy reveal">
-
-      <p class="eyebrow">
-        <span></span>
+      <p class="home-eyebrow">
         SATELLITE • GIS • GEOAI • ENVIRONMENT
       </p>
 
       <h1>
-        Satellite intelligence.<br>
-        <em>Spatial insight.</em><br>
+        Satellite intelligence.
+        <span>Spatial insight.</span>
         Better decisions for a changing world.
       </h1>
 
-      <p class="hero-lead">
+      <p class="home-hero-text">
         TerraVita transforms satellite imagery, geospatial data
         and artificial intelligence into actionable intelligence
         for environmental, urban, infrastructure and geological
         decision-making.
       </p>
 
-      <div class="hero-actions">
-
-        <a class="btn btn-primary" href="#consultation">
-          Discuss Your Project
-          <span>↗</span>
+      <div class="home-actions">
+        <a href="contact.html#contact-form" class="home-btn home-btn-primary">
+          Discuss Your Project ↗
         </a>
 
-        <a class="btn btn-ghost" href="projects.html">
+        <a href="projects.html" class="home-btn home-btn-outline">
           Explore Projects
         </a>
-
       </div>
 
-
-      <!-- Capability highlights -->
-
-      <div class="hero-proof">
-
+      <div class="home-proof">
         <div>
           <strong>Satellite</strong>
           <span>Earth Observation</span>
@@ -165,72 +584,23 @@
           <strong>Intelligence</strong>
           <span>AI & Automation</span>
         </div>
-
       </div>
 
     </div>
 
+    <div class="home-hero-visual" aria-label="Illustrative geospatial globe">
 
-    <!-- Geospatial dashboard visual -->
-
-    <div
-      class="hero-dashboard reveal"
-      role="img"
-      aria-label="Illustrative geospatial analytics dashboard showing vegetation, land surface temperature and built-up indicators"
-    >
-
-      <div class="dash-top">
-        <span>GEOSPATIAL ANALYTICS / CONCEPT</span>
-        <b>●</b>
+      <div class="home-globe">
+        <div class="home-globe-ring"></div>
+        <div class="home-globe-dot"></div>
       </div>
 
-      <div class="map-scene">
-
-        <div class="map-lines"></div>
-
-        <div class="map-road r1"></div>
-        <div class="map-road r2"></div>
-        <div class="map-road r3"></div>
-
-        <div class="heat h1"></div>
-        <div class="heat h2"></div>
-        <div class="heat h3"></div>
-
-        <div class="map-pin">
-          <span></span>
-        </div>
-
-        <div class="scan-line"></div>
-
-      </div>
-
-      <div class="dash-bottom">
-
-        <div>
-          <span>NDVI</span>
-          <strong>0.72</strong>
-        </div>
-
-        <div>
-          <span>LST</span>
-          <strong>34.8°C</strong>
-        </div>
-
-        <div>
-          <span>BUILT-UP</span>
-          <strong>41.2%</strong>
-        </div>
-
-      </div>
+      <span class="home-globe-label home-label-one">EARTH OBSERVATION</span>
+      <span class="home-globe-label home-label-two">SPATIAL ANALYTICS</span>
+      <span class="home-globe-label home-label-three">GEOAI</span>
 
     </div>
 
-  </div>
-
-
-  <div class="scroll-cue">
-    SCROLL TO EXPLORE
-    <span>↓</span>
   </div>
 
 </section>
@@ -240,25 +610,37 @@
      TERRAVITA APPROACH
 ====================================== -->
 
-<section class="statement">
+<section class="home-section">
 
-  <div class="container statement-grid">
+  <div class="container home-intro-grid">
 
-    <p class="section-kicker">
-      THE TERRAVITA APPROACH
-    </p>
+    <div>
+      <p class="home-kicker">THE TERRAVITA APPROACH</p>
 
-    <h2>
-      A map shows you <span>where.</span><br>
-      We help you understand <span>why.</span>
-    </h2>
+      <h2 class="home-section-heading">
+        A map shows you <span>where.</span>
+        We help you understand <span>why.</span>
+      </h2>
+    </div>
 
-    <p>
-      We connect Earth observation data with geospatial context,
-      scientific analysis and clear deliverables — helping
-      project teams move from raw satellite data to informed,
-      evidence-based decisions.
-    </p>
+    <div class="home-intro-copy">
+      <p>
+        We connect Earth observation data with geospatial context,
+        scientific analysis and clear deliverables — helping
+        project teams move from raw satellite data to informed,
+        evidence-based decisions.
+      </p>
+
+      <p>
+        Our approach combines GIS, remote sensing, environmental
+        interpretation and data analytics to understand spatial
+        patterns and support practical decision-making.
+      </p>
+
+      <a href="about.html" class="home-text-link">
+        Discover TerraVita →
+      </a>
+    </div>
 
   </div>
 
@@ -266,54 +648,32 @@
 
 
 <!-- ======================================
-     ABOUT TERRAVITA
+     ABOUT PREVIEW
 ====================================== -->
 
-<section class="section about" id="about">
+<section class="home-section">
 
-  <div class="container split">
+  <div class="container">
 
-    <div class="reveal">
-
-      <p class="section-kicker">
-        ABOUT TERRAVITA
-      </p>
+    <div class="home-section-heading">
+      <p class="home-kicker">ABOUT TERRAVITA</p>
 
       <h2>
-        Spatial intelligence for a changing planet.
+        Geospatial intelligence for
+        <span>a changing planet.</span>
       </h2>
 
-    </div>
-
-
-    <div class="about-copy reveal">
-
-      <p class="large">
+      <p>
         TerraVita Environmental & Geospatial Consultancy
         combines Earth observation, remote sensing, GIS,
         environmental analytics, geological interpretation
         and GeoAI to support informed decision-making.
       </p>
-
-      <p>
-        We develop geospatial workflows around real-world
-        project requirements: identifying land-use changes,
-        understanding environmental constraints, assessing
-        site conditions, mapping spatial risks and interpreting
-        complex geographical information.
-      </p>
-
-      <p>
-        Our focus is to transform spatial data into meaningful
-        maps, analytical insights, technical reports and
-        decision-support solutions.
-      </p>
-
-      <a class="text-link" href="#consultation">
-        Start a conversation →
-      </a>
-
     </div>
+
+    <a href="about.html" class="home-text-link">
+      Learn more about us →
+    </a>
 
   </div>
 
@@ -321,639 +681,235 @@
 
 
 <!-- ======================================
-     SERVICES SECTION
-     Keep your existing services section here.
+     SERVICES PREVIEW
 ====================================== -->
 
-
-<!-- ======================================
-     TERRAVITA SERVICES SECTION
-====================================== -->
-
-<section class="section services" id="services">
+<section class="home-section">
 
   <div class="container">
 
-    <!-- Section heading -->
-
-    <div class="services-heading reveal">
-
-      <p class="section-kicker">
-        WHAT WE DO
-      </p>
+    <div class="home-section-heading">
+      <p class="home-kicker">OUR SERVICES</p>
 
       <h2>
         Geospatial solutions for
         <span>real-world challenges.</span>
       </h2>
 
-      <p class="services-intro">
-        From satellite imagery to spatial intelligence,
-        TerraVita delivers GIS, remote sensing and
-        AI-powered analytical solutions for environmental,
-        urban, infrastructure and geological applications.
-      </p>
-
-    </div>
-
-
-    <!-- Services grid -->
-
-    <div class="services-grid reveal">
-
-      <!-- SERVICE 01 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M6 12L18 6L31 12L42 7V36L30 42L17 36L6 41V12Z"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M18 6V36M31 12V42"
-              stroke="currentColor" stroke-width="1.7"/>
-            <circle cx="24" cy="23" r="5"
-              stroke="currentColor" stroke-width="1.7"/>
-          </svg>
-        </div>
-
-        <span class="service-number">01 / GIS</span>
-
-        <h3>GIS Mapping & Spatial Analysis</h3>
-
-        <p>
-          Transform geographical data into accurate,
-          structured maps and spatial insights for
-          planning, assessment and decision-making.
-        </p>
-
-        <ul>
-          <li>GIS mapping and digitisation</li>
-          <li>CAD-to-GIS conversion</li>
-          <li>Spatial analysis and suitability mapping</li>
-          <li>Terrain and watershed analysis</li>
-          <li>Cartography and thematic mapping</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss GIS Services →
-        </a>
-
-      </article>
-
-
-      <!-- SERVICE 02 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="17"
-              stroke="currentColor" stroke-width="1.7"/>
-            <ellipse cx="24" cy="24" rx="8" ry="17"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M8 18H40M8 30H40"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M13 11L35 37M35 11L13 37"
-              stroke="currentColor" stroke-width="1.2" opacity=".5"/>
-          </svg>
-        </div>
-
-        <span class="service-number">02 / REMOTE SENSING</span>
-
-        <h3>Satellite Remote Sensing & Earth Observation</h3>
-
-        <p>
-          Extract meaningful information from satellite
-          imagery to monitor land, water, vegetation
-          and environmental changes over time.
-        </p>
-
-        <ul>
-          <li>Sentinel-1, Sentinel-2 and Landsat analysis</li>
-          <li>Land Use / Land Cover classification</li>
-          <li>NDVI, NDWI, MNDWI and LST analysis</li>
-          <li>Multi-temporal change detection</li>
-          <li>Drone imagery and orthomosaic workflows</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss Remote Sensing →
-        </a>
-
-      </article>
-
-
-      <!-- SERVICE 03 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M24 5V43M5 24H43"
-              stroke="currentColor" stroke-width="1.7"/>
-            <circle cx="24" cy="24" r="17"
-              stroke="currentColor" stroke-width="1.7"/>
-            <circle cx="24" cy="24" r="10"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M24 14L28 24L24 34L20 24L24 14Z"
-              stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-
-        <span class="service-number">03 / ENVIRONMENT</span>
-
-        <h3>Environmental & Natural Resource Analytics</h3>
-
-        <p>
-          Support environmental assessment and natural
-          resource planning through satellite monitoring,
-          spatial modelling and geospatial interpretation.
-        </p>
-
-        <ul>
-          <li>Wetland and waterbody mapping</li>
-          <li>Flood and inundation assessment</li>
-          <li>Groundwater and watershed studies</li>
-          <li>Land degradation and erosion analysis</li>
-          <li>Environmental change monitoring</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss Environmental Projects →
-        </a>
-
-      </article>
-
-
-      <!-- SERVICE 04 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M6 40H42M9 40V23L19 14V40M19 40V9L30 16V40M30 40V22L40 15V40"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M14 28H15M24 20H25M35 29H36"
-              stroke="currentColor" stroke-width="2.5"
-              stroke-linecap="round"/>
-            <path d="M6 17L15 8L25 13L39 5"
-              stroke="currentColor" stroke-width="1.7"/>
-          </svg>
-        </div>
-
-        <span class="service-number">04 / URBAN & INFRASTRUCTURE</span>
-
-        <h3>Urban & Infrastructure Intelligence</h3>
-
-        <p>
-          Provide spatial insights for urban development,
-          infrastructure planning, site evaluation and
-          sustainable land-use decisions.
-        </p>
-
-        <ul>
-          <li>Urban growth and sprawl analysis</li>
-          <li>Urban heat island assessment</li>
-          <li>Green cover and built-up monitoring</li>
-          <li>Infrastructure and corridor mapping</li>
-          <li>Site suitability and spatial risk mapping</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss Urban Analytics →
-        </a>
-
-      </article>
-
-
-      <!-- SERVICE 05 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <path d="M5 38L15 18L22 29L29 10L43 38H5Z"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linejoin="round"/>
-            <path d="M15 18L19 24M29 10L33 19"
-              stroke="currentColor" stroke-width="1.7"/>
-            <circle cx="35" cy="9" r="3"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M8 43H40"
-              stroke="currentColor" stroke-width="1.7"/>
-          </svg>
-        </div>
-
-        <span class="service-number">05 / GEOLOGY & MINING</span>
-
-        <h3>Geological & Mineral Intelligence</h3>
-
-        <p>
-          Integrate geological, terrain and satellite
-          datasets to support mineral exploration,
-          geological interpretation and resource studies.
-        </p>
-
-        <ul>
-          <li>Geological and lithological mapping</li>
-          <li>Lineament and structural analysis</li>
-          <li>Mineral prospectivity modelling</li>
-          <li>Terrain and geomorphological analysis</li>
-          <li>GIS-based geological data integration</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss Geological Projects →
-        </a>
-
-      </article>
-
-
-      <!-- SERVICE 06 -->
-
-      <article class="service-card">
-
-        <div class="service-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <rect x="7" y="7" width="34" height="34" rx="4"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M15 32L22 24L27 28L35 17"
-              stroke="currentColor" stroke-width="1.7"/>
-            <circle cx="15" cy="32" r="2"
-              fill="currentColor"/>
-            <circle cx="22" cy="24" r="2"
-              fill="currentColor"/>
-            <circle cx="27" cy="28" r="2"
-              fill="currentColor"/>
-            <circle cx="35" cy="17" r="2"
-              fill="currentColor"/>
-            <path d="M15 14H33"
-              stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-
-        <span class="service-number">06 / GEOAI & DATA</span>
-
-        <h3>GeoAI, Data Analytics & Automation</h3>
-
-        <p>
-          Combine geospatial data, Python programming
-          and machine learning to develop reproducible
-          analytical workflows and decision-support tools.
-        </p>
-
-        <ul>
-          <li>Machine learning for satellite imagery</li>
-          <li>Land cover classification and prediction</li>
-          <li>Python-based GIS automation</li>
-          <li>Google Earth Engine applications</li>
-          <li>Spatial dashboards and analytical reporting</li>
-        </ul>
-
-        <a class="text-link" href="#consultation">
-          Discuss GeoAI Solutions →
-        </a>
-
-      </article>
-
-    </div>
-
-
-    <!-- Services CTA -->
-
-    <div class="services-cta reveal">
-
       <p>
-        Have a specific geospatial or environmental challenge?
+        From satellite imagery to spatial intelligence,
+        our services support environmental, urban,
+        infrastructure and geological applications.
       </p>
+    </div>
 
-      <a class="btn btn-primary" href="#consultation">
-        Let's Discuss Your Project
-        <span>↗</span>
-      </a>
+    <div class="home-cards">
+
+      <article class="home-card">
+        <span class="home-card-number">01 / GIS</span>
+        <h3>GIS Mapping & Spatial Analysis</h3>
+        <p>
+          GIS mapping, digitisation, spatial analysis,
+          suitability mapping and thematic cartography.
+        </p>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-number">02 / REMOTE SENSING</span>
+        <h3>Satellite Remote Sensing</h3>
+        <p>
+          Satellite imagery analysis, LULC classification,
+          vegetation indices and multi-temporal monitoring.
+        </p>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-number">03 / ENVIRONMENT</span>
+        <h3>Environmental Analytics</h3>
+        <p>
+          Wetland, waterbody, flood, watershed and
+          land degradation analysis.
+        </p>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-number">04 / URBAN</span>
+        <h3>Urban & Infrastructure Intelligence</h3>
+        <p>
+          Urban growth, heat assessment, green cover
+          monitoring and site suitability analysis.
+        </p>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-number">05 / GEOLOGY</span>
+        <h3>Geological & Mineral Intelligence</h3>
+        <p>
+          Geological mapping, lineament analysis,
+          terrain interpretation and prospectivity modelling.
+        </p>
+      </article>
+
+      <article class="home-card">
+        <span class="home-card-number">06 / GEOAI</span>
+        <h3>GeoAI & Data Analytics</h3>
+        <p>
+          Python automation, machine learning,
+          satellite image classification and dashboards.
+        </p>
+      </article>
 
     </div>
+
+    <a href="services.html" class="home-text-link">
+      Explore All Services →
+    </a>
 
   </div>
 
 </section>
 
 
-
 <!-- ======================================
-     PROJECTS SECTION
-     Keep your existing project section here.
+     SELECTED PROJECTS PREVIEW
 ====================================== -->
 
+<section class="home-section home-projects">
 
-
-<section class="tv-projects" id="projects">
   <div class="container">
 
-    <div class="tv-projects-heading">
-      <span class="tv-eyebrow">SELECTED WORK & RESEARCH</span>
+    <div class="home-section-heading">
+      <p class="home-kicker">SELECTED WORK & RESEARCH</p>
+
       <h2>
         Turning geospatial data into
         <span>real-world intelligence.</span>
       </h2>
+
       <p>
-        Explore TerraVita's geospatial studies, satellite analytics,
-        environmental assessments and technology-driven demonstrations.
+        Explore selected geospatial studies, satellite analytics,
+        environmental assessments and technical demonstrations.
       </p>
     </div>
 
-    <div class="tv-projects-grid">
+    <div class="home-cards">
 
-      <!-- PROJECT 01 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-heat">
-          <span class="tv-project-index">01 / URBAN</span>
-          <span class="tv-project-type">HEAT RISK ANALYSIS</span>
-          <div class="tv-map-art heat-art">
-            <span class="heat-zone hz-1"></span>
-            <span class="heat-zone hz-2"></span>
-            <span class="heat-zone hz-3"></span>
-            <span class="heat-road"></span>
-            <span class="heat-road heat-road-2"></span>
-          </div>
-          <span class="tv-visual-caption">LAND SURFACE TEMPERATURE</span>
+      <article class="home-project-card">
+        <div class="home-project-visual">
+          URBAN HEAT ANALYSIS
         </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">PUNE, MAHARASHTRA, INDIA</span>
+        <div class="home-project-content">
+          <span class="home-project-location">PUNE, MAHARASHTRA</span>
           <h3>Urban Heat Risk & Cooling Priority Intelligence</h3>
           <p>
-            A satellite-based urban heat assessment using Land Surface
-            Temperature, vegetation and built-up indicators to identify
-            heat patterns and potential cooling priorities.
+            Satellite-based assessment using land surface
+            temperature, vegetation and built-up indicators.
           </p>
-          <div class="tv-project-tags">
-            <span>Google Earth Engine</span>
-            <span>LST</span>
-            <span>NDVI</span>
-            <span>GIS</span>
-          </div>
-          <a href="projects.html" class="tv-project-link">
-            Explore Project <span>→</span>
-          </a>
+          <a href="projects.html" class="home-text-link">Explore Project →</a>
         </div>
       </article>
 
-      <!-- PROJECT 02 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-land">
-          <span class="tv-project-index">02 / LAND USE</span>
-          <span class="tv-project-type">CHANGE MONITORING</span>
-          <div class="tv-map-art land-art">
-            <span class="land-patch lp-1"></span>
-            <span class="land-patch lp-2"></span>
-            <span class="land-patch lp-3"></span>
-            <span class="land-patch lp-4"></span>
-            <span class="land-patch lp-5"></span>
-            <span class="land-patch lp-6"></span>
-          </div>
-          <span class="tv-visual-caption">MULTI-TEMPORAL LAND COVER</span>
+      <article class="home-project-card">
+        <div class="home-project-visual">
+          LAND COVER MONITORING
         </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">GUJARAT, INDIA</span>
+        <div class="home-project-content">
+          <span class="home-project-location">GUJARAT, INDIA</span>
           <h3>Multi-Temporal Land Cover & Vegetation Analysis</h3>
           <p>
-            A regional satellite-based study using multi-year vegetation
-            indicators and geospatial analysis to understand changes
-            in land cover and vegetation patterns.
+            Multi-year satellite-based analysis of vegetation
+            indicators and land cover patterns.
           </p>
-          <div class="tv-project-tags">
-            <span>Sentinel-2</span>
-            <span>NDVI</span>
-            <span>LULC</span>
-            <span>Python</span>
-          </div>
-          <a href="projects.html" class="tv-project-link">
-            Explore Project <span>→</span>
-          </a>
+          <a href="projects.html" class="home-text-link">Explore Project →</a>
         </div>
       </article>
 
-      <!-- PROJECT 03 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-groundwater">
-          <span class="tv-project-index">03 / GROUNDWATER</span>
-          <span class="tv-project-type">ENVIRONMENTAL RESEARCH PILOT</span>
-          <div class="tv-map-art water-art">
-            <span class="water-ring wr-1"></span>
-            <span class="water-ring wr-2"></span>
-            <span class="water-ring wr-3"></span>
-            <span class="water-point wp-1"></span>
-            <span class="water-point wp-2"></span>
-            <span class="water-point wp-3"></span>
-          </div>
-          <span class="tv-visual-caption">GROUNDWATER & EXPOSURE</span>
+      <article class="home-project-card">
+        <div class="home-project-visual">
+          GROUNDWATER RESEARCH
         </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">GUJARAT, INDIA</span>
+        <div class="home-project-content">
+          <span class="home-project-location">GUJARAT, INDIA</span>
           <h3>Agricultural Groundwater & Environmental Exposure Intelligence</h3>
           <p>
-            A research-oriented GIS pilot designed to integrate
-            groundwater quality, agricultural land-use and environmental
-            datasets for spatial exposure assessment.
+            A research-oriented GIS pilot integrating groundwater,
+            agricultural land-use and environmental datasets.
           </p>
-          <div class="tv-project-tags">
-            <span>CGWB Data</span>
-            <span>Groundwater</span>
-            <span>GIS</span>
-            <span>Research</span>
-          </div>
-          <a href="#consultation" class="tv-project-link">
-            Discuss Research Projects <span>→</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- PROJECT 04 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-vegetation">
-          <span class="tv-project-index">04 / VEGETATION</span>
-          <span class="tv-project-type">MULTI-YEAR NDVI ANALYSIS</span>
-          <div class="tv-map-art vegetation-art">
-            <span class="veg-patch vp-1"></span>
-            <span class="veg-patch vp-2"></span>
-            <span class="veg-patch vp-3"></span>
-            <span class="veg-patch vp-4"></span>
-            <span class="veg-patch vp-5"></span>
-          </div>
-          <span class="tv-visual-caption">VEGETATION CHANGE</span>
-        </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">BENGALURU, KARNATAKA, INDIA</span>
-          <h3>Urban Vegetation Change Assessment</h3>
-          <p>
-            A satellite-based vegetation assessment examining
-            multi-year NDVI patterns to understand urban vegetation
-            dynamics and spatial changes.
-          </p>
-          <div class="tv-project-tags">
-            <span>Remote Sensing</span>
-            <span>NDVI</span>
-            <span>Python</span>
-            <span>GIS</span>
-          </div>
-          <a href="projects.html" class="tv-project-link">
-            Explore Project <span>→</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- PROJECT 05 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-solar">
-          <span class="tv-project-index">05 / RENEWABLE ENERGY</span>
-          <span class="tv-project-type">GEOSPATIAL DEMONSTRATION</span>
-          <div class="tv-map-art solar-art">
-            <span class="solar-panel sp-1"></span>
-            <span class="solar-panel sp-2"></span>
-            <span class="solar-panel sp-3"></span>
-            <span class="solar-panel sp-4"></span>
-            <span class="solar-sun"></span>
-          </div>
-          <span class="tv-visual-caption">SOLAR SITE INTELLIGENCE</span>
-        </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">DHOLERA, GUJARAT, INDIA</span>
-          <h3>Solar Energy Site Geospatial Assessment</h3>
-          <p>
-            A geospatial demonstration exploring satellite-based
-            land-surface characteristics and site context for
-            renewable energy assessment.
-          </p>
-          <div class="tv-project-tags">
-            <span>Satellite Data</span>
-            <span>GIS</span>
-            <span>Land Analysis</span>
-            <span>Mapping</span>
-          </div>
-          <a href="projects.html" class="tv-project-link">
-            Explore Project <span>→</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- PROJECT 06 -->
-      <article class="tv-project-card">
-        <div class="tv-project-visual tv-drone">
-          <span class="tv-project-index">06 / DRONE MAPPING</span>
-          <span class="tv-project-type">PHOTOGRAMMETRY WORKFLOW</span>
-          <div class="tv-map-art drone-art">
-            <span class="drone-grid"></span>
-            <span class="drone-contour dc-1"></span>
-            <span class="drone-contour dc-2"></span>
-            <span class="drone-contour dc-3"></span>
-            <span class="drone-center"></span>
-          </div>
-          <span class="tv-visual-caption">ORTHOMOSAIC & SURFACE MODELLING</span>
-        </div>
-
-        <div class="tv-project-content">
-          <span class="tv-project-location">GAMBHIRA, INDIA</span>
-          <h3>Drone-Based Orthomosaic & Surface Modelling</h3>
-          <p>
-            An ongoing photogrammetry workflow focused on processing
-            raw RGB drone imagery for orthomosaic generation and
-            digital surface modelling.
-          </p>
-          <div class="tv-project-tags">
-            <span>Drone Survey</span>
-            <span>Photogrammetry</span>
-            <span>Orthomosaic</span>
-            <span>DSM</span>
-          </div>
-          <a href="projects.html" class="tv-project-link">
-            Explore Project <span>→</span>
-          </a>
+          <a href="projects.html" class="home-text-link">Explore Project →</a>
         </div>
       </article>
 
     </div>
 
-    <div class="tv-projects-footer">
-      <p>Have a geospatial or environmental project in mind?</p>
-      <a href="#consultation" class="tv-projects-cta">
-        Start a Conversation <span>→</span>
-      </a>
-    </div>
+    <a href="projects.html" class="home-text-link">
+      View All Projects →
+    </a>
 
   </div>
+
 </section>
 
 
 <!-- ======================================
-     TECHNOLOGY STACK
+     TECHNOLOGY PREVIEW
 ====================================== -->
 
-<section class="section technology" id="technology">
+<section class="home-section">
 
   <div class="container">
 
-    <div class="split tech-split">
+    <div class="home-section-heading">
+      <p class="home-kicker">TECHNOLOGY & WORKFLOWS</p>
 
-      <div class="reveal">
+      <h2>
+        Built with modern
+        <span>geospatial technologies.</span>
+      </h2>
 
-        <p class="section-kicker">
-          TECHNOLOGY STACK
-        </p>
+      <p>
+        We use established GIS platforms, open-source
+        geospatial technologies, cloud processing and
+        analytical methods selected according to project needs.
+      </p>
+    </div>
 
-        <h2>
-          Built with modern
-          <span>geospatial workflows.</span>
-        </h2>
+    <div class="home-tech-grid">
 
-        <p class="tech-intro">
-          We combine established GIS platforms, open-source
-          geospatial technologies, cloud processing and
-          analytical methods to develop scalable solutions.
-        </p>
-
+      <div class="home-tech-item">
+        <strong>Earth Observation</strong>
+        <span>Sentinel-1, Sentinel-2 and Landsat</span>
       </div>
 
+      <div class="home-tech-item">
+        <strong>GIS & Mapping</strong>
+        <span>QGIS, ArcGIS and spatial analysis</span>
+      </div>
 
-      <div class="tech-grid reveal">
+      <div class="home-tech-item">
+        <strong>Cloud Processing</strong>
+        <span>Google Earth Engine</span>
+      </div>
 
-        <div>
-          <strong>Earth Observation</strong>
-          <span>Sentinel-1 / Sentinel-2 / Landsat</span>
-        </div>
+      <div class="home-tech-item">
+        <strong>Programming</strong>
+        <span>Python, NumPy, Pandas and GeoPandas</span>
+      </div>
 
-        <div>
-          <strong>GIS & Mapping</strong>
-          <span>QGIS / ArcGIS / Spatial Databases</span>
-        </div>
+      <div class="home-tech-item">
+        <strong>AI & Machine Learning</strong>
+        <span>Scikit-learn, XGBoost and GeoAI</span>
+      </div>
 
-        <div>
-          <strong>Cloud Processing</strong>
-          <span>Google Earth Engine</span>
-        </div>
-
-        <div>
-          <strong>Programming</strong>
-          <span>Python / R / GeoPandas / Rasterio</span>
-        </div>
-
-        <div>
-          <strong>AI & Machine Learning</strong>
-          <span>Scikit-learn / XGBoost / GeoAI</span>
-        </div>
-
-        <div>
-          <strong>Geospatial Data</strong>
-          <span>Raster / Vector / DEM / APIs</span>
-        </div>
-
+      <div class="home-tech-item">
+        <strong>Geospatial Data</strong>
+        <span>Raster, vector, DEM and spatial databases</span>
       </div>
 
     </div>
+
+    <a href="technology.html" class="home-text-link">
+      Explore Our Technology →
+    </a>
 
   </div>
 
@@ -964,29 +920,50 @@
      APPLICATION AREAS
 ====================================== -->
 
-<section class="section industries">
+<section class="home-section">
 
   <div class="container">
 
-    <p class="section-kicker">
-      APPLICATION AREAS
-    </p>
+    <div class="home-section-heading">
+      <p class="home-kicker">APPLICATION AREAS</p>
 
-    <h2 class="reveal">
-      Geospatial intelligence across
-      <span>real-world sectors.</span>
-    </h2>
+      <h2>
+        Geospatial intelligence across
+        <span>real-world sectors.</span>
+      </h2>
+    </div>
 
-    <div class="industry-list reveal">
+    <div class="home-tech-grid">
 
-      <span>Infrastructure</span>
-      <span>Real Estate</span>
-      <span>Environment</span>
-      <span>Urban Planning</span>
-      <span>Mining & Geology</span>
-      <span>Agriculture</span>
-      <span>Research & Academia</span>
-      <span>Government Projects</span>
+      <div class="home-tech-item">
+        <strong>Infrastructure</strong>
+        <span>Spatial planning and site assessment</span>
+      </div>
+
+      <div class="home-tech-item">
+        <strong>Real Estate</strong>
+        <span>Land and environmental due diligence</span>
+      </div>
+
+      <div class="home-tech-item">
+        <strong>Environment</strong>
+        <span>Monitoring and resource assessment</span>
+      </div>
+
+      <div class="home-tech-item">
+        <strong>Urban Planning</strong>
+        <span>Urban growth and heat analysis</span>
+      </div>
+
+      <div class="home-tech-item">
+        <strong>Mining & Geology</strong>
+        <span>Geological and terrain analysis</span>
+      </div>
+
+      <div class="home-tech-item">
+        <strong>Agriculture</strong>
+        <span>Land, vegetation and water analysis</span>
+      </div>
 
     </div>
 
@@ -996,187 +973,42 @@
 
 
 <!-- ======================================
-     CONSULTATION / CONTACT
+     CONTACT CTA
 ====================================== -->
 
-<section class="section consultation" id="consultation">
+<section class="home-section">
 
-  <div class="container consultation-grid">
+  <div class="container">
 
-    <div class="consultation-copy reveal">
+    <div class="home-cta">
 
-      <p class="section-kicker">
-        REQUEST A CONSULTATION
-      </p>
+      <p class="home-kicker">START A CONVERSATION</p>
 
       <h2>
-        Have a spatial problem?<br>
+        Have a spatial problem?
         <span>Let's map the next step.</span>
       </h2>
 
       <p>
         Tell us about your project, location and objectives.
-        TerraVita can review your requirements and recommend
-        an appropriate geospatial workflow.
+        We can review your requirements and recommend an
+        appropriate geospatial workflow.
       </p>
 
-
-      <div class="contact-points">
-
-        <a href="mailto:terravita.giec@gmail.com">
-          ✉ terravita.giec@gmail.com
+      <div class="home-actions" style="justify-content:center;">
+        <a href="contact.html#contact-form" class="home-btn home-btn-primary">
+          Request a Consultation ↗
         </a>
 
-        <a
-          href="https://wa.me/919545881451"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ◌ WhatsApp: +91 95458 81451
+        <a href="https://wa.me/919545881451"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="home-btn home-btn-outline">
+          Connect on WhatsApp
         </a>
-
-        <span>
-          ⌖ Ahmedabad, Gujarat, India
-        </span>
-
       </div>
 
     </div>
-
-
-    <!-- Consultation form -->
-
-    <form
-      class="consultation-form reveal"
-      id="consultationForm"
-    >
-
-      <div class="form-row">
-
-        <label>
-          Full Name
-          <input
-            required
-            name="name"
-            type="text"
-            autocomplete="name"
-            placeholder="Your name"
-          >
-        </label>
-
-        <label>
-          Company / Organization
-          <input
-            name="company"
-            type="text"
-            autocomplete="organization"
-            placeholder="Organization"
-          >
-        </label>
-
-      </div>
-
-
-      <div class="form-row">
-
-        <label>
-          Email
-          <input
-            required
-            name="email"
-            type="email"
-            autocomplete="email"
-            placeholder="you@company.com"
-          >
-        </label>
-
-        <label>
-          Phone / WhatsApp
-          <input
-            name="phone"
-            type="tel"
-            autocomplete="tel"
-            placeholder="+91"
-          >
-        </label>
-
-      </div>
-
-
-      <label>
-        Project Type
-
-        <select required name="projectType">
-
-          <option value="">Select one</option>
-
-          <option>GIS & Remote Sensing</option>
-          <option>Environmental Consulting</option>
-          <option>Land / Site Due Diligence</option>
-          <option>Urban Analytics</option>
-          <option>Geological Analytics</option>
-          <option>GeoAI / Automation</option>
-          <option>Other</option>
-
-        </select>
-
-      </label>
-
-
-      <label>
-        Project Location
-
-        <input
-          name="location"
-          type="text"
-          placeholder="City, district, state or coordinates"
-        >
-
-      </label>
-
-
-      <label>
-        Tell us about your project
-
-        <textarea
-          required
-          name="message"
-          rows="5"
-          placeholder="What are you trying to analyze, decide or monitor?"
-        ></textarea>
-
-      </label>
-
-
-      <label>
-        Expected Timeline
-
-        <select name="timeline">
-
-          <option>Not decided</option>
-          <option>Within 1 week</option>
-          <option>1–4 weeks</option>
-          <option>1–3 months</option>
-          <option>Longer-term</option>
-
-        </select>
-
-      </label>
-
-
-      <button class="btn btn-primary" type="submit">
-        Send Project Brief
-        <span>↗</span>
-      </button>
-
-
-      <p class="form-note">
-        Submitting this form opens your email client with
-        the project details. A working email application
-        is required.
-      </p>
-
-    </form>
 
   </div>
 
@@ -1184,36 +1016,79 @@
 
 </main>
 
-<!-- Keep your existing footer and JavaScript scripts here. -->
 
-</body>
-</html>
+<!-- ======================================
+     FOOTER
+====================================== -->
 
 <footer>
+
   <div class="container footer-main">
-    <div><a class="brand" href="#home"> 
-      <!-- <span class="brand-mark">TV</span> -->
-      <span class="brand-mark">
-          <img src="images/favicon-64.png" alt="">
-      </span>
-      <span class="brand-copy"><strong>TerraVita</strong>
-        <small>Environmental & Geospatial Consultancy</small>
-          </span></a><p>Satellite + GIS + AI for environmental, urban and geological decision-making.</p></div>
-    <div class="footer-links"><a href="#about">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="projects.html">Projects</a><a href="#consultation">Contact</a><a href="https://www.linkedin.com/company/terravita-environmental-and-geospatial-consultant/" target="_blank" rel="noopener">LinkedIn</a></div>
+
+    <div>
+
+      <a class="brand" href="index.html">
+
+        <span class="brand-mark">
+          <img src="images/favicon-64.png" alt="TerraVita logo">
+        </span>
+
+        <span class="brand-copy">
+          <strong>TerraVita</strong>
+          <small>Environmental & Geospatial Consultancy</small>
+        </span>
+
+      </a>
+
+      <p>
+        Satellite + GIS + AI for environmental,
+        urban and geological decision-making.
+      </p>
+
+    </div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="technology.html">Technology</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact</a>
+
+      <a href="https://www.linkedin.com/company/terravita-environmental-and-geospatial-consultant/"
+         target="_blank"
+         rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </div>
+
   </div>
-  <div class="container footer-bottom"><span>© 2026 TerraVita Environmental & Geospatial Consultancy</span><span>Ahmedabad, Gujarat, India</span></div>
+
+  <div class="container footer-bottom">
+    <span>© 2026 TerraVita Environmental & Geospatial Consultancy</span>
+    <span>Ahmedabad, Gujarat, India</span>
+  </div>
+
 </footer>
 
-<a
-  class="whatsapp"
-  href="https://wa.me/919545881451"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Chat with TerraVita on WhatsApp"
->
+
+<!-- ======================================
+     WHATSAPP BUTTON
+====================================== -->
+
+<a class="whatsapp"
+   href="https://wa.me/919545881451"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat with TerraVita on WhatsApp">
+
   <img src="images/whatsapp-logo.png" alt="WhatsApp">
+
 </a>
-    <iframe src="viewer.html" ...></iframe>
+
+
 <script src="js/script.js"></script>
+
 </body>
 </html>
