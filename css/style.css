@@ -679,56 +679,128 @@ h1 em {
   margin-bottom: 0;
 }
 
-/* ---------- 9. Services ---------- */
-.services {
-  background:
-    linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.04) 50%, transparent);
-}
-.section-heading {
-  max-width: 720px;
-  margin-bottom: 56px;
-}
-.section-heading p:last-child {
-  font-size: 1.05rem;
+
+/* ======================================
+   TERRAVITA SERVICES SECTION
+====================================== */
+
+.services-heading {
+  max-width: 760px;
+  margin-bottom: 52px;
 }
 
-.service-grid {
+.services-intro {
+  max-width: 650px;
+  line-height: 1.8;
+  color: var(--muted, #aab8c5);
+}
+
+.services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
+
 .service-card {
-  position: relative;
-  padding: 30px 28px;
-  border-radius: var(--radius);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
-              background 0.3s var(--ease);
-  overflow: hidden;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.025);
+  transition: transform .3s ease, border-color .3s ease,
+              background .3s ease;
 }
-.service-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease);
-}
+
 .service-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(52, 211, 153, 0.35);
-  background: var(--surface-strong);
+  border-color: rgba(75,211,175,0.55);
+  background: rgba(75,211,175,0.045);
 }
-.service-card:hover::before { transform: scaleX(1); }
-.service-card h3 { color: var(--text); }
-.service-card p { font-size: 0.95rem; margin: 0; }
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent, #55d6b0);
+  margin-bottom: 24px;
+}
+
+.service-icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.service-number {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--accent, #55d6b0);
+  margin-bottom: 14px;
+}
+
+.service-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 21px;
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.service-card p {
+  color: var(--muted, #aab8c5);
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+.service-card ul {
+  padding-left: 19px;
+  margin: 22px 0;
+}
+
+.service-card li {
+  color: var(--muted, #aab8c5);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.service-card .text-link {
+  display: inline-block;
+  margin-top: 8px;
+}
 
 .services-cta {
   margin-top: 48px;
-  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.services-cta p {
+  color: var(--muted, #aab8c5);
+}
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .services-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ---------- 10. Technology ---------- */
