@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Contact TerraVita Environmental & Geospatial Consultancy for GIS, remote sensing, environmental analytics, land due diligence and GeoAI projects.">
+
+  <title>Contact Us | TerraVita Environmental & Geospatial Consultancy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* CONTACT PAGE SPECIFIC STYLES */
+
+    .contact-page-intro {
+      padding: 145px 0 55px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(32,201,176,.12), transparent 35%),
+        #071521;
+    }
+
+    .contact-page-intro .section-kicker {
+      color: #20c9b0;
+    }
+
+    .contact-page-intro h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      max-width: 850px;
+      margin: 18px 0;
+    }
+
+    .contact-page-intro h1 span {
+      color: #20c9b0;
+    }
+
+    .contact-page-intro p {
+      max-width: 680px;
+      color: #aabac5;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .contact-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .contact-detail-card {
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .contact-detail-card .detail-icon {
+      color: #20c9b0;
+      font-size: 1.7rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .contact-detail-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 9px;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail-card p,
+    .contact-detail-card a {
+      color: #aabac5;
+      font-size: .94rem;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-detail-card a:hover {
+      color: #20c9b0;
+    }
+
+    .contact-form-section {
+      padding: 70px 0 100px;
+    }
+
+    .contact-form-heading {
+      margin-bottom: 30px;
+    }
+
+    .contact-form-heading h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 12px 0;
+    }
+
+    .contact-form-heading p {
+      color: #aabac5;
+      line-height: 1.8;
+      max-width: 650px;
+    }
+
+    .contact-extra {
+      margin-top: 25px;
+      padding: 22px;
+      border-left: 3px solid #20c9b0;
+      background: rgba(32,201,176,.055);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .contact-extra p {
+      color: #aabac5;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .contact-extra strong {
+      color: #20c9b0;
+    }
+
+    .contact-form-section .consultation-grid {
+      align-items: start;
+    }
+
+    .contact-form-section .consultation-form {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .contact-page-intro {
+        padding: 120px 0 40px;
+      }
+
+      .contact-details {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-section {
+        padding: 45px 0 70px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav-wrap">
+
+    <a class="brand" href="index.html" aria-label="TerraVita home">
+      <span class="brand-mark">
+        <img src="images/favicon-64.png" alt="">
+      </span>
+
+      <span class="brand-copy">
+        <strong>TerraVita</strong>
+        <small>Environmental & Geospatial Consultancy</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="technology.html">Technology</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- CONTACT HERO -->
+
+<section class="contact-page-intro">
+  <div class="container">
+
+    <p class="section-kicker">CONTACT TERRAVITA</p>
+
+    <h1>
+      Let's discuss your
+      <span>next project.</span>
+    </h1>
+
+    <p>
+      Have a GIS, remote sensing, environmental, urban or geological
+      project in mind? Tell us what you are trying to understand.
+      TerraVita can review your requirements and suggest an appropriate
+      geospatial workflow.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact-form" class="btn btn-primary">
+        Share Your Project Brief <span>↗</span>
+      </a>
+
+      <a href="https://wa.me/919545881451"
+         target="_blank" rel="noopener"
+         class="btn btn-secondary">
+        Contact on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CONTACT DETAILS -->
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <p class="section-kicker">GET IN TOUCH</p>
+        <h2>Connect with <span>TerraVita.</span></h2>
+      </div>
+
+      <p>
+        For project enquiries, collaborations, research discussions
+        and professional opportunities.
+      </p>
+    </div>
+
+    <div class="contact-details">
+
+      <article class="contact-detail-card">
+        <span class="detail-icon">✉</span>
+        <h3>Email</h3>
+        <p>
+          For project requirements and professional enquiries.
+        </p>
+        <a href="mailto:terravita.giec@gmail.com">
+          terravita.giec@gmail.com
+        </a>
+      </article>
+
+      <article class="contact-detail-card">
+        <span class="detail-icon">◌</span>
+        <h3>WhatsApp</h3>
+        <p>
+          Connect with us directly to discuss your project.
+        </p>
+        <a href="https://wa.me/919545881451"
+           target="_blank" rel="noopener">
+          +91 95458 81451
+        </a>
+      </article>
+
+      <article class="contact-detail-card">
+        <span class="detail-icon">⌖</span>
+        <h3>Location</h3>
+        <p>
+          Based in Ahmedabad, Gujarat, India.
+        </p>
+        <p>
+          Serving projects across India and internationally.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PROJECT ENQUIRY FORM -->
+
+<section class="section consultation contact-form-section"
+         id="contact-form">
+
+  <div class="container consultation-grid">
+
+    <div class="consultation-copy">
+
+      <p class="section-kicker">PROJECT ENQUIRY</p>
+
+      <h2>
+        Tell us about your project.
+        <br>
+        <span>Let's explore the possibilities.</span>
+      </h2>
+
+      <p>
+        Share your project objectives, study area and expected
+        deliverables. We will review the information and discuss
+        a suitable approach.
+      </p>
+
+      <div class="contact-points">
+
+        <a href="mailto:terravita.giec@gmail.com">
+          ✉ terravita.giec@gmail.com
+        </a>
+
+        <a href="https://wa.me/919545881451"
+           target="_blank" rel="noopener">
+          ◌ WhatsApp: +91 95458 81451
+        </a>
+
+        <span>⌖ Ahmedabad, Gujarat, India</span>
+
+      </div>
+
+      <div class="contact-extra">
+        <p>
+          <strong>Working with TerraVita</strong><br>
+          We welcome project enquiries, research collaborations,
+          consultancy opportunities and professional partnerships
+          related to geospatial and environmental applications.
+        </p>
+      </div>
+
+    </div>
+
+
+    <form class="consultation-form" id="contactForm">
+
+      <div class="form-row">
+
+        <label>
+          Full Name
+          <input required name="name" type="text"
+                 placeholder="Your full name">
+        </label>
+
+        <label>
+          Company / Organization
+          <input name="company" type="text"
+                 placeholder="Your organization">
+        </label>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <label>
+          Email Address
+          <input required name="email" type="email"
+                 placeholder="you@company.com">
+        </label>
+
+        <label>
+          Phone / WhatsApp
+          <input name="phone" type="tel"
+                 placeholder="+91">
+        </label>
+
+      </div>
+
+
+      <label>
+        Nature of Enquiry
+
+        <select required name="projectType">
+          <option value="">Select enquiry type</option>
+          <option>GIS & Remote Sensing</option>
+          <option>Environmental Consulting</option>
+          <option>Land / Site Due Diligence</option>
+          <option>Urban Analytics</option>
+          <option>Geological Analytics</option>
+          <option>GeoAI / Python Automation</option>
+          <option>Drone Mapping / Photogrammetry</option>
+          <option>Research Collaboration</option>
+          <option>Business Partnership</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+
+      <label>
+        Project Location
+        <input name="location" type="text"
+               placeholder="City, district, state or coordinates">
+      </label>
+
+
+      <label>
+        Project Requirements
+
+        <textarea required name="message" rows="6"
+          placeholder="Briefly describe your project, objectives, datasets, study area and expected deliverables."></textarea>
+      </label>
+
+
+      <label>
+        Expected Timeline
+
+        <select name="timeline">
+          <option>Not decided</option>
+          <option>Within 1 week</option>
+          <option>1–4 weeks</option>
+          <option>1–3 months</option>
+          <option>Longer-term</option>
+        </select>
+      </label>
+
+
+      <button class="btn btn-primary" type="submit">
+        Send Project Enquiry <span>↗</span>
+      </button>
+
+      <p class="form-note">
+        Submitting this form opens your default email application
+        with your enquiry details. Your email will not be sent
+        automatically.
+      </p>
+
+    </form>
+
+  </div>
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section class="section statement">
+  <div class="container statement-grid">
+
+    <p class="section-kicker">LET'S COLLABORATE</p>
+
+    <h2>
+      From spatial questions
+      <span>to meaningful insight.</span>
+    </h2>
+
+    <p>
+      Connect with TerraVita to explore how satellite data,
+      GIS and analytical workflows can support your next project.
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container footer-main">
+
+    <div>
+      <a class="brand" href="index.html">
+
+        <span class="brand-mark">
+          <img src="images/favicon-64.png" alt="">
+        </span>
+
+        <span class="brand-copy">
+          <strong>TerraVita</strong>
+          <small>Environmental & Geospatial Consultancy</small>
+        </span>
+
+      </a>
+
+      <p>
+        Satellite + GIS + AI for environmental, urban
+        and geological decision-making.
+      </p>
+    </div>
+
+
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="technology.html">Technology</a>
+      <a href="contact.html">Contact</a>
+
+      <a href="https://www.linkedin.com/company/terravita-environmental-and-geospatial-consultant/"
+         target="_blank" rel="noopener">
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+
+
+  <div class="container footer-bottom">
+    <span>
+      © 2026 TerraVita Environmental & Geospatial Consultancy
+    </span>
+
+    <span>Ahmedabad, Gujarat, India</span>
+  </div>
+</footer>
+
+
+<!-- WHATSAPP FLOATING BUTTON -->
+
+<a class="whatsapp"
+   href="https://wa.me/919545881451"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Chat with TerraVita on WhatsApp">
+
+  <img src="images/whatsapp-logo.png" alt="WhatsApp">
+
+</a>
+
+
+<!-- CONTACT FORM EMAIL HANDLER -->
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const form = this;
+
+  const name = form.elements["name"].value.trim();
+  const company = form.elements["company"].value.trim();
+  const email = form.elements["email"].value.trim();
+  const phone = form.elements["phone"].value.trim();
+  const projectType = form.elements["projectType"].value;
+  const location = form.elements["location"].value.trim();
+  const message = form.elements["message"].value.trim();
+  const timeline = form.elements["timeline"].value;
+
+  const subject = encodeURIComponent(
+    "TerraVita Project Enquiry - " + projectType
+  );
+
+  const body = encodeURIComponent(
+    "PROJECT ENQUIRY\n\n" +
+    "Name: " + name + "\n" +
+    "Company / Organization: " + company + "\n" +
+    "Email: " + email + "\n" +
+    "Phone: " + phone + "\n" +
+    "Enquiry Type: " + projectType + "\n" +
+    "Project Location: " + location + "\n" +
+    "Expected Timeline: " + timeline + "\n\n" +
+    "Project Requirements:\n" + message
+  );
+
+  window.location.href =
+    "mailto:terravita.giec@gmail.com?subject=" +
+    subject + "&body=" + body;
+
+});
+</script>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
