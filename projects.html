@@ -1,29 +1,644 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TerraVita | Projects </title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Explore TerraVita's GIS, remote sensing, environmental analytics, urban intelligence and geospatial research projects.">
+
+  <meta name="theme-color" content="#071724">
+
+  <title>Projects & Case Studies | TerraVita Geospatial Consultancy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* PROJECT PAGE */
+
+    .case-page {
+      min-height: 100vh;
+      background: #071724;
+      color: #edf5f8;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .case-hero {
+      padding: 100px 0 75px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(34, 190, 157, 0.13), transparent 35%),
+        #071724;
+    }
+
+    .case-hero-content {
+      max-width: 850px;
+    }
+
+    .case-eyebrow {
+      color: #35d9b3;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .case-hero h1 {
+      margin: 18px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .case-hero h1 span {
+      color: #35d9b3;
+    }
+
+    .case-hero p {
+      max-width: 680px;
+      color: #a9bdca;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .case-back {
+      display: inline-block;
+      margin-top: 25px;
+      color: #35d9b3;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .case-section {
+      padding: 65px 0;
+      background: #091b29;
+    }
+
+    .case-section-heading {
+      margin-bottom: 35px;
+    }
+
+    .case-section-heading h2 {
+      margin: 10px 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 34px;
+    }
+
+    .case-section-heading p {
+      color: #a9bdca;
+      line-height: 1.7;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(160, 190, 210, 0.16);
+      border-radius: 14px;
+      background: #102331;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(53, 217, 179, .55);
+    }
+
+    .case-card-top {
+      min-height: 155px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(135deg, rgba(42, 183, 154, .18), rgba(15, 40, 55, .5)),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 23px,
+          rgba(130, 190, 190, .08) 24px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 23px,
+          rgba(130, 190, 190, .08) 24px
+        );
+    }
+
+    .case-number {
+      color: #35d9b3;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    .case-status {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 4px;
+      background: rgba(53, 217, 179, .12);
+      color: #70e8cb;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .case-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .case-location {
+      margin-bottom: 10px;
+      color: #35d9b3;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .case-card h3 {
+      margin: 0 0 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21px;
+      line-height: 1.35;
+    }
+
+    .case-card p {
+      margin: 0 0 20px;
+      color: #a9bdca;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .case-tags span {
+      padding: 6px 9px;
+      border: 1px solid rgba(160, 190, 210, .18);
+      border-radius: 4px;
+      color: #c7d8e1;
+      font-size: 10px;
+    }
+
+    .case-link {
+      margin-top: auto;
+      color: #35d9b3;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .case-link:hover {
+      color: #a0f4de;
+    }
+
+    /* METHODOLOGY */
+
+    .case-methodology {
+      padding: 75px 0;
+      background: #071724;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .method-card {
+      padding: 22px;
+      border: 1px solid rgba(160, 190, 210, .15);
+      border-radius: 10px;
+      background: #102331;
+    }
+
+    .method-card span {
+      color: #35d9b3;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .method-card h3 {
+      margin: 12px 0 8px;
+      font-size: 16px;
+    }
+
+    .method-card p {
+      color: #a9bdca;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* CTA */
+
+    .case-cta {
+      padding: 70px 20px;
+      text-align: center;
+      background: #102b37;
+    }
+
+    .case-cta h2 {
+      margin: 0 0 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .case-cta p {
+      margin: 0 auto 25px;
+      max-width: 600px;
+      color: #b0c2cc;
+      line-height: 1.8;
+    }
+
+    .case-cta a {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 6px;
+      background: #28cba5;
+      color: #061923;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .case-footer {
+      padding: 25px 15px;
+      text-align: center;
+      color: #8da3b1;
+      background: #06131e;
+      font-size: 12px;
+    }
+
+    @media(max-width: 850px) {
+      .method-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media(max-width: 650px) {
+      .case-hero {
+        padding: 70px 0 55px;
+      }
+
+      .case-grid,
+      .method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .case-section,
+      .case-methodology {
+        padding: 50px 0;
+      }
+
+      .case-section-heading h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html">
-  <!-- <span class="brand-mark">TV</span> -->
-        <span class="brand-mark">
-          <img src="images/favicon-64.png" alt="">
-      </span>
-  <span class="brand-copy"><strong>TerraVita</strong><small>Environmental & Geospatial Consultancy</small></span></a><button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button><nav class="main-nav" id="mainNav"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="projects.html">Projects</a><a href="index.html#technology">Technology</a><a href="index.html#consultation">Contact</a><a class="nav-cta" href="index.html#consultation">Request a Consultation</a></nav></div></header>
-<main>
-<section class="page-hero"><div class="container"><p class="section-kicker">PROJECT LIBRARY</p><h1>Spatial analysis with a <span>purpose.</span></h1><p>Selected TerraVita workflows demonstrating how satellite data, GIS and AI can support environmental, urban and site-level decisions.</p></div></section>
-<section class="section"><div class="container project-library">
-<article class="library-card"><div class="library-visual visual-ahmedabad"><span>NDVI / NDWI / MNDWI</span></div><div><p class="tag">REMOTE SENSING</p><h2>Ahmedabad Environmental Analysis</h2><p>Multi-index analysis of vegetation and surface-water patterns.</p><a class="btn btn-dark" href="projects/ahmedabad.html">View case study →</a></div></article>
-<article class="library-card"><div class="library-visual visual-due"><span>LULC / CHANGE / RISK</span></div><div><p class="tag">SITE INTELLIGENCE</p><h2>Satellite-Based Land Due Diligence</h2><p>A structured site-screening workflow for land and environmental constraints.</p><a class="btn btn-dark" href="projects/due-diligence.html">View case study →</a></div></article>
-<article class="library-card"><div class="library-visual visual-heat"><span>NDVI / LST / BUILT-UP</span></div><div><p class="tag">URBAN ANALYTICS</p><h2>Urban Heat Intelligence</h2><p>Integrated vegetation, built-up and surface-temperature analysis.</p><a class="btn btn-dark" href="projects/urban-heat.html">View case study →</a></div></article>
-</div></section>
-<section class="cta-band"><div class="container"><p class="section-kicker">YOUR PROJECT NEXT</p><h2>Have a dataset, site or question?</h2><a class="btn btn-primary" href="index.html#consultation">Request a Consultation ↗</a></div></section>
-</main>
+
+<div class="case-page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+
+      <a href="index.html" class="brand">
+        <img src="images/favicon-64.png" alt="TerraVita Logo">
+        <span class="brand-copy">
+          <strong>TERRAVITA</strong>
+          <small>Environmental & Geospatial Consultancy</small>
+        </span>
+      </a>
+
+      <nav id="mainNav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="index.html#technology">Technology</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <a href="index.html#consultation" class="btn btn-primary">
+        Let's Talk
+      </a>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="case-hero">
+    <div class="container">
+      <div class="case-hero-content">
+
+        <span class="case-eyebrow">
+          TERRAVITA / PROJECT PORTFOLIO
+        </span>
+
+        <h1>
+          Geospatial intelligence.
+          <span>Real-world perspective.</span>
+        </h1>
+
+        <p>
+          Discover our GIS, remote sensing, environmental research
+          and spatial analytics work. Each project demonstrates how
+          satellite observations and geospatial technologies can
+          support informed decisions.
+        </p>
+
+        <a href="index.html#projects" class="case-back">
+          ← Back to Homepage
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT LIBRARY -->
+  <section class="case-section">
+    <div class="container">
+
+      <div class="case-section-heading">
+        <span class="case-eyebrow">OUR PORTFOLIO</span>
+        <h2>Selected Projects & Research</h2>
+        <p>
+          Explore selected analytical studies, demonstrations
+          and ongoing research initiatives.
+        </p>
+      </div>
+
+      <div class="case-grid">
+
+        <!-- 01 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 01 / URBAN</span>
+            <span class="case-status">Analytical Study</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Pune, Maharashtra, India</span>
+            <h3>Urban Heat Risk & Cooling Priority Intelligence</h3>
+            <p>
+              Satellite-based assessment of land surface temperature,
+              vegetation and built-up patterns to understand urban
+              heat distribution and cooling priorities.
+            </p>
+            <div class="case-tags">
+              <span>Google Earth Engine</span>
+              <span>LST</span>
+              <span>NDVI</span>
+              <span>NDBI</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 02 / LAND</span>
+            <span class="case-status">Analytical Study</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Gujarat, India</span>
+            <h3>Multi-Temporal Land Cover & Vegetation Analysis</h3>
+            <p>
+              Multi-year satellite analysis using vegetation indicators
+              and land-cover information to examine spatial patterns
+              and landscape changes.
+            </p>
+            <div class="case-tags">
+              <span>Sentinel-2</span>
+              <span>NDVI</span>
+              <span>LULC</span>
+              <span>GIS</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 03 / WATER</span>
+            <span class="case-status">Research Pilot / In Progress</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Gujarat, India</span>
+            <h3>Agricultural Groundwater & Environmental Exposure Intelligence</h3>
+            <p>
+              Research-oriented GIS initiative integrating groundwater
+              quality, agricultural land use and environmental datasets
+              for spatial exposure assessment.
+            </p>
+            <div class="case-tags">
+              <span>CGWB</span>
+              <span>Groundwater</span>
+              <span>GIS</span>
+              <span>Python</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 04 / VEGETATION</span>
+            <span class="case-status">Demonstration Analysis</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Bengaluru, Karnataka, India</span>
+            <h3>Urban Vegetation Change Assessment</h3>
+            <p>
+              Multi-year NDVI analysis exploring vegetation gain,
+              stability and loss patterns across an urban study area.
+            </p>
+            <div class="case-tags">
+              <span>Remote Sensing</span>
+              <span>NDVI</span>
+              <span>Python</span>
+              <span>GIS</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+        <!-- 05 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 05 / ENERGY</span>
+            <span class="case-status">Geospatial Demonstration</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Dholera, Gujarat, India</span>
+            <h3>Solar Energy Site Geospatial Assessment</h3>
+            <p>
+              Geospatial demonstration exploring satellite-derived
+              land characteristics and spatial context for
+              renewable energy assessment.
+            </p>
+            <div class="case-tags">
+              <span>Satellite Data</span>
+              <span>GIS</span>
+              <span>Land Analysis</span>
+              <span>Mapping</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+        <!-- 06 -->
+        <article class="case-card">
+          <div class="case-card-top">
+            <span class="case-number">PROJECT 06 / DRONE</span>
+            <span class="case-status">In Progress</span>
+          </div>
+          <div class="case-card-body">
+            <span class="case-location">Gambhira, India</span>
+            <h3>Drone-Based Orthomosaic & Surface Modelling</h3>
+            <p>
+              An ongoing photogrammetry workflow focused on raw RGB
+              drone imagery, orthomosaic generation and digital
+              surface modelling.
+            </p>
+            <div class="case-tags">
+              <span>Drone Survey</span>
+              <span>Photogrammetry</span>
+              <span>Orthomosaic</span>
+              <span>DSM</span>
+            </div>
+            <a class="case-link" href="index.html#consultation">
+              Discuss a Similar Project →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="case-methodology">
+    <div class="container">
+
+      <div class="case-section-heading">
+        <span class="case-eyebrow">OUR APPROACH</span>
+        <h2>From satellite data to spatial insight.</h2>
+        <p>
+          A structured geospatial workflow designed to transform
+          complex spatial information into understandable outputs.
+        </p>
+      </div>
+
+      <div class="method-grid">
+
+        <div class="method-card">
+          <span>01 / DATA</span>
+          <h3>Data Acquisition</h3>
+          <p>
+            Satellite imagery, geospatial datasets,
+            field information and supporting data.
+          </p>
+        </div>
+
+        <div class="method-card">
+          <span>02 / PROCESS</span>
+          <h3>Spatial Processing</h3>
+          <p>
+            Image processing, GIS analysis,
+            classification and spatial modelling.
+          </p>
+        </div>
+
+        <div class="method-card">
+          <span>03 / ANALYSE</span>
+          <h3>Intelligence</h3>
+          <p>
+            Spatial indicators, change detection,
+            risk analysis and interpretation.
+          </p>
+        </div>
+
+        <div class="method-card">
+          <span>04 / DELIVER</span>
+          <h3>Decision Support</h3>
+          <p>
+            Thematic maps, reports, dashboards
+            and geospatial deliverables.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="case-cta">
+    <h2>Have a project in mind?</h2>
+    <p>
+      Let's explore how satellite data, GIS and geospatial analytics
+      can support your environmental, urban or infrastructure project.
+    </p>
+    <a href="index.html#consultation">
+      Start a Conversation →
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="case-footer">
+    © 2026 TerraVita Environmental & Geospatial Consultancy.
+    All rights reserved.
+  </footer>
+
+</div>
+
+</body>
+</html>
+
 <footer><div class="container footer-bottom"><span>© 2026 TerraVita</span><a href="index.html">Back to home</a></div></footer>
 <!-- <a class="whatsapp" href="https://wa.me/919545881451" target="_blank">WA</a> -->
   <a
