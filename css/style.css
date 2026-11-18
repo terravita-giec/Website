@@ -805,222 +805,480 @@ h1 em {
 
 
 
-/* ======================================
-   TERRAVITA PROJECT PORTFOLIO
-====================================== */
 
-.projects-heading {
-  max-width: 760px;
+/* =========================================
+   TERRAVITA PROJECT PORTFOLIO
+========================================= */
+
+.tv-projects {
+  position: relative;
+  padding: 105px 0;
+  background: #071724;
+  color: #eaf2f8;
+  overflow: hidden;
+}
+
+.tv-projects-heading {
+  max-width: 1000px;
   margin-bottom: 48px;
 }
 
-.projects-intro {
-  max-width: 650px;
+.tv-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #28d6ae;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tv-projects-heading h2 {
+  max-width: 950px;
+  margin: 0 0 18px;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+  font-weight: 800;
+}
+
+.tv-projects-heading h2 span {
+  color: #29d6ad;
+}
+
+.tv-projects-heading p {
+  max-width: 800px;
+  color: #a8bac9;
+  font-size: 15px;
   line-height: 1.8;
-  color: var(--muted, #aab8c5);
 }
 
-.projects-grid {
+.tv-projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  align-items: stretch;
 }
 
-.project-card {
+.tv-project-card {
+  min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,.10);
+  border: 1px solid rgba(161, 190, 210, 0.15);
   border-radius: 16px;
-  background: rgba(255,255,255,.025);
-  transition: transform .3s ease, border-color .3s ease;
+  background: #102331;
+  transition: transform 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
-.project-card:hover {
+.tv-project-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(75,211,175,.5);
+  border-color: rgba(41, 214, 173, 0.55);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
 }
 
-/* Project visual panels */
+/* VISUAL PREVIEW */
 
-.project-visual {
-  min-height: 220px;
+.tv-project-visual {
   position: relative;
+  height: 230px;
   overflow: hidden;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #102c38;
+  isolation: isolate;
+  background-color: #132d3b;
+  background-image:
+    linear-gradient(rgba(130, 180, 195, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 180, 195, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-.project-visual::before,
-.project-visual::after {
+.tv-project-visual::after {
   content: "";
   position: absolute;
-  border: 1px solid rgba(110,220,190,.25);
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg,
+    rgba(4, 17, 28, 0.15),
+    rgba(4, 17, 28, 0.75));
+}
+
+.tv-project-index,
+.tv-project-type,
+.tv-visual-caption {
+  position: absolute;
+  z-index: 3;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.tv-project-index {
+  top: 18px;
+  left: 20px;
+  color: #35dfb8;
+}
+
+.tv-project-type {
+  top: 18px;
+  right: 20px;
+  color: #d2e2eb;
+  text-align: right;
+}
+
+.tv-visual-caption {
+  bottom: 17px;
+  left: 20px;
+  color: #c0d2dc;
+  font-size: 9px;
+}
+
+/* ABSTRACT MAP ART */
+
+.tv-map-art {
+  position: absolute;
+  inset: 35px 12% 25px;
+  overflow: hidden;
+}
+
+.tv-map-art span {
+  position: absolute;
+  display: block;
+}
+
+/* HEAT MAP */
+
+.tv-heat {
+  background-color: #152b3a;
+}
+
+.heat-zone {
   border-radius: 50%;
-  width: 260px;
-  height: 260px;
-  right: -90px;
-  bottom: -150px;
-  pointer-events: none;
+  filter: blur(3px);
 }
 
-.project-visual::after {
-  width: 180px;
-  height: 180px;
-  right: -50px;
-  bottom: -110px;
+.hz-1 {
+  width: 120px;
+  height: 120px;
+  top: 25px;
+  left: 12%;
+  background: rgba(255, 106, 66, 0.65);
 }
 
-.project-heat {
-  background:
-    radial-gradient(circle at 70% 40%, #bd7045, transparent 35%),
-    linear-gradient(135deg, #102c38, #263e54);
+.hz-2 {
+  width: 150px;
+  height: 150px;
+  top: 5px;
+  right: 15%;
+  background: rgba(255, 184, 70, 0.5);
 }
 
-.project-land {
-  background:
-    radial-gradient(circle at 70% 40%, #62a57a, transparent 35%),
-    linear-gradient(135deg, #102c38, #183e3a);
+.hz-3 {
+  width: 90px;
+  height: 90px;
+  bottom: 0;
+  left: 42%;
+  background: rgba(232, 76, 92, 0.65);
 }
 
-.project-environment {
-  background:
-    radial-gradient(circle at 70% 40%, #399a91, transparent 35%),
-    linear-gradient(135deg, #102c38, #174d52);
+.heat-road {
+  width: 130%;
+  height: 3px;
+  top: 48%;
+  left: -15%;
+  transform: rotate(-23deg);
+  background: rgba(224, 240, 245, 0.8);
 }
 
-.project-vegetation {
-  background:
-    radial-gradient(circle at 70% 40%, #79a85c, transparent 35%),
-    linear-gradient(135deg, #102c38, #294d39);
+.heat-road-2 {
+  transform: rotate(38deg);
+  top: 60%;
 }
 
-.project-solar {
-  background:
-    radial-gradient(circle at 70% 40%, #d39b4b, transparent 35%),
-    linear-gradient(135deg, #102c38, #53442e);
+/* LAND COVER MAP */
+
+.tv-land {
+  background-color: #142e32;
 }
 
-.project-drone {
-  background:
-    radial-gradient(circle at 70% 40%, #6689b0, transparent 35%),
-    linear-gradient(135deg, #102c38, #293c57);
+.land-patch {
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 5px;
 }
 
-.project-category {
-  position: relative;
-  z-index: 1;
+.lp-1 { inset: 8% 55% 52% 5%; background: #477f68; }
+.lp-2 { inset: 10% 5% 48% 51%; background: #b0a16a; }
+.lp-3 { inset: 53% 58% 4% 8%; background: #648d55; }
+.lp-4 { inset: 52% 5% 6% 55%; background: #947c55; }
+.lp-5 { inset: 35% 38% 35% 35%; background: #a3b56b; }
+.lp-6 { inset: 5% 32% 70% 33%; background: #477a83; }
+
+/* GROUNDWATER MAP */
+
+.tv-groundwater {
+  background-color: #102d3d;
+}
+
+.water-ring {
+  border: 1px solid rgba(65, 199, 220, 0.5);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+
+.wr-1 { width: 230px; height: 95px; top: 28px; left: 10%; }
+.wr-2 { width: 185px; height: 75px; top: 40px; left: 19%; }
+.wr-3 { width: 135px; height: 55px; top: 50px; left: 27%; }
+
+.water-point {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #b7f6e9;
+  border-radius: 50%;
+  background: #24c9ad;
+  box-shadow: 0 0 15px #24c9ad;
+}
+
+.wp-1 { top: 35%; left: 25%; }
+.wp-2 { top: 65%; left: 65%; }
+.wp-3 { top: 20%; left: 76%; }
+
+/* VEGETATION MAP */
+
+.tv-vegetation {
+  background-color: #142f2b;
+}
+
+.veg-patch {
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.vp-1 { width: 90px; height: 75px; top: 10%; left: 8%; background: #78b96e; }
+.vp-2 { width: 110px; height: 90px; top: 20%; right: 10%; background: #3e9365; }
+.vp-3 { width: 85px; height: 85px; bottom: 5%; left: 38%; background: #a1b85b; }
+.vp-4 { width: 55px; height: 55px; top: 5%; left: 48%; background: #4baf88; }
+.vp-5 { width: 65px; height: 65px; bottom: 5%; right: 5%; background: #3e7959; }
+
+/* SOLAR MAP */
+
+.tv-solar {
+  background-color: #27313b;
+}
+
+.solar-panel {
+  width: 55px;
+  height: 30px;
+  border: 1px solid rgba(255, 220, 130, 0.8);
+  transform: skewY(-20deg) rotate(-8deg);
+  background: repeating-linear-gradient(
+    90deg,
+    #325f75 0 8px,
+    #9cc4c9 9px 10px
+  );
+}
+
+.sp-1 { top: 25%; left: 15%; }
+.sp-2 { top: 25%; left: 42%; }
+.sp-3 { top: 58%; left: 28%; }
+.sp-4 { top: 58%; left: 57%; }
+
+.solar-sun {
+  width: 38px;
+  height: 38px;
+  top: 8%;
+  right: 8%;
+  border-radius: 50%;
+  background: #f3c66d;
+  box-shadow: 0 0 35px rgba(243, 198, 109, 0.5);
+}
+
+/* DRONE MAP */
+
+.tv-drone {
+  background-color: #152c3c;
+}
+
+.drone-grid {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(90, 190, 180, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 190, 180, 0.2) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.drone-contour {
+  border: 1px solid rgba(72, 215, 181, 0.6);
+  border-radius: 48% 52% 40% 60%;
+  transform: rotate(-18deg);
+}
+
+.dc-1 { inset: 10% 15% 15% 15%; }
+.dc-2 { inset: 22% 25% 25% 25%; }
+.dc-3 { inset: 34% 35% 35% 35%; }
+
+.drone-center {
+  width: 12px;
+  height: 12px;
+  top: 45%;
+  left: 48%;
+  border-radius: 50%;
+  background: #42e2b7;
+  box-shadow: 0 0 20px #42e2b7;
+}
+
+/* PROJECT TEXT */
+
+.tv-project-content {
+  padding: 25px 26px 27px;
+}
+
+.tv-project-location {
+  display: block;
+  margin-bottom: 12px;
+  color: #36d9b3;
   font-size: 10px;
-  letter-spacing: 1.4px;
-  color: #a5e6d0;
-}
-
-.project-visual-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.project-visual-content > span {
-  font-size: 12px;
-  color: #a5e6d0;
-}
-
-.project-visual-content strong {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 25px;
-  line-height: 1.15;
-  color: #ffffff;
-}
-
-.project-visual-content small {
-  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 1px;
-  color: rgba(255,255,255,.7);
 }
 
-/* Project information */
-
-.project-content {
-  padding: 24px;
+.tv-project-content h3 {
+  margin: 0 0 12px;
+  color: #edf4f8;
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 750;
 }
 
-.project-location {
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  color: var(--accent, #55d6b0);
-}
-
-.project-content h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 19px;
-  line-height: 1.4;
-  margin: 12px 0;
-}
-
-.project-content p {
+.tv-project-content p {
+  margin: 0 0 20px;
+  color: #a9bdca;
   font-size: 13px;
   line-height: 1.8;
-  color: var(--muted, #aab8c5);
 }
 
-.project-tags {
+.tv-project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin: 20px 0;
+  gap: 8px;
+  margin-bottom: 22px;
 }
 
-.project-tags span {
-  padding: 6px 9px;
-  border: 1px solid rgba(255,255,255,.10);
+.tv-project-tags span {
+  padding: 6px 10px;
+  border: 1px solid rgba(145, 180, 198, 0.2);
   border-radius: 5px;
+  color: #c3d5df;
+  background: rgba(255,255,255,0.035);
   font-size: 10px;
-  color: var(--muted, #aab8c5);
 }
 
-.project-content .text-link {
-  display: inline-block;
-  margin-top: 5px;
-}
-
-.projects-footer {
-  margin-top: 45px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.12);
-  display: flex;
-  justify-content: space-between;
+.tv-project-link {
+  display: inline-flex;
   align-items: center;
+  gap: 9px;
+  color: #36d9b3;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: gap 0.25s ease;
+}
+
+.tv-project-link:hover {
+  gap: 15px;
+  color: #8af5d9;
+}
+
+.tv-project-link span {
+  font-size: 18px;
+}
+
+/* BOTTOM CTA */
+
+.tv-projects-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 20px;
+  margin-top: 45px;
+  padding: 26px 30px;
+  border: 1px solid rgba(41, 214, 173, 0.2);
+  border-radius: 12px;
+  background: rgba(25, 64, 72, 0.28);
 }
 
-.projects-footer p {
-  color: var(--muted, #aab8c5);
+.tv-projects-footer p {
+  margin: 0;
+  color: #d8e5eb;
+  font-size: 15px;
 }
 
-/* Responsive layout */
+.tv-projects-cta {
+  color: #35d9b2;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
 
-@media (max-width: 1000px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .tv-projects {
+    padding: 80px 0;
+  }
+
+  .tv-projects-grid {
+    gap: 18px;
+  }
+
+  .tv-project-content {
+    padding: 22px;
+  }
+
+  .tv-project-content h3 {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 600px) {
-  .projects-grid {
+@media (max-width: 650px) {
+  .tv-projects {
+    padding: 65px 0;
+  }
+
+  .tv-projects-heading {
+    margin-bottom: 30px;
+  }
+
+  .tv-projects-heading h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  .tv-projects-heading p {
+    font-size: 13px;
+  }
+
+  .tv-projects-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  .project-visual {
-    min-height: 200px;
+  .tv-project-visual {
+    height: 205px;
   }
 
-  .projects-footer {
-    flex-direction: column;
+  .tv-project-content {
+    padding: 22px;
+  }
+
+  .tv-project-content h3 {
+    font-size: 19px;
+  }
+
+  .tv-project-content p {
+    font-size: 13px;
+  }
+
+  .tv-projects-footer {
     align-items: flex-start;
+    flex-direction: column;
+    padding: 22px;
   }
 }
 
