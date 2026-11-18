@@ -1,1 +1,30 @@
 document.addEventListener('DOMContentLoaded',()=>{const t=document.getElementById('menuToggle'),n=document.getElementById('mainNav'),h=document.getElementById('siteHeader');if(t&&n){t.addEventListener('click',()=>{const o=n.classList.toggle('open');t.setAttribute('aria-expanded',o)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')))}window.addEventListener('scroll',()=>h&&h.classList.toggle('scrolled',scrollY>30));const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>ob.observe(e));const f=document.getElementById('consultationForm');if(f)f.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(f),s=encodeURIComponent(`TerraVita Project Consultation — ${d.get('projectType')||'Project'}`),b=encodeURIComponent(`Hello TerraVita,\n\nI would like to discuss a project.\n\nName: ${d.get('name')}\nCompany: ${d.get('company')}\nEmail: ${d.get('email')}\nPhone: ${d.get('phone')}\nProject Type: ${d.get('projectType')}\nLocation: ${d.get('location')}\nTimeline: ${d.get('timeline')}\n\nProject Brief:\n${d.get('message')}\n\nRegards,\n${d.get('name')}`);location.href=`mailto:terravita.giec@gmail.com?subject=${s}&body=${b}`})});
+
+/* TERRAVITA MOBILE MENU */
+
+const tvMenuButton = document.getElementById("tvMobileToggle");
+const tvNavigation = document.getElementById("tvMainNav");
+
+if (tvMenuButton && tvNavigation) {
+
+  tvMenuButton.addEventListener("click", function () {
+    const isOpen = tvNavigation.classList.toggle("open");
+
+    tvMenuButton.classList.toggle("active", isOpen);
+    tvMenuButton.setAttribute("aria-expanded", String(isOpen));
+    tvMenuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  });
+
+  tvNavigation.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      tvNavigation.classList.remove("open");
+      tvMenuButton.classList.remove("active");
+      tvMenuButton.setAttribute("aria-expanded", "false");
+      tvMenuButton.setAttribute("aria-label", "Open navigation menu");
+    });
+  });
+
+}
