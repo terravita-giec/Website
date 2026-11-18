@@ -4,127 +4,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="theme-color" content="#071724">
+  <meta name="description" content="Learn about TerraVita Environmental & Geospatial Consultancy, our mission, expertise and approach to GIS, remote sensing, environmental analytics and GeoAI.">
 
-  <meta name="description" content="Explore TerraVita's GIS mapping, remote sensing, environmental analytics, urban intelligence, geological analysis and GeoAI services.">
+  <title>About Us | TerraVita Geospatial Consultancy</title>
 
-  <title>Our Services | TerraVita Geospatial Consultancy</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="icon" href="images/favicon.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* =====================================
+    /* ======================================
        TERRAVITA ABOUT PAGE
-    ===================================== */
+       ====================================== */
 
-    .tv-about-page {
-      background: #07131f;
-      color: #e8f0f5;
-      overflow: hidden;
+    :root {
+      --tv-bg: #071724;
+      --tv-bg-light: #0b2030;
+      --tv-card: #102b3c;
+      --tv-teal: #20c9b0;
+      --tv-teal-light: #65e3ce;
+      --tv-white: #f4f8fb;
+      --tv-muted: #a8bac7;
+      --tv-border: rgba(255,255,255,0.10);
     }
 
-    .tv-about-page * {
+    * {
       box-sizing: border-box;
     }
 
-    .tv-about-page .container {
-      width: min(1160px, 90%);
-      margin: auto;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body.tv-about-page {
+      margin: 0;
+      background: var(--tv-bg);
+      color: var(--tv-white);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
     }
 
     .tv-about-page h1,
     .tv-about-page h2,
-    .tv-about-page h3 {
-      font-family: "Space Grotesk", sans-serif;
-      color: #f4f8fb;
+    .tv-about-page h3,
+    .tv-about-page h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
     }
 
-    .tv-about-page p {
-      color: #aabac7;
-      line-height: 1.8;
+    .tv-container {
+      width: min(1160px, 90%);
+      margin: 0 auto;
     }
 
-    .tv-about-page a {
-      text-decoration: none;
+    .tv-section {
+      padding: 90px 0;
     }
 
-    .tv-about-page .tv-eyebrow {
+    .tv-eyebrow {
       display: inline-block;
-      color: #35d6c1;
+      color: var(--tv-teal);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
+    }
+
+    .tv-section-heading {
+      max-width: 760px;
+      margin-bottom: 45px;
+    }
+
+    .tv-section-heading h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      margin: 0 0 18px;
+    }
+
+    .tv-section-heading p {
+      color: var(--tv-muted);
+      font-size: 16px;
+      margin: 0;
     }
 
     /* NAVIGATION */
 
     .tv-about-nav {
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: rgba(7,19,31,.96);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7,23,36,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--tv-border);
     }
 
-    .tv-about-nav-inner {
-      min-height: 76px;
+    .tv-nav-inner {
+      width: min(1200px, 92%);
+      min-height: 78px;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 25px;
     }
 
-    .tv-about-logo {
-      font-family: "Space Grotesk", sans-serif;
+    .tv-brand {
+      color: var(--tv-white);
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 23px;
       font-weight: 700;
-      color: #f4f8fb;
-      letter-spacing: -.8px;
+      letter-spacing: 1px;
     }
 
-    .tv-about-logo span {
-      color: #35d6c1;
+    .tv-brand span {
+      color: var(--tv-teal);
     }
 
-    .tv-about-links {
+    .tv-nav-links {
       display: flex;
       align-items: center;
       gap: 25px;
-      flex-wrap: wrap;
     }
 
-    .tv-about-links a {
+    .tv-nav-links a {
+      color: var(--tv-muted);
+      text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      color: #b7c6d1;
-      transition: .25s ease;
+      transition: 0.3s;
     }
 
-    .tv-about-links a:hover,
-    .tv-about-links a.active {
-      color: #35d6c1;
+    .tv-nav-links a:hover,
+    .tv-nav-links a.active {
+      color: var(--tv-teal);
     }
 
-    .tv-about-links .tv-nav-contact {
+    .tv-nav-links .tv-nav-contact {
+      color: var(--tv-bg);
+      background: var(--tv-teal);
       padding: 11px 18px;
-      border: 1px solid rgba(53,214,193,.5);
-      border-radius: 6px;
-      color: #35d6c1;
+      border-radius: 5px;
+    }
+
+    .tv-nav-links .tv-nav-contact:hover {
+      color: var(--tv-bg);
+      background: var(--tv-teal-light);
     }
 
     /* HERO */
 
     .tv-about-hero {
       position: relative;
+      overflow: hidden;
       padding: 115px 0 105px;
       background:
-        radial-gradient(circle at 85% 30%, rgba(22,157,145,.17), transparent 35%),
-        linear-gradient(135deg, #07131f 0%, #0a202c 100%);
+        radial-gradient(circle at 85% 25%, rgba(32,201,176,0.14), transparent 30%),
+        linear-gradient(135deg, #071724 0%, #0b2638 65%, #0a303a 100%);
+      border-bottom: 1px solid var(--tv-border);
     }
 
     .tv-about-hero::after {
@@ -132,470 +174,404 @@
       position: absolute;
       width: 420px;
       height: 420px;
-      right: -140px;
-      bottom: -210px;
-      border: 1px solid rgba(53,214,193,.12);
+      right: -130px;
+      bottom: -230px;
+      border: 1px solid rgba(32,201,176,0.18);
       border-radius: 50%;
       box-shadow:
-        0 0 0 45px rgba(53,214,193,.025),
-        0 0 0 90px rgba(53,214,193,.02);
-      pointer-events: none;
+        0 0 0 35px rgba(32,201,176,0.025),
+        0 0 0 75px rgba(32,201,176,0.025);
     }
 
-    .tv-about-hero-content {
-      max-width: 850px;
+    .tv-hero-content {
       position: relative;
       z-index: 1;
+      max-width: 850px;
     }
 
     .tv-about-hero h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.08;
-      letter-spacing: -2.8px;
+      font-size: clamp(42px, 6vw, 68px);
+      letter-spacing: -2px;
       margin: 0 0 25px;
     }
 
     .tv-about-hero h1 span {
-      color: #35d6c1;
+      color: var(--tv-teal);
     }
 
     .tv-about-hero p {
       max-width: 720px;
-      font-size: 17px;
-      margin-bottom: 32px;
+      color: var(--tv-muted);
+      font-size: 18px;
+      margin: 0 0 32px;
     }
 
-    .tv-about-buttons {
+    .tv-hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
     }
 
-    .tv-about-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 23px;
-      border-radius: 6px;
+    .tv-btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 5px;
       font-size: 14px;
       font-weight: 700;
-      transition: .25s ease;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
-    .tv-about-btn.primary {
-      background: #35d6c1;
-      color: #06151e;
+    .tv-btn-primary {
+      background: var(--tv-teal);
+      color: #061923;
     }
 
-    .tv-about-btn.primary:hover {
-      background: #69e7d6;
+    .tv-btn-primary:hover {
+      background: var(--tv-teal-light);
       transform: translateY(-2px);
     }
 
-    .tv-about-btn.secondary {
-      color: #d9e5eb;
-      border: 1px solid rgba(255,255,255,.2);
+    .tv-btn-outline {
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--tv-white);
     }
 
-    .tv-about-btn.secondary:hover {
-      border-color: #35d6c1;
-      color: #35d6c1;
+    .tv-btn-outline:hover {
+      border-color: var(--tv-teal);
+      color: var(--tv-teal);
     }
 
-    /* INTRO */
+    /* WHO WE ARE */
 
-    .tv-about-intro {
-      padding: 95px 0;
-    }
-
-    .tv-about-intro-grid {
+    .tv-who-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 65px;
       align-items: center;
     }
 
-    .tv-about-intro h2 {
+    .tv-who-content h2 {
       font-size: clamp(30px, 4vw, 43px);
-      line-height: 1.2;
-      letter-spacing: -1.4px;
-      margin: 0 0 23px;
+      margin: 0 0 22px;
     }
 
-    .tv-about-intro h2 span {
-      color: #35d6c1;
+    .tv-who-content p {
+      color: var(--tv-muted);
+      margin: 0 0 17px;
     }
 
-    .tv-about-intro p {
-      font-size: 15px;
-      margin-bottom: 17px;
-    }
-
-    .tv-about-visual {
-      min-height: 360px;
-      position: relative;
-      border-radius: 16px;
-      border: 1px solid rgba(53,214,193,.2);
+    .tv-who-visual {
+      min-height: 340px;
+      border: 1px solid var(--tv-border);
+      border-radius: 12px;
+      padding: 35px;
       background:
-        linear-gradient(rgba(53,214,193,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(53,214,193,.055) 1px, transparent 1px),
-        radial-gradient(circle at 50% 50%, rgba(31,170,155,.2), transparent 55%),
-        #0b202c;
-      background-size: 35px 35px, 35px 35px, auto, auto;
+        radial-gradient(circle at 70% 30%, rgba(32,201,176,0.17), transparent 35%),
+        linear-gradient(145deg, #102d40, #091c2a);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .tv-visual-mark {
+      width: 105px;
+      height: 105px;
+      border: 2px solid var(--tv-teal);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-    }
-
-    .tv-about-visual::before,
-    .tv-about-visual::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border: 1px solid rgba(53,214,193,.35);
-      border-radius: 50%;
-    }
-
-    .tv-about-visual::after {
-      width: 300px;
-      height: 300px;
-      border-color: rgba(53,214,193,.13);
-    }
-
-    .tv-about-globe {
-      width: 155px;
-      height: 155px;
-      border: 2px solid #35d6c1;
-      border-radius: 50%;
-      background:
-        linear-gradient(90deg, transparent 48%, rgba(53,214,193,.5) 49%, rgba(53,214,193,.5) 51%, transparent 52%),
-        linear-gradient(0deg, transparent 48%, rgba(53,214,193,.5) 49%, rgba(53,214,193,.5) 51%, transparent 52%),
-        radial-gradient(circle, rgba(53,214,193,.22), rgba(53,214,193,.03));
-      box-shadow: 0 0 45px rgba(53,214,193,.16);
-      position: relative;
-      z-index: 1;
-    }
-
-    .tv-about-globe::before {
-      content: "";
-      position: absolute;
-      inset: 0 32px;
-      border: 1px solid rgba(53,214,193,.5);
-      border-radius: 50%;
-    }
-
-    .tv-about-globe::after {
-      content: "";
-      position: absolute;
-      inset: 32px 0;
-      border: 1px solid rgba(53,214,193,.5);
-      border-radius: 50%;
-    }
-
-    .tv-about-visual-label {
-      position: absolute;
-      bottom: 22px;
-      left: 22px;
-      color: #8ce9dc;
-      font-size: 11px;
+      color: var(--tv-teal);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 34px;
       font-weight: 700;
-      letter-spacing: 2px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 35px rgba(32,201,176,0.12);
+    }
+
+    .tv-who-visual h3 {
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    .tv-who-visual p {
+      color: var(--tv-muted);
+      font-size: 14px;
+      margin: 0;
     }
 
     /* MISSION AND VISION */
 
-    .tv-about-purpose {
-      padding: 85px 0;
-      background: #0a1b28;
-      border-top: 1px solid rgba(255,255,255,.05);
-      border-bottom: 1px solid rgba(255,255,255,.05);
+    .tv-mission-section {
+      background: var(--tv-bg-light);
     }
 
-    .tv-about-section-heading {
-      max-width: 700px;
-      margin-bottom: 45px;
-    }
-
-    .tv-about-section-heading h2 {
-      font-size: clamp(30px, 4vw, 42px);
-      line-height: 1.2;
-      letter-spacing: -1.3px;
-      margin: 0 0 15px;
-    }
-
-    .tv-about-section-heading h2 span {
-      color: #35d6c1;
-    }
-
-    .tv-about-purpose-grid {
+    .tv-mission-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 25px;
     }
 
-    .tv-about-purpose-card {
-      padding: 34px;
-      background: #0d2633;
-      border: 1px solid rgba(53,214,193,.15);
-      border-radius: 12px;
-    }
-
-    .tv-about-icon {
-      width: 48px;
-      height: 48px;
+    .tv-mission-card {
+      padding: 35px;
+      border: 1px solid var(--tv-border);
       border-radius: 10px;
-      background: rgba(53,214,193,.1);
-      border: 1px solid rgba(53,214,193,.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #35d6c1;
-      font-size: 22px;
-      margin-bottom: 22px;
+      background: var(--tv-card);
+      transition: 0.3s;
     }
 
-    .tv-about-purpose-card h3 {
-      font-size: 23px;
-      margin: 0 0 13px;
+    .tv-mission-card:hover {
+      border-color: rgba(32,201,176,0.55);
+      transform: translateY(-4px);
     }
 
-    .tv-about-purpose-card p {
+    .tv-card-number {
+      color: var(--tv-teal);
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .tv-mission-card h3 {
+      font-size: 25px;
+      margin: 17px 0 12px;
+    }
+
+    .tv-mission-card p {
+      color: var(--tv-muted);
       margin: 0;
     }
 
     /* EXPERTISE */
 
-    .tv-about-expertise {
-      padding: 95px 0;
-    }
-
-    .tv-about-expertise-grid {
+    .tv-expertise-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
-    .tv-about-expertise-card {
-      padding: 27px 24px;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.025);
-      border-radius: 10px;
-      transition: .25s ease;
+    .tv-expertise-card {
+      padding: 27px;
+      min-height: 220px;
+      border: 1px solid var(--tv-border);
+      border-radius: 9px;
+      background: linear-gradient(145deg, #102b3c, #0b2030);
+      transition: 0.3s;
     }
 
-    .tv-about-expertise-card:hover {
-      border-color: rgba(53,214,193,.45);
+    .tv-expertise-card:hover {
+      border-color: var(--tv-teal);
       transform: translateY(-4px);
-      background: rgba(53,214,193,.045);
     }
 
-    .tv-about-expertise-card .number {
-      color: #35d6c1;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 19px;
-      display: block;
+    .tv-expertise-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 8px;
+      background: rgba(32,201,176,0.12);
+      color: var(--tv-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 21px;
+      margin-bottom: 20px;
     }
 
-    .tv-about-expertise-card h3 {
-      font-size: 18px;
+    .tv-expertise-card h3 {
+      font-size: 19px;
       margin: 0 0 12px;
     }
 
-    .tv-about-expertise-card p {
-      font-size: 13px;
+    .tv-expertise-card p {
+      color: var(--tv-muted);
+      font-size: 14px;
       margin: 0;
     }
 
     /* APPROACH */
 
-    .tv-about-approach {
-      padding: 90px 0;
-      background: #0a1b28;
+    .tv-approach-section {
+      background: var(--tv-bg-light);
     }
 
-    .tv-about-steps {
+    .tv-approach-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 40px;
     }
 
-    .tv-about-step {
-      position: relative;
+    .tv-approach-step {
       padding: 25px 20px;
-      border-top: 2px solid #35d6c1;
-      background: #0d2633;
-      border-radius: 0 0 9px 9px;
+      border-top: 2px solid var(--tv-teal);
+      background: var(--tv-card);
     }
 
-    .tv-about-step span {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 29px;
+    .tv-approach-step span {
+      color: var(--tv-teal);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 25px;
       font-weight: 700;
-      color: rgba(53,214,193,.45);
-      margin-bottom: 16px;
     }
 
-    .tv-about-step h3 {
-      font-size: 17px;
-      margin: 0 0 10px;
+    .tv-approach-step h3 {
+      font-size: 19px;
+      margin: 13px 0 10px;
     }
 
-    .tv-about-step p {
-      font-size: 13px;
+    .tv-approach-step p {
+      color: var(--tv-muted);
+      font-size: 14px;
       margin: 0;
     }
 
     /* FOUNDER */
 
-    .tv-about-founder {
-      padding: 95px 0;
-    }
-
-    .tv-about-founder-box {
+    .tv-founder-grid {
       display: grid;
-      grid-template-columns: .8fr 1.5fr;
+      grid-template-columns: 250px 1fr;
       gap: 45px;
       align-items: center;
-      padding: 42px;
-      background: linear-gradient(120deg, #0d2633, #0a1b28);
-      border: 1px solid rgba(53,214,193,.17);
-      border-radius: 14px;
+      max-width: 900px;
     }
 
-    .tv-about-founder-mark {
-      min-height: 245px;
+    .tv-founder-mark {
+      height: 250px;
       border-radius: 10px;
+      border: 1px solid rgba(32,201,176,0.35);
+      background: linear-gradient(145deg, #12394a, #0a1d2b);
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle, rgba(53,214,193,.15), transparent 65%),
-        #102d38;
-      border: 1px solid rgba(53,214,193,.16);
-      color: #35d6c1;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 56px;
+      color: var(--tv-teal);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 66px;
       font-weight: 700;
-      letter-spacing: -4px;
     }
 
-    .tv-about-founder-content h2 {
-      font-size: 32px;
-      margin: 0 0 7px;
+    .tv-founder-content h2 {
+      font-size: 34px;
+      margin: 0 0 8px;
     }
 
-    .tv-about-founder-content .role {
-      color: #35d6c1;
-      font-size: 13px;
+    .tv-founder-role {
+      color: var(--tv-teal);
       font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .tv-about-founder-content p {
       font-size: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .tv-founder-content p {
+      color: var(--tv-muted);
+      margin: 0 0 15px;
     }
 
     /* CTA */
 
     .tv-about-cta {
-      padding: 80px 0;
-      text-align: center;
+      padding: 75px 0;
       background:
-        radial-gradient(circle at 50% 100%, rgba(53,214,193,.13), transparent 55%),
-        #0a1b28;
-      border-top: 1px solid rgba(255,255,255,.06);
+        radial-gradient(circle at 80% 50%, rgba(32,201,176,0.15), transparent 35%),
+        #0b2638;
+      border-top: 1px solid var(--tv-border);
+      text-align: center;
     }
 
     .tv-about-cta h2 {
       font-size: clamp(30px, 4vw, 43px);
-      line-height: 1.2;
-      margin: 0 0 18px;
-    }
-
-    .tv-about-cta h2 span {
-      color: #35d6c1;
+      margin: 0 0 15px;
     }
 
     .tv-about-cta p {
+      color: var(--tv-muted);
       max-width: 650px;
       margin: 0 auto 28px;
-      font-size: 15px;
     }
 
     /* FOOTER */
 
     .tv-about-footer {
-      padding: 28px 0;
-      border-top: 1px solid rgba(255,255,255,.07);
-      background: #06111b;
+      padding: 45px 0 22px;
+      background: #05121c;
+      border-top: 1px solid var(--tv-border);
     }
 
-    .tv-about-footer-inner {
+    .tv-footer-main {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
+      gap: 35px;
+      padding-bottom: 30px;
     }
 
-    .tv-about-footer p {
-      font-size: 12px;
-      margin: 0;
+    .tv-footer-brand {
+      max-width: 390px;
     }
 
-    .tv-about-footer a {
-      color: #35d6c1;
+    .tv-footer-brand h3 {
+      font-size: 22px;
+      margin: 0 0 12px;
+    }
+
+    .tv-footer-brand h3 span {
+      color: var(--tv-teal);
+    }
+
+    .tv-footer-brand p,
+    .tv-footer-contact p {
+      color: var(--tv-muted);
+      font-size: 14px;
+      margin: 0 0 8px;
+    }
+
+    .tv-footer-contact a {
+      color: var(--tv-teal);
+      text-decoration: none;
+    }
+
+    .tv-footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid var(--tv-border);
+      color: #7f94a3;
       font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
-      .tv-about-intro-grid {
+      .tv-nav-inner {
+        flex-direction: column;
+        padding: 17px 0;
+      }
+
+      .tv-nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .tv-who-grid {
         grid-template-columns: 1fr;
         gap: 35px;
       }
 
-      .tv-about-expertise-grid {
+      .tv-expertise-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .tv-about-steps {
+      .tv-approach-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .tv-about-founder-box {
-        grid-template-columns: 1fr;
-      }
-
-      .tv-about-founder-mark {
-        min-height: 180px;
       }
     }
 
-    @media (max-width: 650px) {
-      .tv-about-nav-inner {
-        padding: 17px 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .tv-about-links {
-        gap: 13px 18px;
-      }
-
-      .tv-about-links a {
-        font-size: 12px;
+    @media (max-width: 600px) {
+      .tv-section {
+        padding: 65px 0;
       }
 
       .tv-about-hero {
@@ -603,33 +579,35 @@
       }
 
       .tv-about-hero h1 {
-        letter-spacing: -1.7px;
+        letter-spacing: -1px;
       }
 
-      .tv-about-purpose-grid,
-      .tv-about-expertise-grid,
-      .tv-about-steps {
+      .tv-nav-links {
+        gap: 11px;
+      }
+
+      .tv-nav-links a {
+        font-size: 11px;
+      }
+
+      .tv-mission-grid,
+      .tv-expertise-grid,
+      .tv-approach-grid {
         grid-template-columns: 1fr;
       }
 
-      .tv-about-intro,
-      .tv-about-expertise,
-      .tv-about-founder {
-        padding: 70px 0;
+      .tv-founder-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
       }
 
-      .tv-about-purpose,
-      .tv-about-approach {
-        padding: 70px 0;
+      .tv-founder-mark {
+        height: 190px;
       }
 
-      .tv-about-founder-box {
-        padding: 23px;
-      }
-
-      .tv-about-footer-inner {
+      .tv-footer-main,
+      .tv-footer-bottom {
         flex-direction: column;
-        align-items: flex-start;
       }
     }
   </style>
@@ -637,15 +615,18 @@
 
 <body class="tv-about-page">
 
-  <!-- NAVIGATION -->
-  <header class="tv-about-nav">
-    <div class="container tv-about-nav-inner">
+  <!-- ======================================
+       NAVIGATION
+       ====================================== -->
 
-      <a href="index.html" class="tv-about-logo">
-        Terra<span>Vita</span>
+  <header class="tv-about-nav">
+    <div class="tv-nav-inner">
+
+      <a href="index.html" class="tv-brand">
+        TERRA<span>VITA</span>
       </a>
 
-      <nav class="tv-about-links" aria-label="Main navigation">
+      <nav class="tv-nav-links">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="services.html">Services</a>
@@ -659,388 +640,464 @@
   </header>
 
 
-  <main>
+  <!-- ======================================
+       ABOUT HERO
+       ====================================== -->
 
-    <!-- HERO -->
-    <section class="tv-about-hero">
-      <div class="container">
+  <section class="tv-about-hero">
+    <div class="tv-container">
 
-        <div class="tv-about-hero-content">
+      <div class="tv-hero-content">
+
+        <span class="tv-eyebrow">
+          ABOUT TERRAVITA
+        </span>
+
+        <h1>
+          Understanding our planet.
+          <span>Empowering better decisions.</span>
+        </h1>
+
+        <p>
+          TerraVita is an environmental and geospatial consultancy
+          focused on transforming satellite data, GIS, remote sensing
+          and artificial intelligence into meaningful insights for
+          environmental, urban and geological decision-making.
+        </p>
+
+        <div class="tv-hero-actions">
+          <a href="services.html" class="tv-btn tv-btn-primary">
+            Explore Our Services
+          </a>
+
+          <a href="contact.html" class="tv-btn tv-btn-outline">
+            Work With Us
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================
+       WHO WE ARE
+       ====================================== -->
+
+  <section class="tv-section">
+    <div class="tv-container">
+
+      <div class="tv-who-grid">
+
+        <div class="tv-who-content">
 
           <span class="tv-eyebrow">
-            ABOUT TERRAVITA
+            WHO WE ARE
           </span>
 
-          <h1>
-            Understanding our planet.
-            <span>Empowering better decisions.</span>
-          </h1>
-
-          <p>
-            TerraVita is an Environmental and Geospatial Consultancy
-            focused on transforming satellite data, GIS, remote sensing
-            and geospatial analytics into meaningful insights for
-            environmental, urban and geological decision-making.
-          </p>
-
-          <div class="tv-about-buttons">
-            <a href="services.html" class="tv-about-btn primary">
-              Explore Our Services
-            </a>
-
-            <a href="projects.html" class="tv-about-btn secondary">
-              View Our Projects
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- WHO WE ARE -->
-    <section class="tv-about-intro">
-      <div class="container">
-
-        <div class="tv-about-intro-grid">
-
-          <div>
-            <span class="tv-eyebrow">WHO WE ARE</span>
-
-            <h2>
-              Geospatial intelligence for
-              <span>a changing world.</span>
-            </h2>
-
-            <p>
-              TerraVita Environmental & Geospatial Consultancy works
-              at the intersection of Earth observation, geospatial
-              technology, environmental research and data analytics.
-            </p>
-
-            <p>
-              We use GIS, satellite remote sensing, spatial modelling
-              and Python-based workflows to study landscapes, identify
-              patterns and support informed planning.
-            </p>
-
-            <p>
-              Our work focuses on making complex spatial information
-              easier to understand through maps, analytical outputs,
-              technical reports and decision-support insights.
-            </p>
-
-            <p>
-              Based in Ahmedabad, Gujarat, India, TerraVita aims to
-              support projects across India and international markets.
-            </p>
-          </div>
-
-          <div class="tv-about-visual">
-            <div class="tv-about-globe"></div>
-            <span class="tv-about-visual-label">
-              EARTH OBSERVATION · GIS · GEOAI
-            </span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- MISSION AND VISION -->
-    <section class="tv-about-purpose">
-      <div class="container">
-
-        <div class="tv-about-section-heading">
-          <span class="tv-eyebrow">OUR PURPOSE</span>
-
           <h2>
-            Science, technology and
-            <span>spatial understanding.</span>
+            Geospatial intelligence for a changing world.
           </h2>
 
           <p>
-            We believe geospatial information can help people better
-            understand environmental challenges and make more
-            informed decisions about land, resources and development.
+            TerraVita Environmental & Geospatial Consultancy works
+            at the intersection of geospatial science, environmental
+            analysis and technology.
           </p>
-        </div>
-
-        <div class="tv-about-purpose-grid">
-
-          <article class="tv-about-purpose-card">
-            <div class="tv-about-icon">◎</div>
-
-            <h3>Our Mission</h3>
-
-            <p>
-              To deliver practical and research-driven geospatial
-              solutions by combining satellite remote sensing,
-              GIS, environmental analysis and emerging technologies.
-              Our aim is to turn spatial data into clear, useful
-              and actionable information.
-            </p>
-          </article>
-
-          <article class="tv-about-purpose-card">
-            <div class="tv-about-icon">◇</div>
-
-            <h3>Our Vision</h3>
-
-            <p>
-              To contribute to a future where geospatial intelligence
-              supports sustainable land management, resilient cities,
-              responsible resource planning and better understanding
-              of our changing environment.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- AREAS OF EXPERTISE -->
-    <section class="tv-about-expertise">
-      <div class="container">
-
-        <div class="tv-about-section-heading">
-          <span class="tv-eyebrow">OUR EXPERTISE</span>
-
-          <h2>
-            Connecting Earth data with
-            <span>real-world applications.</span>
-          </h2>
 
           <p>
-            Our consultancy focuses on six interconnected areas
-            of geospatial and environmental work.
+            We use Geographic Information Systems (GIS), satellite
+            remote sensing, spatial modelling and data analytics to
+            understand landscapes, monitor environmental changes and
+            support informed planning.
           </p>
-        </div>
-
-        <div class="tv-about-expertise-grid">
-
-          <article class="tv-about-expertise-card">
-            <span class="number">01 / GIS</span>
-            <h3>GIS & Spatial Analysis</h3>
-            <p>
-              Spatial mapping, geodatabase development,
-              digitization, spatial modelling and location-based analysis.
-            </p>
-          </article>
-
-          <article class="tv-about-expertise-card">
-            <span class="number">02 / EO</span>
-            <h3>Remote Sensing</h3>
-            <p>
-              Satellite image processing, land-use and land-cover
-              mapping, vegetation indices and change detection.
-            </p>
-          </article>
-
-          <article class="tv-about-expertise-card">
-            <span class="number">03 / ENV</span>
-            <h3>Environmental Analytics</h3>
-            <p>
-              Watershed, wetlands, groundwater, flood exposure,
-              land degradation and environmental assessment support.
-            </p>
-          </article>
-
-          <article class="tv-about-expertise-card">
-            <span class="number">04 / URBAN</span>
-            <h3>Urban Intelligence</h3>
-            <p>
-              Urban growth, land suitability, green cover,
-              urban heat analysis and infrastructure-related mapping.
-            </p>
-          </article>
-
-          <article class="tv-about-expertise-card">
-            <span class="number">05 / GEO</span>
-            <h3>Geological Intelligence</h3>
-            <p>
-              Geological spatial data analysis, terrain assessment,
-              mineral prospectivity and geological mapping support.
-            </p>
-          </article>
-
-          <article class="tv-about-expertise-card">
-            <span class="number">06 / AI</span>
-            <h3>GeoAI & Automation</h3>
-            <p>
-              Python-based geospatial workflows, spatial data analytics,
-              machine learning and image analysis applications.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- OUR APPROACH -->
-    <section class="tv-about-approach">
-      <div class="container">
-
-        <div class="tv-about-section-heading">
-          <span class="tv-eyebrow">OUR APPROACH</span>
-
-          <h2>
-            From raw spatial data to
-            <span>meaningful insights.</span>
-          </h2>
 
           <p>
-            We follow a structured analytical approach to transform
-            geospatial information into understandable project outputs.
+            Our approach combines scientific thinking, geospatial
+            technologies and practical analysis to develop clear,
+            evidence-based outputs for research, planning and
+            project-level decision support.
           </p>
-        </div>
 
-        <div class="tv-about-steps">
-
-          <article class="tv-about-step">
-            <span>01</span>
-            <h3>Understand</h3>
-            <p>
-              Define the project objective, study area,
-              available data and analytical requirements.
-            </p>
-          </article>
-
-          <article class="tv-about-step">
-            <span>02</span>
-            <h3>Process</h3>
-            <p>
-              Collect, prepare and process satellite,
-              GIS and other relevant spatial datasets.
-            </p>
-          </article>
-
-          <article class="tv-about-step">
-            <span>03</span>
-            <h3>Analyse</h3>
-            <p>
-              Apply spatial analysis, remote sensing,
-              modelling and data-driven techniques.
-            </p>
-          </article>
-
-          <article class="tv-about-step">
-            <span>04</span>
-            <h3>Deliver</h3>
-            <p>
-              Present findings through maps, reports,
-              datasets and clear analytical outputs.
-            </p>
-          </article>
+          <p>
+            Based in Ahmedabad, Gujarat, TerraVita aims to support
+            projects across India and international markets.
+          </p>
 
         </div>
+
+        <div class="tv-who-visual">
+
+          <div class="tv-visual-mark">TV</div>
+
+          <h3>TerraVita</h3>
+
+          <p>
+            Satellite + GIS + AI for Environmental,
+            Urban & Geological Decision-Making
+          </p>
+
+        </div>
+
       </div>
-    </section>
+
+    </div>
+  </section>
 
 
-    <!-- FOUNDER -->
-    <section class="tv-about-founder">
-      <div class="container">
+  <!-- ======================================
+       MISSION & VISION
+       ====================================== -->
 
-        <div class="tv-about-founder-box">
+  <section class="tv-section tv-mission-section">
+    <div class="tv-container">
 
-          <div class="tv-about-founder-mark">
-            TV
-          </div>
+      <div class="tv-section-heading">
 
-          <div class="tv-about-founder-content">
-
-            <span class="tv-eyebrow">FOUNDER</span>
-
-            <h2>Janvi Patel</h2>
-
-            <div class="role">
-              Founder · TerraVita Environmental & Geospatial Consultancy
-            </div>
-
-            <p>
-              TerraVita is founded on an interest in understanding
-              the Earth through geology, remote sensing, GIS and
-              environmental research.
-            </p>
-
-            <p>
-              With an academic background in Applied Geology and
-              experience in geospatial research and data analysis,
-              the founder brings together Earth science knowledge
-              and geospatial technologies to explore practical
-              environmental and spatial challenges.
-            </p>
-
-            <p>
-              The focus is on developing research-oriented,
-              technology-enabled geospatial solutions for
-              environmental, urban and geological applications.
-            </p>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- CTA -->
-    <section class="tv-about-cta">
-      <div class="container">
-
-        <span class="tv-eyebrow">WORK WITH TERRAVITA</span>
+        <span class="tv-eyebrow">
+          OUR PURPOSE
+        </span>
 
         <h2>
-          Have a project in mind?
-          <span>Let's explore it together.</span>
+          Mission and Vision
         </h2>
 
         <p>
-          Whether your requirement involves GIS mapping, satellite
-          image analysis, environmental assessment or geospatial
-          data analytics, let's discuss how TerraVita can support
-          your project.
+          Building a practical connection between geospatial
+          technology, scientific research and sustainable development.
         </p>
 
-        <a href="contact.html" class="tv-about-btn primary">
-          Get in Touch
-        </a>
+      </div>
+
+      <div class="tv-mission-grid">
+
+        <div class="tv-mission-card">
+
+          <span class="tv-card-number">01 / OUR MISSION</span>
+
+          <h3>Making geospatial data meaningful.</h3>
+
+          <p>
+            To provide reliable, research-oriented and technology-driven
+            geospatial solutions that help organisations understand
+            environmental conditions, assess spatial patterns and
+            make better-informed decisions.
+          </p>
+
+        </div>
+
+        <div class="tv-mission-card">
+
+          <span class="tv-card-number">02 / OUR VISION</span>
+
+          <h3>Supporting a more sustainable future.</h3>
+
+          <p>
+            To contribute to a future where satellite observations,
+            spatial intelligence and responsible technology support
+            sustainable landscapes, resilient cities and informed
+            resource management.
+          </p>
+
+        </div>
 
       </div>
-    </section>
 
-  </main>
+    </div>
+  </section>
 
 
-  <!-- FOOTER -->
+  <!-- ======================================
+       OUR EXPERTISE
+       ====================================== -->
+
+  <section class="tv-section">
+    <div class="tv-container">
+
+      <div class="tv-section-heading">
+
+        <span class="tv-eyebrow">
+          OUR EXPERTISE
+        </span>
+
+        <h2>
+          Science, spatial data and technology.
+        </h2>
+
+        <p>
+          Our work brings together geospatial methods and analytical
+          capabilities across multiple application areas.
+        </p>
+
+      </div>
+
+      <div class="tv-expertise-grid">
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">⌖</div>
+          <h3>GIS Mapping & Spatial Analysis</h3>
+          <p>
+            Spatial data processing, thematic mapping, geodatabase
+            development, digitisation and spatial analysis.
+          </p>
+        </div>
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">◉</div>
+          <h3>Remote Sensing</h3>
+          <p>
+            Satellite image analysis, vegetation indices, land use
+            and land cover mapping, and change detection.
+          </p>
+        </div>
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">♧</div>
+          <h3>Environmental Analytics</h3>
+          <p>
+            Environmental monitoring, watershed analysis,
+            groundwater-related spatial assessment and natural
+            resource mapping.
+          </p>
+        </div>
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">▦</div>
+          <h3>Urban Intelligence</h3>
+          <p>
+            Urban growth analysis, land transformation,
+            urban heat assessment, green cover and spatial planning.
+          </p>
+        </div>
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">◇</div>
+          <h3>Geological Intelligence</h3>
+          <p>
+            Geological spatial analysis, terrain interpretation,
+            mineral prospectivity research and geospatial modelling.
+          </p>
+        </div>
+
+        <div class="tv-expertise-card">
+          <div class="tv-expertise-icon">⌘</div>
+          <h3>GeoAI & Data Automation</h3>
+          <p>
+            Python-based geospatial workflows, machine learning,
+            spatial data processing and analytical automation.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================
+       OUR APPROACH
+       ====================================== -->
+
+  <section class="tv-section tv-approach-section">
+    <div class="tv-container">
+
+      <div class="tv-section-heading">
+
+        <span class="tv-eyebrow">
+          HOW WE WORK
+        </span>
+
+        <h2>
+          From spatial data to actionable insights.
+        </h2>
+
+        <p>
+          We follow a structured analytical workflow to turn
+          geospatial information into understandable outputs.
+        </p>
+
+      </div>
+
+      <div class="tv-approach-grid">
+
+        <div class="tv-approach-step">
+          <span>01</span>
+          <h3>Understand</h3>
+          <p>
+            Define the project objective, study area, data requirements
+            and analytical scope.
+          </p>
+        </div>
+
+        <div class="tv-approach-step">
+          <span>02</span>
+          <h3>Process</h3>
+          <p>
+            Prepare satellite imagery, spatial datasets and supporting
+            information for analysis.
+          </p>
+        </div>
+
+        <div class="tv-approach-step">
+          <span>03</span>
+          <h3>Analyse</h3>
+          <p>
+            Apply GIS, remote sensing, spatial modelling and
+            data-driven analytical methods.
+          </p>
+        </div>
+
+        <div class="tv-approach-step">
+          <span>04</span>
+          <h3>Deliver</h3>
+          <p>
+            Present findings through maps, reports, datasets
+            and decision-support outputs.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================
+       FOUNDER
+       ====================================== -->
+
+  <section class="tv-section">
+    <div class="tv-container">
+
+      <div class="tv-founder-grid">
+
+        <div class="tv-founder-mark">
+          TV
+        </div>
+
+        <div class="tv-founder-content">
+
+          <span class="tv-eyebrow">
+            LEADERSHIP
+          </span>
+
+          <h2>Janvi Patel</h2>
+
+          <div class="tv-founder-role">
+            Founder | TerraVita Environmental & Geospatial Consultancy
+          </div>
+
+          <p>
+            TerraVita is founded by Janvi Patel, an Applied Geology
+            postgraduate with an academic and professional background
+            in geospatial analysis, GIS, remote sensing and
+            environmental research.
+          </p>
+
+          <p>
+            Her interests include satellite-based environmental
+            monitoring, land use and land cover analysis, urban
+            environmental assessment, geological applications and
+            the integration of Python and GeoAI into geospatial
+            workflows.
+          </p>
+
+          <p>
+            Through TerraVita, she aims to connect scientific
+            understanding with practical geospatial applications
+            and contribute to evidence-based environmental
+            and spatial decision-making.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================
+       CONTACT CTA
+       ====================================== -->
+
+  <section class="tv-about-cta">
+    <div class="tv-container">
+
+      <span class="tv-eyebrow">
+        LET'S COLLABORATE
+      </span>
+
+      <h2>
+        Have a project in mind?
+      </h2>
+
+      <p>
+        Whether you need GIS mapping, satellite image analysis,
+        environmental assessment or geospatial data solutions,
+        let's explore how TerraVita can support your project.
+      </p>
+
+      <a href="contact.html" class="tv-btn tv-btn-primary">
+        Discuss Your Project
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================
+       FOOTER
+       ====================================== -->
+
   <footer class="tv-about-footer">
-    <div class="container tv-about-footer-inner">
+    <div class="tv-container">
 
-      <p>
-        © <span id="tv-about-year"></span>
-        TerraVita Environmental & Geospatial Consultancy.
-        All rights reserved.
-      </p>
+      <div class="tv-footer-main">
 
-      <p>
-        Ahmedabad, Gujarat, India ·
-        <a href="mailto:terravita.giec@gmail.com">
-          terravita.giec@gmail.com
-        </a>
-      </p>
+        <div class="tv-footer-brand">
+
+          <h3>TERRA<span>VITA</span></h3>
+
+          <p>
+            Satellite + GIS + AI for Environmental,
+            Urban & Geological Decision-Making.
+          </p>
+
+        </div>
+
+        <div class="tv-footer-contact">
+
+          <p><strong>Location</strong></p>
+          <p>Ahmedabad, Gujarat, India</p>
+
+          <p><strong>Email</strong></p>
+          <p>
+            <a href="mailto:terravita.giec@gmail.com">
+              terravita.giec@gmail.com
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="tv-footer-bottom">
+
+        <span>
+          © 2026 TerraVita Environmental & Geospatial Consultancy.
+          All rights reserved.
+        </span>
+
+        <span>
+          Geospatial Intelligence for a Sustainable Future
+        </span>
+
+      </div>
 
     </div>
   </footer>
-
-
-  <script>
-    document.getElementById("tv-about-year").textContent =
-      new Date().getFullYear();
-  </script>
 
 </body>
 </html>
